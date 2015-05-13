@@ -1,0 +1,1913 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 45;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		8FE0885512FA9A090075117D /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FE0884C12FA9A090075117D /* CoreFoundation.framework */; };
+		8FE0885612FA9A090075117D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FE0884D12FA9A090075117D /* Foundation.framework */; };
+		8FE0885712FA9A090075117D /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FE0884E12FA9A090075117D /* OpenAL.framework */; };
+		8FE0885812FA9A090075117D /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FE0884F12FA9A090075117D /* OpenGLES.framework */; };
+		8FE0885912FA9A090075117D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FE0885012FA9A090075117D /* QuartzCore.framework */; };
+		8FE0885A12FA9A090075117D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FE0885112FA9A090075117D /* UIKit.framework */; };
+		8FE0885B12FA9A090075117D /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FE0885212FA9A090075117D /* AppKit.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		8FE0885C12FA9A090075117D /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FE0885312FA9A090075117D /* OpenGL.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		8FE0885D12FA9A090075117D /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FE0885412FA9A090075117D /* Cocoa.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		8FE08A2812FA9A2F0075117D /* egwTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FE0886012FA9A2E0075117D /* egwTypes.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FE08A2912FA9A2F0075117D /* egwPContext.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FE0886112FA9A2E0075117D /* egwPContext.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FE08A2A12FA9A2F0075117D /* egwPGfxContext.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FE0886212FA9A2E0075117D /* egwPGfxContext.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FE08A2B12FA9A2F0075117D /* egwPPhyContext.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FE0886312FA9A2E0075117D /* egwPPhyContext.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FE08A2C12FA9A2F0075117D /* egwPSndContext.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FE0886412FA9A2E0075117D /* egwPSndContext.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FE08A2D12FA9A2F0075117D /* egwPHook.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FE0886512FA9A2E0075117D /* egwPHook.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FE08A2E12FA9A2F0075117D /* egwPScreen.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FE0886612FA9A2E0075117D /* egwPScreen.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FE08A2F12FA9A2F0075117D /* egwPSingleton.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FE0886712FA9A2E0075117D /* egwPSingleton.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FE08A3012FA9A2F0075117D /* egwPTask.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FE0886812FA9A2E0075117D /* egwPTask.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FE08A3112FA9A2F0075117D /* egwPSubTask.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FE0886912FA9A2E0075117D /* egwPSubTask.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FE08A3212FA9A2F0075117D /* egwPAsset.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FE0886A12FA9A2F0075117D /* egwPAsset.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FE08A3312FA9A2F0075117D /* egwPAssetBase.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FE0886B12FA9A2F0075117D /* egwPAssetBase.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FE08A3412FA9A2F0075117D /* egwPCoreObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FE0886C12FA9A2F0075117D /* egwPCoreObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FE08A3512FA9A2F0075117D /* egwPObjNode.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FE0886D12FA9A2F0075117D /* egwPObjNode.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FE08A3612FA9A2F0075117D /* egwPObjBranch.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FE0886E12FA9A2F0075117D /* egwPObjBranch.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FE08A3712FA9A2F0075117D /* egwPObjLeaf.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FE0886F12FA9A2F0075117D /* egwPObjLeaf.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FE08A3812FA9A2F0075117D /* egwPInteractable.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FE0887012FA9A2F0075117D /* egwPInteractable.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FE08A3912FA9A2F0075117D /* egwPPlayable.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FE0887112FA9A2F0075117D /* egwPPlayable.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FE08A3A12FA9A2F0075117D /* egwPRenderable.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FE0887212FA9A2F0075117D /* egwPRenderable.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FE08A3B12FA9A2F0075117D /* egwPActioned.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FE0887312FA9A2F0075117D /* egwPActioned.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FE08A3C12FA9A2F0075117D /* egwPActuator.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FE0887412FA9A2F0075117D /* egwPActuator.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FE08A3D12FA9A2F0075117D /* egwPBounding.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FE0887512FA9A2F0075117D /* egwPBounding.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FE08A3E12FA9A2F0075117D /* egwPCamera.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FE0887612FA9A2F0075117D /* egwPCamera.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FE08A3F12FA9A2F0075117D /* egwPFont.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FE0887712FA9A2F0075117D /* egwPFont.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FE08A4012FA9A2F0075117D /* egwPGeometry.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FE0887812FA9A2F0075117D /* egwPGeometry.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FE08A4112FA9A2F0075117D /* egwPInterpolator.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FE0887912FA9A2F0075117D /* egwPInterpolator.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FE08A4212FA9A2F0075117D /* egwPLight.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FE0887A12FA9A2F0075117D /* egwPLight.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FE08A4312FA9A2F0075117D /* egwPMaterial.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FE0887B12FA9A2F0075117D /* egwPMaterial.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FE08A4412FA9A2F0075117D /* egwPOrientated.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FE0887C12FA9A2F0075117D /* egwPOrientated.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FE08A4512FA9A2F0075117D /* egwPSound.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FE0887D12FA9A2F0075117D /* egwPSound.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FE08A4612FA9A2F0075117D /* egwPStreamed.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FE0887E12FA9A2F0075117D /* egwPStreamed.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FE08A4712FA9A2F0075117D /* egwPStreamer.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FE0887F12FA9A2F0075117D /* egwPStreamer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FE08A4812FA9A2F0075117D /* egwPTexture.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FE0888012FA9A2F0075117D /* egwPTexture.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FE08A4912FA9A2F0075117D /* egwPTimed.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FE0888112FA9A2F0075117D /* egwPTimed.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FE08A4A12FA9A2F0075117D /* egwPTimer.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FE0888212FA9A2F0075117D /* egwPTimer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FE08A4B12FA9A2F0075117D /* egwPWarned.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FE0888312FA9A2F0075117D /* egwPWarned.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FE08A4C12FA9A2F0075117D /* egwPWidget.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FE0888412FA9A2F0075117D /* egwPWidget.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FE08A7212FA9A2F0075117D /* egwSysTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FE088AB12FA9A2F0075117D /* egwSysTypes.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FE08A7312FA9A2F0075117D /* egwSystem.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FE088AC12FA9A2F0075117D /* egwSystem.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FE08A7412FA9A2F0075117D /* egwSystem.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE088AD12FA9A2F0075117D /* egwSystem.m */; };
+		8FE08A7512FA9A2F0075117D /* egwEngine.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FE088AE12FA9A2F0075117D /* egwEngine.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FE08A7612FA9A2F0075117D /* egwEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE088AF12FA9A2F0075117D /* egwEngine.m */; };
+		8FE08A7712FA9A2F0075117D /* egwAssetManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FE088B012FA9A2F0075117D /* egwAssetManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FE08A7812FA9A2F0075117D /* egwAssetManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE088B112FA9A2F0075117D /* egwAssetManager.m */; };
+		8FE08A7912FA9A2F0075117D /* egwGAMXParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE088B212FA9A2F0075117D /* egwGAMXParser.m */; };
+		8FE08A7A12FA9A2F0075117D /* egwScreenManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FE088B312FA9A2F0075117D /* egwScreenManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FE08A7B12FA9A2F0075117D /* egwScreenManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE088B412FA9A2F0075117D /* egwScreenManager.m */; };
+		8FE08A7C12FA9A2F0075117D /* egwTaskManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FE088B512FA9A2F0075117D /* egwTaskManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FE08A7D12FA9A2F0075117D /* egwTaskManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE088B612FA9A2F0075117D /* egwTaskManager.m */; };
+		8FE08A7E12FA9A2F0075117D /* egwGfxContext.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FE088B712FA9A2F0075117D /* egwGfxContext.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FE08A7F12FA9A2F0075117D /* egwGfxContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE088B812FA9A2F0075117D /* egwGfxContext.m */; };
+		8FE08A8012FA9A2F0075117D /* egwGfxContextAGL.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FE088B912FA9A2F0075117D /* egwGfxContextAGL.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FE08A8112FA9A2F0075117D /* egwGfxContextAGL.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE088BA12FA9A2F0075117D /* egwGfxContextAGL.m */; };
+		8FE08A8212FA9A2F0075117D /* egwGfxContextNSGL.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FE088BB12FA9A2F0075117D /* egwGfxContextNSGL.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FE08A8312FA9A2F0075117D /* egwGfxContextNSGL.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE088BC12FA9A2F0075117D /* egwGfxContextNSGL.m */; };
+		8FE08A8412FA9A2F0075117D /* egwGfxContextEAGLES.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FE088BD12FA9A2F0075117D /* egwGfxContextEAGLES.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FE08A8512FA9A2F0075117D /* egwGfxContextEAGLES.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE088BE12FA9A2F0075117D /* egwGfxContextEAGLES.m */; };
+		8FE08A8612FA9A2F0075117D /* egwGfxRenderer.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FE088BF12FA9A2F0075117D /* egwGfxRenderer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FE08A8712FA9A2F0075117D /* egwGfxRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE088C012FA9A2F0075117D /* egwGfxRenderer.m */; };
+		8FE08A8812FA9A2F0075117D /* egwPhyContext.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FE088C112FA9A2F0075117D /* egwPhyContext.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FE08A8912FA9A2F0075117D /* egwPhyContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE088C212FA9A2F0075117D /* egwPhyContext.m */; };
+		8FE08A8A12FA9A2F0075117D /* egwPhyContextSW.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FE088C312FA9A2F0075117D /* egwPhyContextSW.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FE08A8B12FA9A2F0075117D /* egwPhyContextSW.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE088C412FA9A2F0075117D /* egwPhyContextSW.m */; };
+		8FE08A8C12FA9A2F0075117D /* egwPhyActuator.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FE088C512FA9A2F0075117D /* egwPhyActuator.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FE08A8D12FA9A2F0075117D /* egwPhyActuator.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE088C612FA9A2F0075117D /* egwPhyActuator.m */; };
+		8FE08A8E12FA9A2F0075117D /* egwSndContext.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FE088C712FA9A2F0075117D /* egwSndContext.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FE08A8F12FA9A2F0075117D /* egwSndContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE088C812FA9A2F0075117D /* egwSndContext.m */; };
+		8FE08A9012FA9A2F0075117D /* egwSndContextAL.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FE088C912FA9A2F0075117D /* egwSndContextAL.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FE08A9112FA9A2F0075117D /* egwSndContextAL.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE088CA12FA9A2F0075117D /* egwSndContextAL.m */; };
+		8FE08A9212FA9A2F0075117D /* egwSndMixer.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FE088CB12FA9A2F0075117D /* egwSndMixer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FE08A9312FA9A2F0075117D /* egwSndMixer.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE088CC12FA9A2F0075117D /* egwSndMixer.m */; };
+		8FE08AB612FA9A2F0075117D /* egwHwdTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FE088F012FA9A2F0075117D /* egwHwdTypes.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FE08AB712FA9A2F0075117D /* egwWindow.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FE088F112FA9A2F0075117D /* egwWindow.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FE08AB812FA9A2F0075117D /* egwWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE088F212FA9A2F0075117D /* egwWindow.m */; };
+		8FE08AB912FA9A2F0075117D /* egwUIDeviceExt.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FE088F312FA9A2F0075117D /* egwUIDeviceExt.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FE08ABA12FA9A2F0075117D /* egwUIDeviceExt.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE088F412FA9A2F0075117D /* egwUIDeviceExt.m */; };
+		8FE08ABB12FA9A2F0075117D /* egwUIViewSurface.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FE088F512FA9A2F0075117D /* egwUIViewSurface.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FE08ABC12FA9A2F0075117D /* egwUIViewSurface.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE088F612FA9A2F0075117D /* egwUIViewSurface.m */; };
+		8FE08ABD12FA9A2F0075117D /* egwNSOpenGLViewSurface.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FE088F712FA9A2F0075117D /* egwNSOpenGLViewSurface.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FE08ABE12FA9A2F0075117D /* egwNSOpenGLViewSurface.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE088F812FA9A2F0075117D /* egwNSOpenGLViewSurface.m */; };
+		8FE08ABF12FA9A2F0075117D /* egwTouchDecoder.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FE088F912FA9A2F0075117D /* egwTouchDecoder.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FE08AC012FA9A2F0075117D /* egwTouchDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE088FA12FA9A2F0075117D /* egwTouchDecoder.m */; };
+		8FE08AC112FA9A2F0075117D /* egwMouseDecoder.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FE088FB12FA9A2F0075117D /* egwMouseDecoder.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FE08AC212FA9A2F0075117D /* egwMouseDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE088FC12FA9A2F0075117D /* egwMouseDecoder.m */; };
+		8FE08AD012FA9A2F0075117D /* egwDataTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FE0890B12FA9A2F0075117D /* egwDataTypes.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FE08AD112FA9A2F0075117D /* egwData.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FE0890C12FA9A2F0075117D /* egwData.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FE08AD212FA9A2F0075117D /* egwData.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE0890D12FA9A2F0075117D /* egwData.m */; };
+		8FE08AD312FA9A2F0075117D /* egwArray.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FE0890E12FA9A2F0075117D /* egwArray.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FE08AD412FA9A2F0075117D /* egwArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE0890F12FA9A2F0075117D /* egwArray.m */; };
+		8FE08AD512FA9A2F0075117D /* egwCyclicArray.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FE0891012FA9A2F0075117D /* egwCyclicArray.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FE08AD612FA9A2F0075117D /* egwCyclicArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE0891112FA9A2F0075117D /* egwCyclicArray.m */; };
+		8FE08AD712FA9A2F0075117D /* egwSinglyLinkedList.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FE0891212FA9A2F0075117D /* egwSinglyLinkedList.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FE08AD812FA9A2F0075117D /* egwSinglyLinkedList.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE0891312FA9A2F0075117D /* egwSinglyLinkedList.m */; };
+		8FE08AD912FA9A2F0075117D /* egwDoublyLinkedList.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FE0891412FA9A2F0075117D /* egwDoublyLinkedList.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FE08ADA12FA9A2F0075117D /* egwDoublyLinkedList.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE0891512FA9A2F0075117D /* egwDoublyLinkedList.m */; };
+		8FE08ADB12FA9A2F0075117D /* egwBinaryTree.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FE0891612FA9A2F0075117D /* egwBinaryTree.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FE08ADC12FA9A2F0075117D /* egwBinaryTree.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE0891712FA9A2F0075117D /* egwBinaryTree.m */; };
+		8FE08ADD12FA9A2F0075117D /* egwAVLTree.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FE0891812FA9A2F0075117D /* egwAVLTree.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FE08ADE12FA9A2F0075117D /* egwAVLTree.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE0891912FA9A2F0075117D /* egwAVLTree.m */; };
+		8FE08ADF12FA9A2F0075117D /* egwRedBlackTree.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FE0891A12FA9A2F0075117D /* egwRedBlackTree.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FE08AE012FA9A2F0075117D /* egwRedBlackTree.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE0891B12FA9A2F0075117D /* egwRedBlackTree.m */; };
+		8FE08AF212FA9A2F0075117D /* egwMathTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FE0892E12FA9A2F0075117D /* egwMathTypes.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FE08AF312FA9A2F0075117D /* egwMath.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FE0892F12FA9A2F0075117D /* egwMath.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FE08AF412FA9A2F0075117D /* egwMath.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE0893012FA9A2F0075117D /* egwMath.m */; };
+		8FE08AF512FA9A2F0075117D /* egwVector.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FE0893112FA9A2F0075117D /* egwVector.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FE08AF612FA9A2F0075117D /* egwVector.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE0893212FA9A2F0075117D /* egwVector.m */; };
+		8FE08AF712FA9A2F0075117D /* egwMatrix.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FE0893312FA9A2F0075117D /* egwMatrix.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FE08AF812FA9A2F0075117D /* egwMatrix.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE0893412FA9A2F0075117D /* egwMatrix.m */; };
+		8FE08AF912FA9A2F0075117D /* egwQuaternion.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FE0893512FA9A2F0075117D /* egwQuaternion.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FE08AFA12FA9A2F0075117D /* egwQuaternion.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE0893612FA9A2F0075117D /* egwQuaternion.m */; };
+		8FE08B0412FA9A2F0075117D /* egwAiTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FE0894112FA9A2F0075117D /* egwAiTypes.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FE08B0512FA9A2F0075117D /* egwIntellect.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FE0894212FA9A2F0075117D /* egwIntellect.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FE08B0612FA9A2F0075117D /* egwIntellect.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE0894312FA9A2F0075117D /* egwIntellect.m */; };
+		8FE08B0712FA9A2F0075117D /* egwFiniteStateMachine.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FE0894412FA9A2F0075117D /* egwFiniteStateMachine.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FE08B0812FA9A2F0075117D /* egwFiniteStateMachine.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE0894512FA9A2F0075117D /* egwFiniteStateMachine.m */; };
+		8FE08B0912FA9A2F0075117D /* egwArtificialNeuralNetwork.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FE0894612FA9A2F0075117D /* egwArtificialNeuralNetwork.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FE08B0A12FA9A2F0075117D /* egwArtificialNeuralNetwork.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE0894712FA9A2F0075117D /* egwArtificialNeuralNetwork.m */; };
+		8FE08B1212FA9A2F0075117D /* egwGfxTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FE0895012FA9A2F0075117D /* egwGfxTypes.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FE08B1312FA9A2F0075117D /* egwGraphics.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FE0895112FA9A2F0075117D /* egwGraphics.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FE08B1412FA9A2F0075117D /* egwGraphics.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE0895212FA9A2F0075117D /* egwGraphics.m */; };
+		8FE08B1512FA9A2F0075117D /* egwBindingStacks.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FE0895312FA9A2F0075117D /* egwBindingStacks.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FE08B1612FA9A2F0075117D /* egwBindingStacks.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE0895412FA9A2F0075117D /* egwBindingStacks.m */; };
+		8FE08B1712FA9A2F0075117D /* egwBoundings.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FE0895512FA9A2F0075117D /* egwBoundings.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FE08B1812FA9A2F0075117D /* egwBoundings.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE0895612FA9A2F0075117D /* egwBoundings.m */; };
+		8FE08B1912FA9A2F0075117D /* egwCameras.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FE0895712FA9A2F0075117D /* egwCameras.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FE08B1A12FA9A2F0075117D /* egwCameras.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE0895812FA9A2F0075117D /* egwCameras.m */; };
+		8FE08B1B12FA9A2F0075117D /* egwFonts.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FE0895912FA9A2F0075117D /* egwFonts.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FE08B1C12FA9A2F0075117D /* egwFonts.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE0895A12FA9A2F0075117D /* egwFonts.m */; };
+		8FE08B1D12FA9A2F0075117D /* egwLights.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FE0895B12FA9A2F0075117D /* egwLights.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FE08B1E12FA9A2F0075117D /* egwLights.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE0895C12FA9A2F0075117D /* egwLights.m */; };
+		8FE08B1F12FA9A2F0075117D /* egwMaterials.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FE0895D12FA9A2F0075117D /* egwMaterials.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FE08B2012FA9A2F0075117D /* egwMaterials.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE0895E12FA9A2F0075117D /* egwMaterials.m */; };
+		8FE08B2112FA9A2F0075117D /* egwRenderProxy.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FE0895F12FA9A2F0075117D /* egwRenderProxy.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FE08B2212FA9A2F0075117D /* egwRenderProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE0896012FA9A2F0075117D /* egwRenderProxy.m */; };
+		8FE08B2312FA9A2F0075117D /* egwTexture.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FE0896112FA9A2F0075117D /* egwTexture.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FE08B2412FA9A2F0075117D /* egwTexture.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE0896212FA9A2F0075117D /* egwTexture.m */; };
+		8FE08B2512FA9A2F0075117D /* egwSpritedTexture.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FE0896312FA9A2F0075117D /* egwSpritedTexture.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FE08B2612FA9A2F0075117D /* egwSpritedTexture.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE0896412FA9A2F0075117D /* egwSpritedTexture.m */; };
+		8FE08B2712FA9A2F0075117D /* egwStreamedTexture.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FE0896512FA9A2F0075117D /* egwStreamedTexture.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FE08B2812FA9A2F0075117D /* egwStreamedTexture.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE0896612FA9A2F0075117D /* egwStreamedTexture.m */; };
+		8FE08B4012FA9A2F0075117D /* egwGeoTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FE0897F12FA9A2F0075117D /* egwGeoTypes.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FE08B4112FA9A2F0075117D /* egwGeometry.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FE0898012FA9A2F0075117D /* egwGeometry.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FE08B4212FA9A2F0075117D /* egwGeometry.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE0898112FA9A2F0075117D /* egwGeometry.m */; };
+		8FE08B4312FA9A2F0075117D /* egwBillboard.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FE0898212FA9A2F0075117D /* egwBillboard.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FE08B4412FA9A2F0075117D /* egwBillboard.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE0898312FA9A2F0075117D /* egwBillboard.m */; };
+		8FE08B4512FA9A2F0075117D /* egwMesh.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FE0898412FA9A2F0075117D /* egwMesh.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FE08B4612FA9A2F0075117D /* egwMesh.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE0898512FA9A2F0075117D /* egwMesh.m */; };
+		8FE08B4712FA9A2F0075117D /* egwKeyFramedMesh.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FE0898612FA9A2F0075117D /* egwKeyFramedMesh.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FE08B4812FA9A2F0075117D /* egwKeyFramedMesh.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE0898712FA9A2F0075117D /* egwKeyFramedMesh.m */; };
+		8FE08B4912FA9A2F0075117D /* egwSkeletalBonedMesh.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FE0898812FA9A2F0075117D /* egwSkeletalBonedMesh.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FE08B4A12FA9A2F0075117D /* egwSkeletalBonedMesh.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE0898912FA9A2F0075117D /* egwSkeletalBonedMesh.m */; };
+		8FE08B4B12FA9A2F0075117D /* egwParticleSystem.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FE0898A12FA9A2F0075117D /* egwParticleSystem.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FE08B4C12FA9A2F0075117D /* egwParticleSystem.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE0898B12FA9A2F0075117D /* egwParticleSystem.m */; };
+		8FE08B5A12FA9A2F0075117D /* egwGuiTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FE0899A12FA9A2F0075117D /* egwGuiTypes.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FE08B5B12FA9A2F0075117D /* egwInterface.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FE0899B12FA9A2F0075117D /* egwInterface.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FE08B5C12FA9A2F0075117D /* egwInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE0899C12FA9A2F0075117D /* egwInterface.m */; };
+		8FE08B5D12FA9A2F0075117D /* egwButton.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FE0899D12FA9A2F0075117D /* egwButton.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FE08B5E12FA9A2F0075117D /* egwButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE0899E12FA9A2F0075117D /* egwButton.m */; };
+		8FE08B5F12FA9A2F0075117D /* egwImage.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FE0899F12FA9A2F0075117D /* egwImage.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FE08B6012FA9A2F0075117D /* egwImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE089A012FA9A2F0075117D /* egwImage.m */; };
+		8FE08B6112FA9A2F0075117D /* egwSpritedImage.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FE089A112FA9A2F0075117D /* egwSpritedImage.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FE08B6212FA9A2F0075117D /* egwSpritedImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE089A212FA9A2F0075117D /* egwSpritedImage.m */; };
+		8FE08B6312FA9A2F0075117D /* egwStreamedImage.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FE089A312FA9A2F0075117D /* egwStreamedImage.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FE08B6412FA9A2F0075117D /* egwStreamedImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE089A412FA9A2F0075117D /* egwStreamedImage.m */; };
+		8FE08B6512FA9A2F0075117D /* egwLabel.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FE089A512FA9A2F0075117D /* egwLabel.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FE08B6612FA9A2F0075117D /* egwLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE089A612FA9A2F0075117D /* egwLabel.m */; };
+		8FE08B6712FA9A2F0075117D /* egwScrolledLabel.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FE089A712FA9A2F0075117D /* egwScrolledLabel.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FE08B6812FA9A2F0075117D /* egwScrolledLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE089A812FA9A2F0075117D /* egwScrolledLabel.m */; };
+		8FE08B6912FA9A2F0075117D /* egwPager.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FE089A912FA9A2F0075117D /* egwPager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FE08B6A12FA9A2F0075117D /* egwPager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE089AA12FA9A2F0075117D /* egwPager.m */; };
+		8FE08B6B12FA9A2F0075117D /* egwSlider.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FE089AB12FA9A2F0075117D /* egwSlider.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FE08B6C12FA9A2F0075117D /* egwSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE089AC12FA9A2F0075117D /* egwSlider.m */; };
+		8FE08B6D12FA9A2F0075117D /* egwToggle.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FE089AD12FA9A2F0075117D /* egwToggle.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FE08B6E12FA9A2F0075117D /* egwToggle.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE089AE12FA9A2F0075117D /* egwToggle.m */; };
+		8FE08B8412FA9A2F0075117D /* egwNetTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FE089C512FA9A2F0075117D /* egwNetTypes.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FE08B8512FA9A2F0075117D /* egwNetwork.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FE089C612FA9A2F0075117D /* egwNetwork.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FE08B8612FA9A2F0075117D /* egwNetwork.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE089C712FA9A2F0075117D /* egwNetwork.m */; };
+		8FE08B8A12FA9A2F0075117D /* egwObjTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FE089CC12FA9A2F0075117D /* egwObjTypes.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FE08B8B12FA9A2F0075117D /* egwObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FE089CD12FA9A2F0075117D /* egwObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FE08B8C12FA9A2F0075117D /* egwObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE089CE12FA9A2F0075117D /* egwObject.m */; };
+		8FE08B8D12FA9A2F0075117D /* egwObjectBranch.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FE089CF12FA9A2F0075117D /* egwObjectBranch.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FE08B8E12FA9A2F0075117D /* egwObjectBranch.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE089D012FA9A2F0075117D /* egwObjectBranch.m */; };
+		8FE08B8F12FA9A2F0075117D /* egwSwitchBranch.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FE089D112FA9A2F0075117D /* egwSwitchBranch.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FE08B9012FA9A2F0075117D /* egwSwitchBranch.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE089D212FA9A2F0075117D /* egwSwitchBranch.m */; };
+		8FE08B9112FA9A2F0075117D /* egwTransformBranch.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FE089D312FA9A2F0075117D /* egwTransformBranch.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FE08B9212FA9A2F0075117D /* egwTransformBranch.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE089D412FA9A2F0075117D /* egwTransformBranch.m */; };
+		8FE08B9312FA9A2F0075117D /* egwDLODBranch.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FE089D512FA9A2F0075117D /* egwDLODBranch.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FE08B9412FA9A2F0075117D /* egwDLODBranch.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE089D612FA9A2F0075117D /* egwDLODBranch.m */; };
+		8FE08BA012FA9A2F0075117D /* egwPhyTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FE089E312FA9A2F0075117D /* egwPhyTypes.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FE08BA112FA9A2F0075117D /* egwPhysics.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FE089E412FA9A2F0075117D /* egwPhysics.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FE08BA212FA9A2F0075117D /* egwPhysics.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE089E512FA9A2F0075117D /* egwPhysics.m */; };
+		8FE08BA312FA9A2F0075117D /* egwInterpolators.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FE089E612FA9A2F0075117D /* egwInterpolators.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FE08BA412FA9A2F0075117D /* egwInterpolators.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE089E712FA9A2F0075117D /* egwInterpolators.m */; };
+		8FE08BA512FA9A2F0075117D /* egwSpring.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FE089E812FA9A2F0075117D /* egwSpring.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FE08BA612FA9A2F0075117D /* egwSpring.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE089E912FA9A2F0075117D /* egwSpring.m */; };
+		8FE08BAE12FA9A2F0075117D /* egwSndTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FE089F212FA9A2F0075117D /* egwSndTypes.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FE08BAF12FA9A2F0075117D /* egwSound.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FE089F312FA9A2F0075117D /* egwSound.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FE08BB012FA9A2F0075117D /* egwSound.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE089F412FA9A2F0075117D /* egwSound.m */; };
+		8FE08BB112FA9A2F0075117D /* egwPointSound.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FE089F512FA9A2F0075117D /* egwPointSound.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FE08BB212FA9A2F0075117D /* egwPointSound.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE089F612FA9A2F0075117D /* egwPointSound.m */; };
+		8FE08BB312FA9A2F0075117D /* egwStreamedPointSound.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FE089F712FA9A2F0075117D /* egwStreamedPointSound.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FE08BB412FA9A2F0075117D /* egwStreamedPointSound.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE089F812FA9A2F0075117D /* egwStreamedPointSound.m */; };
+		8FE08BBC12FA9A2F0075117D /* egwMiscTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FE08A0112FA9A2F0075117D /* egwMiscTypes.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FE08BBD12FA9A2F0075117D /* egwMisc.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FE08A0212FA9A2F0075117D /* egwMisc.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FE08BBE12FA9A2F0075117D /* egwMisc.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE08A0312FA9A2F0075117D /* egwMisc.m */; };
+		8FE08BBF12FA9A2F0075117D /* egwBoxingTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FE08A0412FA9A2F0075117D /* egwBoxingTypes.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FE08BC012FA9A2F0075117D /* egwBoxingTypes.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE08A0512FA9A2F0075117D /* egwBoxingTypes.m */; };
+		8FE08BC112FA9A2F0075117D /* egwTimer.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FE08A0612FA9A2F0075117D /* egwTimer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FE08BC212FA9A2F0075117D /* egwTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE08A0712FA9A2F0075117D /* egwTimer.m */; };
+		8FE08BC312FA9A2F0075117D /* egwActionedTimer.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FE08A0812FA9A2F0075117D /* egwActionedTimer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FE08BC412FA9A2F0075117D /* egwActionedTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE08A0912FA9A2F0075117D /* egwActionedTimer.m */; };
+		8FE08BC512FA9A2F0075117D /* egwActionedTimersArray.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FE08A0A12FA9A2F0075117D /* egwActionedTimersArray.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FE08BC612FA9A2F0075117D /* egwActionedTimersArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE08A0B12FA9A2F0075117D /* egwActionedTimersArray.m */; };
+		8FE08BC712FA9A2F0075117D /* egwStreamer.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FE08A0C12FA9A2F0075117D /* egwStreamer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FE08BC812FA9A2F0075117D /* egwStreamer.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE08A0D12FA9A2F0075117D /* egwStreamer.m */; };
+		8FE08BC912FA9A2F0075117D /* egwValidater.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FE08A0E12FA9A2F0075117D /* egwValidater.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FE08BCA12FA9A2F0075117D /* egwValidater.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE08A0F12FA9A2F0075117D /* egwValidater.m */; };
+		8FE08BEA12FA9B0C0075117D /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FE0884C12FA9A090075117D /* CoreFoundation.framework */; };
+		8FE08BEB12FA9B0C0075117D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FE0884D12FA9A090075117D /* Foundation.framework */; };
+		8FE08BEC12FA9B0C0075117D /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FE0884E12FA9A090075117D /* OpenAL.framework */; };
+		8FE08BED12FA9B0C0075117D /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FE0884F12FA9A090075117D /* OpenGLES.framework */; };
+		8FE08BEE12FA9B0C0075117D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FE0885012FA9A090075117D /* QuartzCore.framework */; };
+		8FE08BEF12FA9B0C0075117D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FE0885112FA9A090075117D /* UIKit.framework */; };
+		8FE08BF012FA9B190075117D /* testicon.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FE08A2012FA9A2F0075117D /* testicon.png */; };
+		8FE08BF112FA9B220075117D /* egwSystem.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE088AD12FA9A2F0075117D /* egwSystem.m */; };
+		8FE08BF212FA9B220075117D /* egwEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE088AF12FA9A2F0075117D /* egwEngine.m */; };
+		8FE08BF312FA9B220075117D /* egwAssetManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE088B112FA9A2F0075117D /* egwAssetManager.m */; };
+		8FE08BF412FA9B220075117D /* egwGAMXParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE088B212FA9A2F0075117D /* egwGAMXParser.m */; };
+		8FE08BF512FA9B220075117D /* egwScreenManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE088B412FA9A2F0075117D /* egwScreenManager.m */; };
+		8FE08BF612FA9B220075117D /* egwTaskManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE088B612FA9A2F0075117D /* egwTaskManager.m */; };
+		8FE08BF712FA9B220075117D /* egwGfxContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE088B812FA9A2F0075117D /* egwGfxContext.m */; };
+		8FE08BF812FA9B220075117D /* egwGfxContextAGL.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE088BA12FA9A2F0075117D /* egwGfxContextAGL.m */; };
+		8FE08BF912FA9B220075117D /* egwGfxContextNSGL.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE088BC12FA9A2F0075117D /* egwGfxContextNSGL.m */; };
+		8FE08BFA12FA9B220075117D /* egwGfxContextEAGLES.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE088BE12FA9A2F0075117D /* egwGfxContextEAGLES.m */; };
+		8FE08BFB12FA9B220075117D /* egwGfxRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE088C012FA9A2F0075117D /* egwGfxRenderer.m */; };
+		8FE08BFC12FA9B220075117D /* egwPhyContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE088C212FA9A2F0075117D /* egwPhyContext.m */; };
+		8FE08BFD12FA9B220075117D /* egwPhyContextSW.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE088C412FA9A2F0075117D /* egwPhyContextSW.m */; };
+		8FE08BFE12FA9B220075117D /* egwPhyActuator.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE088C612FA9A2F0075117D /* egwPhyActuator.m */; };
+		8FE08BFF12FA9B220075117D /* egwSndContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE088C812FA9A2F0075117D /* egwSndContext.m */; };
+		8FE08C0012FA9B220075117D /* egwSndContextAL.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE088CA12FA9A2F0075117D /* egwSndContextAL.m */; };
+		8FE08C0112FA9B220075117D /* egwSndMixer.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE088CC12FA9A2F0075117D /* egwSndMixer.m */; };
+		8FE08C0212FA9B220075117D /* egwWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE088F212FA9A2F0075117D /* egwWindow.m */; };
+		8FE08C0312FA9B220075117D /* egwUIDeviceExt.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE088F412FA9A2F0075117D /* egwUIDeviceExt.m */; };
+		8FE08C0412FA9B220075117D /* egwUIViewSurface.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE088F612FA9A2F0075117D /* egwUIViewSurface.m */; };
+		8FE08C0512FA9B220075117D /* egwNSOpenGLViewSurface.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE088F812FA9A2F0075117D /* egwNSOpenGLViewSurface.m */; };
+		8FE08C0612FA9B220075117D /* egwTouchDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE088FA12FA9A2F0075117D /* egwTouchDecoder.m */; };
+		8FE08C0712FA9B220075117D /* egwMouseDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE088FC12FA9A2F0075117D /* egwMouseDecoder.m */; };
+		8FE08C0812FA9B220075117D /* egwData.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE0890D12FA9A2F0075117D /* egwData.m */; };
+		8FE08C0912FA9B220075117D /* egwArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE0890F12FA9A2F0075117D /* egwArray.m */; };
+		8FE08C0A12FA9B220075117D /* egwCyclicArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE0891112FA9A2F0075117D /* egwCyclicArray.m */; };
+		8FE08C0B12FA9B220075117D /* egwSinglyLinkedList.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE0891312FA9A2F0075117D /* egwSinglyLinkedList.m */; };
+		8FE08C0C12FA9B220075117D /* egwDoublyLinkedList.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE0891512FA9A2F0075117D /* egwDoublyLinkedList.m */; };
+		8FE08C0D12FA9B220075117D /* egwBinaryTree.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE0891712FA9A2F0075117D /* egwBinaryTree.m */; };
+		8FE08C0E12FA9B220075117D /* egwAVLTree.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE0891912FA9A2F0075117D /* egwAVLTree.m */; };
+		8FE08C0F12FA9B220075117D /* egwRedBlackTree.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE0891B12FA9A2F0075117D /* egwRedBlackTree.m */; };
+		8FE08C1012FA9B220075117D /* egwMath.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE0893012FA9A2F0075117D /* egwMath.m */; };
+		8FE08C1112FA9B220075117D /* egwVector.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE0893212FA9A2F0075117D /* egwVector.m */; };
+		8FE08C1212FA9B220075117D /* egwMatrix.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE0893412FA9A2F0075117D /* egwMatrix.m */; };
+		8FE08C1312FA9B220075117D /* egwQuaternion.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE0893612FA9A2F0075117D /* egwQuaternion.m */; };
+		8FE08C1412FA9B220075117D /* egwIntellect.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE0894312FA9A2F0075117D /* egwIntellect.m */; };
+		8FE08C1512FA9B220075117D /* egwFiniteStateMachine.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE0894512FA9A2F0075117D /* egwFiniteStateMachine.m */; };
+		8FE08C1612FA9B220075117D /* egwArtificialNeuralNetwork.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE0894712FA9A2F0075117D /* egwArtificialNeuralNetwork.m */; };
+		8FE08C1712FA9B220075117D /* egwGraphics.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE0895212FA9A2F0075117D /* egwGraphics.m */; };
+		8FE08C1812FA9B220075117D /* egwBindingStacks.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE0895412FA9A2F0075117D /* egwBindingStacks.m */; };
+		8FE08C1912FA9B220075117D /* egwBoundings.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE0895612FA9A2F0075117D /* egwBoundings.m */; };
+		8FE08C1A12FA9B220075117D /* egwCameras.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE0895812FA9A2F0075117D /* egwCameras.m */; };
+		8FE08C1B12FA9B220075117D /* egwFonts.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE0895A12FA9A2F0075117D /* egwFonts.m */; };
+		8FE08C1C12FA9B220075117D /* egwLights.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE0895C12FA9A2F0075117D /* egwLights.m */; };
+		8FE08C1D12FA9B220075117D /* egwMaterials.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE0895E12FA9A2F0075117D /* egwMaterials.m */; };
+		8FE08C1E12FA9B220075117D /* egwRenderProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE0896012FA9A2F0075117D /* egwRenderProxy.m */; };
+		8FE08C1F12FA9B220075117D /* egwTexture.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE0896212FA9A2F0075117D /* egwTexture.m */; };
+		8FE08C2012FA9B220075117D /* egwSpritedTexture.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE0896412FA9A2F0075117D /* egwSpritedTexture.m */; };
+		8FE08C2112FA9B220075117D /* egwStreamedTexture.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE0896612FA9A2F0075117D /* egwStreamedTexture.m */; };
+		8FE08C2212FA9B220075117D /* egwGeometry.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE0898112FA9A2F0075117D /* egwGeometry.m */; };
+		8FE08C2312FA9B220075117D /* egwBillboard.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE0898312FA9A2F0075117D /* egwBillboard.m */; };
+		8FE08C2412FA9B220075117D /* egwMesh.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE0898512FA9A2F0075117D /* egwMesh.m */; };
+		8FE08C2512FA9B220075117D /* egwKeyFramedMesh.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE0898712FA9A2F0075117D /* egwKeyFramedMesh.m */; };
+		8FE08C2612FA9B220075117D /* egwSkeletalBonedMesh.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE0898912FA9A2F0075117D /* egwSkeletalBonedMesh.m */; };
+		8FE08C2712FA9B220075117D /* egwParticleSystem.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE0898B12FA9A2F0075117D /* egwParticleSystem.m */; };
+		8FE08C2812FA9B220075117D /* egwInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE0899C12FA9A2F0075117D /* egwInterface.m */; };
+		8FE08C2912FA9B220075117D /* egwButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE0899E12FA9A2F0075117D /* egwButton.m */; };
+		8FE08C2A12FA9B220075117D /* egwImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE089A012FA9A2F0075117D /* egwImage.m */; };
+		8FE08C2B12FA9B220075117D /* egwSpritedImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE089A212FA9A2F0075117D /* egwSpritedImage.m */; };
+		8FE08C2C12FA9B220075117D /* egwStreamedImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE089A412FA9A2F0075117D /* egwStreamedImage.m */; };
+		8FE08C2D12FA9B220075117D /* egwLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE089A612FA9A2F0075117D /* egwLabel.m */; };
+		8FE08C2E12FA9B220075117D /* egwScrolledLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE089A812FA9A2F0075117D /* egwScrolledLabel.m */; };
+		8FE08C2F12FA9B220075117D /* egwPager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE089AA12FA9A2F0075117D /* egwPager.m */; };
+		8FE08C3012FA9B220075117D /* egwSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE089AC12FA9A2F0075117D /* egwSlider.m */; };
+		8FE08C3112FA9B220075117D /* egwToggle.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE089AE12FA9A2F0075117D /* egwToggle.m */; };
+		8FE08C3212FA9B220075117D /* egwNetwork.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE089C712FA9A2F0075117D /* egwNetwork.m */; };
+		8FE08C3312FA9B220075117D /* egwObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE089CE12FA9A2F0075117D /* egwObject.m */; };
+		8FE08C3412FA9B220075117D /* egwObjectBranch.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE089D012FA9A2F0075117D /* egwObjectBranch.m */; };
+		8FE08C3512FA9B220075117D /* egwSwitchBranch.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE089D212FA9A2F0075117D /* egwSwitchBranch.m */; };
+		8FE08C3612FA9B220075117D /* egwTransformBranch.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE089D412FA9A2F0075117D /* egwTransformBranch.m */; };
+		8FE08C3712FA9B220075117D /* egwDLODBranch.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE089D612FA9A2F0075117D /* egwDLODBranch.m */; };
+		8FE08C3812FA9B220075117D /* egwPhysics.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE089E512FA9A2F0075117D /* egwPhysics.m */; };
+		8FE08C3912FA9B220075117D /* egwInterpolators.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE089E712FA9A2F0075117D /* egwInterpolators.m */; };
+		8FE08C3A12FA9B220075117D /* egwSpring.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE089E912FA9A2F0075117D /* egwSpring.m */; };
+		8FE08C3B12FA9B220075117D /* egwSound.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE089F412FA9A2F0075117D /* egwSound.m */; };
+		8FE08C3C12FA9B220075117D /* egwPointSound.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE089F612FA9A2F0075117D /* egwPointSound.m */; };
+		8FE08C3D12FA9B220075117D /* egwStreamedPointSound.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE089F812FA9A2F0075117D /* egwStreamedPointSound.m */; };
+		8FE08C3E12FA9B220075117D /* egwMisc.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE08A0312FA9A2F0075117D /* egwMisc.m */; };
+		8FE08C3F12FA9B220075117D /* egwBoxingTypes.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE08A0512FA9A2F0075117D /* egwBoxingTypes.m */; };
+		8FE08C4012FA9B220075117D /* egwTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE08A0712FA9A2F0075117D /* egwTimer.m */; };
+		8FE08C4112FA9B220075117D /* egwActionedTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE08A0912FA9A2F0075117D /* egwActionedTimer.m */; };
+		8FE08C4212FA9B220075117D /* egwActionedTimersArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE08A0B12FA9A2F0075117D /* egwActionedTimersArray.m */; };
+		8FE08C4312FA9B220075117D /* egwStreamer.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE08A0D12FA9A2F0075117D /* egwStreamer.m */; };
+		8FE08C4412FA9B220075117D /* egwValidater.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE08A0F12FA9A2F0075117D /* egwValidater.m */; };
+		8FE08C4512FA9B370075117D /* unitTestA.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE08A2212FA9A2F0075117D /* unitTestA.m */; };
+		8FE08C4712FA9B720075117D /* geWizES.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FE08C4612FA9B720075117D /* geWizES.h */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		8FE0884C12FA9A090075117D /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
+		8FE0884D12FA9A090075117D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		8FE0884E12FA9A090075117D /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
+		8FE0884F12FA9A090075117D /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		8FE0885012FA9A090075117D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		8FE0885112FA9A090075117D /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		8FE0885212FA9A090075117D /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		8FE0885312FA9A090075117D /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
+		8FE0885412FA9A090075117D /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		8FE0886012FA9A2E0075117D /* egwTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = egwTypes.h; path = inf/egwTypes.h; sourceTree = "<group>"; };
+		8FE0886112FA9A2E0075117D /* egwPContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = egwPContext.h; path = inf/egwPContext.h; sourceTree = "<group>"; };
+		8FE0886212FA9A2E0075117D /* egwPGfxContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = egwPGfxContext.h; path = inf/egwPGfxContext.h; sourceTree = "<group>"; };
+		8FE0886312FA9A2E0075117D /* egwPPhyContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = egwPPhyContext.h; path = inf/egwPPhyContext.h; sourceTree = "<group>"; };
+		8FE0886412FA9A2E0075117D /* egwPSndContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = egwPSndContext.h; path = inf/egwPSndContext.h; sourceTree = "<group>"; };
+		8FE0886512FA9A2E0075117D /* egwPHook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = egwPHook.h; path = inf/egwPHook.h; sourceTree = "<group>"; };
+		8FE0886612FA9A2E0075117D /* egwPScreen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = egwPScreen.h; path = inf/egwPScreen.h; sourceTree = "<group>"; };
+		8FE0886712FA9A2E0075117D /* egwPSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = egwPSingleton.h; path = inf/egwPSingleton.h; sourceTree = "<group>"; };
+		8FE0886812FA9A2E0075117D /* egwPTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = egwPTask.h; path = inf/egwPTask.h; sourceTree = "<group>"; };
+		8FE0886912FA9A2E0075117D /* egwPSubTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = egwPSubTask.h; path = inf/egwPSubTask.h; sourceTree = "<group>"; };
+		8FE0886A12FA9A2F0075117D /* egwPAsset.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = egwPAsset.h; path = inf/egwPAsset.h; sourceTree = "<group>"; };
+		8FE0886B12FA9A2F0075117D /* egwPAssetBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = egwPAssetBase.h; path = inf/egwPAssetBase.h; sourceTree = "<group>"; };
+		8FE0886C12FA9A2F0075117D /* egwPCoreObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = egwPCoreObject.h; path = inf/egwPCoreObject.h; sourceTree = "<group>"; };
+		8FE0886D12FA9A2F0075117D /* egwPObjNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = egwPObjNode.h; path = inf/egwPObjNode.h; sourceTree = "<group>"; };
+		8FE0886E12FA9A2F0075117D /* egwPObjBranch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = egwPObjBranch.h; path = inf/egwPObjBranch.h; sourceTree = "<group>"; };
+		8FE0886F12FA9A2F0075117D /* egwPObjLeaf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = egwPObjLeaf.h; path = inf/egwPObjLeaf.h; sourceTree = "<group>"; };
+		8FE0887012FA9A2F0075117D /* egwPInteractable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = egwPInteractable.h; path = inf/egwPInteractable.h; sourceTree = "<group>"; };
+		8FE0887112FA9A2F0075117D /* egwPPlayable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = egwPPlayable.h; path = inf/egwPPlayable.h; sourceTree = "<group>"; };
+		8FE0887212FA9A2F0075117D /* egwPRenderable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = egwPRenderable.h; path = inf/egwPRenderable.h; sourceTree = "<group>"; };
+		8FE0887312FA9A2F0075117D /* egwPActioned.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = egwPActioned.h; path = inf/egwPActioned.h; sourceTree = "<group>"; };
+		8FE0887412FA9A2F0075117D /* egwPActuator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = egwPActuator.h; path = inf/egwPActuator.h; sourceTree = "<group>"; };
+		8FE0887512FA9A2F0075117D /* egwPBounding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = egwPBounding.h; path = inf/egwPBounding.h; sourceTree = "<group>"; };
+		8FE0887612FA9A2F0075117D /* egwPCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = egwPCamera.h; path = inf/egwPCamera.h; sourceTree = "<group>"; };
+		8FE0887712FA9A2F0075117D /* egwPFont.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = egwPFont.h; path = inf/egwPFont.h; sourceTree = "<group>"; };
+		8FE0887812FA9A2F0075117D /* egwPGeometry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = egwPGeometry.h; path = inf/egwPGeometry.h; sourceTree = "<group>"; };
+		8FE0887912FA9A2F0075117D /* egwPInterpolator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = egwPInterpolator.h; path = inf/egwPInterpolator.h; sourceTree = "<group>"; };
+		8FE0887A12FA9A2F0075117D /* egwPLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = egwPLight.h; path = inf/egwPLight.h; sourceTree = "<group>"; };
+		8FE0887B12FA9A2F0075117D /* egwPMaterial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = egwPMaterial.h; path = inf/egwPMaterial.h; sourceTree = "<group>"; };
+		8FE0887C12FA9A2F0075117D /* egwPOrientated.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = egwPOrientated.h; path = inf/egwPOrientated.h; sourceTree = "<group>"; };
+		8FE0887D12FA9A2F0075117D /* egwPSound.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = egwPSound.h; path = inf/egwPSound.h; sourceTree = "<group>"; };
+		8FE0887E12FA9A2F0075117D /* egwPStreamed.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = egwPStreamed.h; path = inf/egwPStreamed.h; sourceTree = "<group>"; };
+		8FE0887F12FA9A2F0075117D /* egwPStreamer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = egwPStreamer.h; path = inf/egwPStreamer.h; sourceTree = "<group>"; };
+		8FE0888012FA9A2F0075117D /* egwPTexture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = egwPTexture.h; path = inf/egwPTexture.h; sourceTree = "<group>"; };
+		8FE0888112FA9A2F0075117D /* egwPTimed.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = egwPTimed.h; path = inf/egwPTimed.h; sourceTree = "<group>"; };
+		8FE0888212FA9A2F0075117D /* egwPTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = egwPTimer.h; path = inf/egwPTimer.h; sourceTree = "<group>"; };
+		8FE0888312FA9A2F0075117D /* egwPWarned.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = egwPWarned.h; path = inf/egwPWarned.h; sourceTree = "<group>"; };
+		8FE0888412FA9A2F0075117D /* egwPWidget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = egwPWidget.h; path = inf/egwPWidget.h; sourceTree = "<group>"; };
+		8FE088AB12FA9A2F0075117D /* egwSysTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = egwSysTypes.h; path = sys/egwSysTypes.h; sourceTree = "<group>"; };
+		8FE088AC12FA9A2F0075117D /* egwSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = egwSystem.h; path = sys/egwSystem.h; sourceTree = "<group>"; };
+		8FE088AD12FA9A2F0075117D /* egwSystem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = egwSystem.m; path = sys/egwSystem.m; sourceTree = "<group>"; };
+		8FE088AE12FA9A2F0075117D /* egwEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = egwEngine.h; path = sys/egwEngine.h; sourceTree = "<group>"; };
+		8FE088AF12FA9A2F0075117D /* egwEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = egwEngine.m; path = sys/egwEngine.m; sourceTree = "<group>"; };
+		8FE088B012FA9A2F0075117D /* egwAssetManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = egwAssetManager.h; path = sys/egwAssetManager.h; sourceTree = "<group>"; };
+		8FE088B112FA9A2F0075117D /* egwAssetManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = egwAssetManager.m; path = sys/egwAssetManager.m; sourceTree = "<group>"; };
+		8FE088B212FA9A2F0075117D /* egwGAMXParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = egwGAMXParser.m; path = sys/egwGAMXParser.m; sourceTree = "<group>"; };
+		8FE088B312FA9A2F0075117D /* egwScreenManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = egwScreenManager.h; path = sys/egwScreenManager.h; sourceTree = "<group>"; };
+		8FE088B412FA9A2F0075117D /* egwScreenManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = egwScreenManager.m; path = sys/egwScreenManager.m; sourceTree = "<group>"; };
+		8FE088B512FA9A2F0075117D /* egwTaskManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = egwTaskManager.h; path = sys/egwTaskManager.h; sourceTree = "<group>"; };
+		8FE088B612FA9A2F0075117D /* egwTaskManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = egwTaskManager.m; path = sys/egwTaskManager.m; sourceTree = "<group>"; };
+		8FE088B712FA9A2F0075117D /* egwGfxContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = egwGfxContext.h; path = sys/egwGfxContext.h; sourceTree = "<group>"; };
+		8FE088B812FA9A2F0075117D /* egwGfxContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = egwGfxContext.m; path = sys/egwGfxContext.m; sourceTree = "<group>"; };
+		8FE088B912FA9A2F0075117D /* egwGfxContextAGL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = egwGfxContextAGL.h; path = sys/egwGfxContextAGL.h; sourceTree = "<group>"; };
+		8FE088BA12FA9A2F0075117D /* egwGfxContextAGL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = egwGfxContextAGL.m; path = sys/egwGfxContextAGL.m; sourceTree = "<group>"; };
+		8FE088BB12FA9A2F0075117D /* egwGfxContextNSGL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = egwGfxContextNSGL.h; path = sys/egwGfxContextNSGL.h; sourceTree = "<group>"; };
+		8FE088BC12FA9A2F0075117D /* egwGfxContextNSGL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = egwGfxContextNSGL.m; path = sys/egwGfxContextNSGL.m; sourceTree = "<group>"; };
+		8FE088BD12FA9A2F0075117D /* egwGfxContextEAGLES.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = egwGfxContextEAGLES.h; path = sys/egwGfxContextEAGLES.h; sourceTree = "<group>"; };
+		8FE088BE12FA9A2F0075117D /* egwGfxContextEAGLES.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = egwGfxContextEAGLES.m; path = sys/egwGfxContextEAGLES.m; sourceTree = "<group>"; };
+		8FE088BF12FA9A2F0075117D /* egwGfxRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = egwGfxRenderer.h; path = sys/egwGfxRenderer.h; sourceTree = "<group>"; };
+		8FE088C012FA9A2F0075117D /* egwGfxRenderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = egwGfxRenderer.m; path = sys/egwGfxRenderer.m; sourceTree = "<group>"; };
+		8FE088C112FA9A2F0075117D /* egwPhyContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = egwPhyContext.h; path = sys/egwPhyContext.h; sourceTree = "<group>"; };
+		8FE088C212FA9A2F0075117D /* egwPhyContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = egwPhyContext.m; path = sys/egwPhyContext.m; sourceTree = "<group>"; };
+		8FE088C312FA9A2F0075117D /* egwPhyContextSW.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = egwPhyContextSW.h; path = sys/egwPhyContextSW.h; sourceTree = "<group>"; };
+		8FE088C412FA9A2F0075117D /* egwPhyContextSW.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = egwPhyContextSW.m; path = sys/egwPhyContextSW.m; sourceTree = "<group>"; };
+		8FE088C512FA9A2F0075117D /* egwPhyActuator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = egwPhyActuator.h; path = sys/egwPhyActuator.h; sourceTree = "<group>"; };
+		8FE088C612FA9A2F0075117D /* egwPhyActuator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = egwPhyActuator.m; path = sys/egwPhyActuator.m; sourceTree = "<group>"; };
+		8FE088C712FA9A2F0075117D /* egwSndContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = egwSndContext.h; path = sys/egwSndContext.h; sourceTree = "<group>"; };
+		8FE088C812FA9A2F0075117D /* egwSndContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = egwSndContext.m; path = sys/egwSndContext.m; sourceTree = "<group>"; };
+		8FE088C912FA9A2F0075117D /* egwSndContextAL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = egwSndContextAL.h; path = sys/egwSndContextAL.h; sourceTree = "<group>"; };
+		8FE088CA12FA9A2F0075117D /* egwSndContextAL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = egwSndContextAL.m; path = sys/egwSndContextAL.m; sourceTree = "<group>"; };
+		8FE088CB12FA9A2F0075117D /* egwSndMixer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = egwSndMixer.h; path = sys/egwSndMixer.h; sourceTree = "<group>"; };
+		8FE088CC12FA9A2F0075117D /* egwSndMixer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = egwSndMixer.m; path = sys/egwSndMixer.m; sourceTree = "<group>"; };
+		8FE088F012FA9A2F0075117D /* egwHwdTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = egwHwdTypes.h; path = hwd/egwHwdTypes.h; sourceTree = "<group>"; };
+		8FE088F112FA9A2F0075117D /* egwWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = egwWindow.h; path = hwd/egwWindow.h; sourceTree = "<group>"; };
+		8FE088F212FA9A2F0075117D /* egwWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = egwWindow.m; path = hwd/egwWindow.m; sourceTree = "<group>"; };
+		8FE088F312FA9A2F0075117D /* egwUIDeviceExt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = egwUIDeviceExt.h; path = hwd/egwUIDeviceExt.h; sourceTree = "<group>"; };
+		8FE088F412FA9A2F0075117D /* egwUIDeviceExt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = egwUIDeviceExt.m; path = hwd/egwUIDeviceExt.m; sourceTree = "<group>"; };
+		8FE088F512FA9A2F0075117D /* egwUIViewSurface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = egwUIViewSurface.h; path = hwd/egwUIViewSurface.h; sourceTree = "<group>"; };
+		8FE088F612FA9A2F0075117D /* egwUIViewSurface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = egwUIViewSurface.m; path = hwd/egwUIViewSurface.m; sourceTree = "<group>"; };
+		8FE088F712FA9A2F0075117D /* egwNSOpenGLViewSurface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = egwNSOpenGLViewSurface.h; path = hwd/egwNSOpenGLViewSurface.h; sourceTree = "<group>"; };
+		8FE088F812FA9A2F0075117D /* egwNSOpenGLViewSurface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = egwNSOpenGLViewSurface.m; path = hwd/egwNSOpenGLViewSurface.m; sourceTree = "<group>"; };
+		8FE088F912FA9A2F0075117D /* egwTouchDecoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = egwTouchDecoder.h; path = hwd/egwTouchDecoder.h; sourceTree = "<group>"; };
+		8FE088FA12FA9A2F0075117D /* egwTouchDecoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = egwTouchDecoder.m; path = hwd/egwTouchDecoder.m; sourceTree = "<group>"; };
+		8FE088FB12FA9A2F0075117D /* egwMouseDecoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = egwMouseDecoder.h; path = hwd/egwMouseDecoder.h; sourceTree = "<group>"; };
+		8FE088FC12FA9A2F0075117D /* egwMouseDecoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = egwMouseDecoder.m; path = hwd/egwMouseDecoder.m; sourceTree = "<group>"; };
+		8FE0890B12FA9A2F0075117D /* egwDataTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = egwDataTypes.h; path = data/egwDataTypes.h; sourceTree = "<group>"; };
+		8FE0890C12FA9A2F0075117D /* egwData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = egwData.h; path = data/egwData.h; sourceTree = "<group>"; };
+		8FE0890D12FA9A2F0075117D /* egwData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = egwData.m; path = data/egwData.m; sourceTree = "<group>"; };
+		8FE0890E12FA9A2F0075117D /* egwArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = egwArray.h; path = data/egwArray.h; sourceTree = "<group>"; };
+		8FE0890F12FA9A2F0075117D /* egwArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = egwArray.m; path = data/egwArray.m; sourceTree = "<group>"; };
+		8FE0891012FA9A2F0075117D /* egwCyclicArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = egwCyclicArray.h; path = data/egwCyclicArray.h; sourceTree = "<group>"; };
+		8FE0891112FA9A2F0075117D /* egwCyclicArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = egwCyclicArray.m; path = data/egwCyclicArray.m; sourceTree = "<group>"; };
+		8FE0891212FA9A2F0075117D /* egwSinglyLinkedList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = egwSinglyLinkedList.h; path = data/egwSinglyLinkedList.h; sourceTree = "<group>"; };
+		8FE0891312FA9A2F0075117D /* egwSinglyLinkedList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = egwSinglyLinkedList.m; path = data/egwSinglyLinkedList.m; sourceTree = "<group>"; };
+		8FE0891412FA9A2F0075117D /* egwDoublyLinkedList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = egwDoublyLinkedList.h; path = data/egwDoublyLinkedList.h; sourceTree = "<group>"; };
+		8FE0891512FA9A2F0075117D /* egwDoublyLinkedList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = egwDoublyLinkedList.m; path = data/egwDoublyLinkedList.m; sourceTree = "<group>"; };
+		8FE0891612FA9A2F0075117D /* egwBinaryTree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = egwBinaryTree.h; path = data/egwBinaryTree.h; sourceTree = "<group>"; };
+		8FE0891712FA9A2F0075117D /* egwBinaryTree.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = egwBinaryTree.m; path = data/egwBinaryTree.m; sourceTree = "<group>"; };
+		8FE0891812FA9A2F0075117D /* egwAVLTree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = egwAVLTree.h; path = data/egwAVLTree.h; sourceTree = "<group>"; };
+		8FE0891912FA9A2F0075117D /* egwAVLTree.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = egwAVLTree.m; path = data/egwAVLTree.m; sourceTree = "<group>"; };
+		8FE0891A12FA9A2F0075117D /* egwRedBlackTree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = egwRedBlackTree.h; path = data/egwRedBlackTree.h; sourceTree = "<group>"; };
+		8FE0891B12FA9A2F0075117D /* egwRedBlackTree.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = egwRedBlackTree.m; path = data/egwRedBlackTree.m; sourceTree = "<group>"; };
+		8FE0892E12FA9A2F0075117D /* egwMathTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = egwMathTypes.h; path = math/egwMathTypes.h; sourceTree = "<group>"; };
+		8FE0892F12FA9A2F0075117D /* egwMath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = egwMath.h; path = math/egwMath.h; sourceTree = "<group>"; };
+		8FE0893012FA9A2F0075117D /* egwMath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = egwMath.m; path = math/egwMath.m; sourceTree = "<group>"; };
+		8FE0893112FA9A2F0075117D /* egwVector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = egwVector.h; path = math/egwVector.h; sourceTree = "<group>"; };
+		8FE0893212FA9A2F0075117D /* egwVector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = egwVector.m; path = math/egwVector.m; sourceTree = "<group>"; };
+		8FE0893312FA9A2F0075117D /* egwMatrix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = egwMatrix.h; path = math/egwMatrix.h; sourceTree = "<group>"; };
+		8FE0893412FA9A2F0075117D /* egwMatrix.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = egwMatrix.m; path = math/egwMatrix.m; sourceTree = "<group>"; };
+		8FE0893512FA9A2F0075117D /* egwQuaternion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = egwQuaternion.h; path = math/egwQuaternion.h; sourceTree = "<group>"; };
+		8FE0893612FA9A2F0075117D /* egwQuaternion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = egwQuaternion.m; path = math/egwQuaternion.m; sourceTree = "<group>"; };
+		8FE0894112FA9A2F0075117D /* egwAiTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = egwAiTypes.h; path = ai/egwAiTypes.h; sourceTree = "<group>"; };
+		8FE0894212FA9A2F0075117D /* egwIntellect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = egwIntellect.h; path = ai/egwIntellect.h; sourceTree = "<group>"; };
+		8FE0894312FA9A2F0075117D /* egwIntellect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = egwIntellect.m; path = ai/egwIntellect.m; sourceTree = "<group>"; };
+		8FE0894412FA9A2F0075117D /* egwFiniteStateMachine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = egwFiniteStateMachine.h; path = ai/egwFiniteStateMachine.h; sourceTree = "<group>"; };
+		8FE0894512FA9A2F0075117D /* egwFiniteStateMachine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = egwFiniteStateMachine.m; path = ai/egwFiniteStateMachine.m; sourceTree = "<group>"; };
+		8FE0894612FA9A2F0075117D /* egwArtificialNeuralNetwork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = egwArtificialNeuralNetwork.h; path = ai/egwArtificialNeuralNetwork.h; sourceTree = "<group>"; };
+		8FE0894712FA9A2F0075117D /* egwArtificialNeuralNetwork.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = egwArtificialNeuralNetwork.m; path = ai/egwArtificialNeuralNetwork.m; sourceTree = "<group>"; };
+		8FE0895012FA9A2F0075117D /* egwGfxTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = egwGfxTypes.h; path = gfx/egwGfxTypes.h; sourceTree = "<group>"; };
+		8FE0895112FA9A2F0075117D /* egwGraphics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = egwGraphics.h; path = gfx/egwGraphics.h; sourceTree = "<group>"; };
+		8FE0895212FA9A2F0075117D /* egwGraphics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = egwGraphics.m; path = gfx/egwGraphics.m; sourceTree = "<group>"; };
+		8FE0895312FA9A2F0075117D /* egwBindingStacks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = egwBindingStacks.h; path = gfx/egwBindingStacks.h; sourceTree = "<group>"; };
+		8FE0895412FA9A2F0075117D /* egwBindingStacks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = egwBindingStacks.m; path = gfx/egwBindingStacks.m; sourceTree = "<group>"; };
+		8FE0895512FA9A2F0075117D /* egwBoundings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = egwBoundings.h; path = gfx/egwBoundings.h; sourceTree = "<group>"; };
+		8FE0895612FA9A2F0075117D /* egwBoundings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = egwBoundings.m; path = gfx/egwBoundings.m; sourceTree = "<group>"; };
+		8FE0895712FA9A2F0075117D /* egwCameras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = egwCameras.h; path = gfx/egwCameras.h; sourceTree = "<group>"; };
+		8FE0895812FA9A2F0075117D /* egwCameras.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = egwCameras.m; path = gfx/egwCameras.m; sourceTree = "<group>"; };
+		8FE0895912FA9A2F0075117D /* egwFonts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = egwFonts.h; path = gfx/egwFonts.h; sourceTree = "<group>"; };
+		8FE0895A12FA9A2F0075117D /* egwFonts.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = egwFonts.m; path = gfx/egwFonts.m; sourceTree = "<group>"; };
+		8FE0895B12FA9A2F0075117D /* egwLights.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = egwLights.h; path = gfx/egwLights.h; sourceTree = "<group>"; };
+		8FE0895C12FA9A2F0075117D /* egwLights.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = egwLights.m; path = gfx/egwLights.m; sourceTree = "<group>"; };
+		8FE0895D12FA9A2F0075117D /* egwMaterials.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = egwMaterials.h; path = gfx/egwMaterials.h; sourceTree = "<group>"; };
+		8FE0895E12FA9A2F0075117D /* egwMaterials.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = egwMaterials.m; path = gfx/egwMaterials.m; sourceTree = "<group>"; };
+		8FE0895F12FA9A2F0075117D /* egwRenderProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = egwRenderProxy.h; path = gfx/egwRenderProxy.h; sourceTree = "<group>"; };
+		8FE0896012FA9A2F0075117D /* egwRenderProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = egwRenderProxy.m; path = gfx/egwRenderProxy.m; sourceTree = "<group>"; };
+		8FE0896112FA9A2F0075117D /* egwTexture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = egwTexture.h; path = gfx/egwTexture.h; sourceTree = "<group>"; };
+		8FE0896212FA9A2F0075117D /* egwTexture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = egwTexture.m; path = gfx/egwTexture.m; sourceTree = "<group>"; };
+		8FE0896312FA9A2F0075117D /* egwSpritedTexture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = egwSpritedTexture.h; path = gfx/egwSpritedTexture.h; sourceTree = "<group>"; };
+		8FE0896412FA9A2F0075117D /* egwSpritedTexture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = egwSpritedTexture.m; path = gfx/egwSpritedTexture.m; sourceTree = "<group>"; };
+		8FE0896512FA9A2F0075117D /* egwStreamedTexture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = egwStreamedTexture.h; path = gfx/egwStreamedTexture.h; sourceTree = "<group>"; };
+		8FE0896612FA9A2F0075117D /* egwStreamedTexture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = egwStreamedTexture.m; path = gfx/egwStreamedTexture.m; sourceTree = "<group>"; };
+		8FE0897F12FA9A2F0075117D /* egwGeoTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = egwGeoTypes.h; path = geo/egwGeoTypes.h; sourceTree = "<group>"; };
+		8FE0898012FA9A2F0075117D /* egwGeometry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = egwGeometry.h; path = geo/egwGeometry.h; sourceTree = "<group>"; };
+		8FE0898112FA9A2F0075117D /* egwGeometry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = egwGeometry.m; path = geo/egwGeometry.m; sourceTree = "<group>"; };
+		8FE0898212FA9A2F0075117D /* egwBillboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = egwBillboard.h; path = geo/egwBillboard.h; sourceTree = "<group>"; };
+		8FE0898312FA9A2F0075117D /* egwBillboard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = egwBillboard.m; path = geo/egwBillboard.m; sourceTree = "<group>"; };
+		8FE0898412FA9A2F0075117D /* egwMesh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = egwMesh.h; path = geo/egwMesh.h; sourceTree = "<group>"; };
+		8FE0898512FA9A2F0075117D /* egwMesh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = egwMesh.m; path = geo/egwMesh.m; sourceTree = "<group>"; };
+		8FE0898612FA9A2F0075117D /* egwKeyFramedMesh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = egwKeyFramedMesh.h; path = geo/egwKeyFramedMesh.h; sourceTree = "<group>"; };
+		8FE0898712FA9A2F0075117D /* egwKeyFramedMesh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = egwKeyFramedMesh.m; path = geo/egwKeyFramedMesh.m; sourceTree = "<group>"; };
+		8FE0898812FA9A2F0075117D /* egwSkeletalBonedMesh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = egwSkeletalBonedMesh.h; path = geo/egwSkeletalBonedMesh.h; sourceTree = "<group>"; };
+		8FE0898912FA9A2F0075117D /* egwSkeletalBonedMesh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = egwSkeletalBonedMesh.m; path = geo/egwSkeletalBonedMesh.m; sourceTree = "<group>"; };
+		8FE0898A12FA9A2F0075117D /* egwParticleSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = egwParticleSystem.h; path = geo/egwParticleSystem.h; sourceTree = "<group>"; };
+		8FE0898B12FA9A2F0075117D /* egwParticleSystem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = egwParticleSystem.m; path = geo/egwParticleSystem.m; sourceTree = "<group>"; };
+		8FE0899A12FA9A2F0075117D /* egwGuiTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = egwGuiTypes.h; path = gui/egwGuiTypes.h; sourceTree = "<group>"; };
+		8FE0899B12FA9A2F0075117D /* egwInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = egwInterface.h; path = gui/egwInterface.h; sourceTree = "<group>"; };
+		8FE0899C12FA9A2F0075117D /* egwInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = egwInterface.m; path = gui/egwInterface.m; sourceTree = "<group>"; };
+		8FE0899D12FA9A2F0075117D /* egwButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = egwButton.h; path = gui/egwButton.h; sourceTree = "<group>"; };
+		8FE0899E12FA9A2F0075117D /* egwButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = egwButton.m; path = gui/egwButton.m; sourceTree = "<group>"; };
+		8FE0899F12FA9A2F0075117D /* egwImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = egwImage.h; path = gui/egwImage.h; sourceTree = "<group>"; };
+		8FE089A012FA9A2F0075117D /* egwImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = egwImage.m; path = gui/egwImage.m; sourceTree = "<group>"; };
+		8FE089A112FA9A2F0075117D /* egwSpritedImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = egwSpritedImage.h; path = gui/egwSpritedImage.h; sourceTree = "<group>"; };
+		8FE089A212FA9A2F0075117D /* egwSpritedImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = egwSpritedImage.m; path = gui/egwSpritedImage.m; sourceTree = "<group>"; };
+		8FE089A312FA9A2F0075117D /* egwStreamedImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = egwStreamedImage.h; path = gui/egwStreamedImage.h; sourceTree = "<group>"; };
+		8FE089A412FA9A2F0075117D /* egwStreamedImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = egwStreamedImage.m; path = gui/egwStreamedImage.m; sourceTree = "<group>"; };
+		8FE089A512FA9A2F0075117D /* egwLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = egwLabel.h; path = gui/egwLabel.h; sourceTree = "<group>"; };
+		8FE089A612FA9A2F0075117D /* egwLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = egwLabel.m; path = gui/egwLabel.m; sourceTree = "<group>"; };
+		8FE089A712FA9A2F0075117D /* egwScrolledLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = egwScrolledLabel.h; path = gui/egwScrolledLabel.h; sourceTree = "<group>"; };
+		8FE089A812FA9A2F0075117D /* egwScrolledLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = egwScrolledLabel.m; path = gui/egwScrolledLabel.m; sourceTree = "<group>"; };
+		8FE089A912FA9A2F0075117D /* egwPager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = egwPager.h; path = gui/egwPager.h; sourceTree = "<group>"; };
+		8FE089AA12FA9A2F0075117D /* egwPager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = egwPager.m; path = gui/egwPager.m; sourceTree = "<group>"; };
+		8FE089AB12FA9A2F0075117D /* egwSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = egwSlider.h; path = gui/egwSlider.h; sourceTree = "<group>"; };
+		8FE089AC12FA9A2F0075117D /* egwSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = egwSlider.m; path = gui/egwSlider.m; sourceTree = "<group>"; };
+		8FE089AD12FA9A2F0075117D /* egwToggle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = egwToggle.h; path = gui/egwToggle.h; sourceTree = "<group>"; };
+		8FE089AE12FA9A2F0075117D /* egwToggle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = egwToggle.m; path = gui/egwToggle.m; sourceTree = "<group>"; };
+		8FE089C512FA9A2F0075117D /* egwNetTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = egwNetTypes.h; path = net/egwNetTypes.h; sourceTree = "<group>"; };
+		8FE089C612FA9A2F0075117D /* egwNetwork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = egwNetwork.h; path = net/egwNetwork.h; sourceTree = "<group>"; };
+		8FE089C712FA9A2F0075117D /* egwNetwork.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = egwNetwork.m; path = net/egwNetwork.m; sourceTree = "<group>"; };
+		8FE089CC12FA9A2F0075117D /* egwObjTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = egwObjTypes.h; path = obj/egwObjTypes.h; sourceTree = "<group>"; };
+		8FE089CD12FA9A2F0075117D /* egwObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = egwObject.h; path = obj/egwObject.h; sourceTree = "<group>"; };
+		8FE089CE12FA9A2F0075117D /* egwObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = egwObject.m; path = obj/egwObject.m; sourceTree = "<group>"; };
+		8FE089CF12FA9A2F0075117D /* egwObjectBranch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = egwObjectBranch.h; path = obj/egwObjectBranch.h; sourceTree = "<group>"; };
+		8FE089D012FA9A2F0075117D /* egwObjectBranch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = egwObjectBranch.m; path = obj/egwObjectBranch.m; sourceTree = "<group>"; };
+		8FE089D112FA9A2F0075117D /* egwSwitchBranch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = egwSwitchBranch.h; path = obj/egwSwitchBranch.h; sourceTree = "<group>"; };
+		8FE089D212FA9A2F0075117D /* egwSwitchBranch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = egwSwitchBranch.m; path = obj/egwSwitchBranch.m; sourceTree = "<group>"; };
+		8FE089D312FA9A2F0075117D /* egwTransformBranch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = egwTransformBranch.h; path = obj/egwTransformBranch.h; sourceTree = "<group>"; };
+		8FE089D412FA9A2F0075117D /* egwTransformBranch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = egwTransformBranch.m; path = obj/egwTransformBranch.m; sourceTree = "<group>"; };
+		8FE089D512FA9A2F0075117D /* egwDLODBranch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = egwDLODBranch.h; path = obj/egwDLODBranch.h; sourceTree = "<group>"; };
+		8FE089D612FA9A2F0075117D /* egwDLODBranch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = egwDLODBranch.m; path = obj/egwDLODBranch.m; sourceTree = "<group>"; };
+		8FE089E312FA9A2F0075117D /* egwPhyTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = egwPhyTypes.h; path = phy/egwPhyTypes.h; sourceTree = "<group>"; };
+		8FE089E412FA9A2F0075117D /* egwPhysics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = egwPhysics.h; path = phy/egwPhysics.h; sourceTree = "<group>"; };
+		8FE089E512FA9A2F0075117D /* egwPhysics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = egwPhysics.m; path = phy/egwPhysics.m; sourceTree = "<group>"; };
+		8FE089E612FA9A2F0075117D /* egwInterpolators.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = egwInterpolators.h; path = phy/egwInterpolators.h; sourceTree = "<group>"; };
+		8FE089E712FA9A2F0075117D /* egwInterpolators.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = egwInterpolators.m; path = phy/egwInterpolators.m; sourceTree = "<group>"; };
+		8FE089E812FA9A2F0075117D /* egwSpring.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = egwSpring.h; path = phy/egwSpring.h; sourceTree = "<group>"; };
+		8FE089E912FA9A2F0075117D /* egwSpring.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = egwSpring.m; path = phy/egwSpring.m; sourceTree = "<group>"; };
+		8FE089F212FA9A2F0075117D /* egwSndTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = egwSndTypes.h; path = snd/egwSndTypes.h; sourceTree = "<group>"; };
+		8FE089F312FA9A2F0075117D /* egwSound.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = egwSound.h; path = snd/egwSound.h; sourceTree = "<group>"; };
+		8FE089F412FA9A2F0075117D /* egwSound.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = egwSound.m; path = snd/egwSound.m; sourceTree = "<group>"; };
+		8FE089F512FA9A2F0075117D /* egwPointSound.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = egwPointSound.h; path = snd/egwPointSound.h; sourceTree = "<group>"; };
+		8FE089F612FA9A2F0075117D /* egwPointSound.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = egwPointSound.m; path = snd/egwPointSound.m; sourceTree = "<group>"; };
+		8FE089F712FA9A2F0075117D /* egwStreamedPointSound.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = egwStreamedPointSound.h; path = snd/egwStreamedPointSound.h; sourceTree = "<group>"; };
+		8FE089F812FA9A2F0075117D /* egwStreamedPointSound.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = egwStreamedPointSound.m; path = snd/egwStreamedPointSound.m; sourceTree = "<group>"; };
+		8FE08A0112FA9A2F0075117D /* egwMiscTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = egwMiscTypes.h; path = misc/egwMiscTypes.h; sourceTree = "<group>"; };
+		8FE08A0212FA9A2F0075117D /* egwMisc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = egwMisc.h; path = misc/egwMisc.h; sourceTree = "<group>"; };
+		8FE08A0312FA9A2F0075117D /* egwMisc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = egwMisc.m; path = misc/egwMisc.m; sourceTree = "<group>"; };
+		8FE08A0412FA9A2F0075117D /* egwBoxingTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = egwBoxingTypes.h; path = misc/egwBoxingTypes.h; sourceTree = "<group>"; };
+		8FE08A0512FA9A2F0075117D /* egwBoxingTypes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = egwBoxingTypes.m; path = misc/egwBoxingTypes.m; sourceTree = "<group>"; };
+		8FE08A0612FA9A2F0075117D /* egwTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = egwTimer.h; path = misc/egwTimer.h; sourceTree = "<group>"; };
+		8FE08A0712FA9A2F0075117D /* egwTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = egwTimer.m; path = misc/egwTimer.m; sourceTree = "<group>"; };
+		8FE08A0812FA9A2F0075117D /* egwActionedTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = egwActionedTimer.h; path = misc/egwActionedTimer.h; sourceTree = "<group>"; };
+		8FE08A0912FA9A2F0075117D /* egwActionedTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = egwActionedTimer.m; path = misc/egwActionedTimer.m; sourceTree = "<group>"; };
+		8FE08A0A12FA9A2F0075117D /* egwActionedTimersArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = egwActionedTimersArray.h; path = misc/egwActionedTimersArray.h; sourceTree = "<group>"; };
+		8FE08A0B12FA9A2F0075117D /* egwActionedTimersArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = egwActionedTimersArray.m; path = misc/egwActionedTimersArray.m; sourceTree = "<group>"; };
+		8FE08A0C12FA9A2F0075117D /* egwStreamer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = egwStreamer.h; path = misc/egwStreamer.h; sourceTree = "<group>"; };
+		8FE08A0D12FA9A2F0075117D /* egwStreamer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = egwStreamer.m; path = misc/egwStreamer.m; sourceTree = "<group>"; };
+		8FE08A0E12FA9A2F0075117D /* egwValidater.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = egwValidater.h; path = misc/egwValidater.h; sourceTree = "<group>"; };
+		8FE08A0F12FA9A2F0075117D /* egwValidater.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = egwValidater.m; path = misc/egwValidater.m; sourceTree = "<group>"; };
+		8FE08A2012FA9A2F0075117D /* testicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = testicon.png; path = test/testicon.png; sourceTree = "<group>"; };
+		8FE08A2112FA9A2F0075117D /* egwUnitTest-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "egwUnitTest-Info.plist"; path = "test/egwUnitTest-Info.plist"; sourceTree = "<group>"; };
+		8FE08A2212FA9A2F0075117D /* unitTestA.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = unitTestA.m; path = test/unitTestA.m; sourceTree = "<group>"; };
+		8FE08BE212FA9ADB0075117D /* egwUnitTestA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = egwUnitTestA.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8FE08C4612FA9B720075117D /* geWizES.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = geWizES.h; sourceTree = "<group>"; };
+		8FE08C7A12FAA0EB0075117D /* auto_setup.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = auto_setup.py; sourceTree = "<group>"; };
+		D2AAC07E0554694100DB518D /* libegw.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libegw.a; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8FE08BE012FA9ADB0075117D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8FE08BEA12FA9B0C0075117D /* CoreFoundation.framework in Frameworks */,
+				8FE08BEB12FA9B0C0075117D /* Foundation.framework in Frameworks */,
+				8FE08BEC12FA9B0C0075117D /* OpenAL.framework in Frameworks */,
+				8FE08BED12FA9B0C0075117D /* OpenGLES.framework in Frameworks */,
+				8FE08BEE12FA9B0C0075117D /* QuartzCore.framework in Frameworks */,
+				8FE08BEF12FA9B0C0075117D /* UIKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D2AAC07C0554694100DB518D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8FE0885512FA9A090075117D /* CoreFoundation.framework in Frameworks */,
+				8FE0885612FA9A090075117D /* Foundation.framework in Frameworks */,
+				8FE0885712FA9A090075117D /* OpenAL.framework in Frameworks */,
+				8FE0885812FA9A090075117D /* OpenGLES.framework in Frameworks */,
+				8FE0885912FA9A090075117D /* QuartzCore.framework in Frameworks */,
+				8FE0885A12FA9A090075117D /* UIKit.framework in Frameworks */,
+				8FE0885B12FA9A090075117D /* AppKit.framework in Frameworks */,
+				8FE0885C12FA9A090075117D /* OpenGL.framework in Frameworks */,
+				8FE0885D12FA9A090075117D /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		034768DFFF38A50411DB9C8B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D2AAC07E0554694100DB518D /* libegw.a */,
+				8FE08BE212FA9ADB0075117D /* egwUnitTestA.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		0867D691FE84028FC02AAC07 /* geWizES */ = {
+			isa = PBXGroup;
+			children = (
+				08FB77AEFE84172EC02AAC07 /* Code */,
+				0867D69AFE84028FC02AAC07 /* Frameworks */,
+				034768DFFF38A50411DB9C8B /* Products */,
+			);
+			name = geWizES;
+			sourceTree = "<group>";
+		};
+		0867D69AFE84028FC02AAC07 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8FE0884C12FA9A090075117D /* CoreFoundation.framework */,
+				8FE0884D12FA9A090075117D /* Foundation.framework */,
+				8FE0884E12FA9A090075117D /* OpenAL.framework */,
+				8FE0884F12FA9A090075117D /* OpenGLES.framework */,
+				8FE0885012FA9A090075117D /* QuartzCore.framework */,
+				8FE0885112FA9A090075117D /* UIKit.framework */,
+				8FE0885212FA9A090075117D /* AppKit.framework */,
+				8FE0885312FA9A090075117D /* OpenGL.framework */,
+				8FE0885412FA9A090075117D /* Cocoa.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		08FB77AEFE84172EC02AAC07 /* Code */ = {
+			isa = PBXGroup;
+			children = (
+				8FE08C4612FA9B720075117D /* geWizES.h */,
+				8FE0885F12FA9A2E0075117D /* inf */,
+				8FE088AA12FA9A2F0075117D /* sys */,
+				8FE088EF12FA9A2F0075117D /* hwd */,
+				8FE0890A12FA9A2F0075117D /* data */,
+				8FE0892D12FA9A2F0075117D /* math */,
+				8FE0894012FA9A2F0075117D /* ai */,
+				8FE0894F12FA9A2F0075117D /* gfx */,
+				8FE0897E12FA9A2F0075117D /* geo */,
+				8FE0899912FA9A2F0075117D /* gui */,
+				8FE089C412FA9A2F0075117D /* net */,
+				8FE089CB12FA9A2F0075117D /* obj */,
+				8FE089E212FA9A2F0075117D /* phy */,
+				8FE089F112FA9A2F0075117D /* snd */,
+				8FE08A0012FA9A2F0075117D /* misc */,
+				8FE08A1F12FA9A2F0075117D /* test */,
+				8FE08C7A12FAA0EB0075117D /* auto_setup.py */,
+			);
+			name = Code;
+			sourceTree = "<group>";
+		};
+		8FE0885F12FA9A2E0075117D /* inf */ = {
+			isa = PBXGroup;
+			children = (
+				8FE0886012FA9A2E0075117D /* egwTypes.h */,
+				8FE0886112FA9A2E0075117D /* egwPContext.h */,
+				8FE0886212FA9A2E0075117D /* egwPGfxContext.h */,
+				8FE0886312FA9A2E0075117D /* egwPPhyContext.h */,
+				8FE0886412FA9A2E0075117D /* egwPSndContext.h */,
+				8FE0886512FA9A2E0075117D /* egwPHook.h */,
+				8FE0886612FA9A2E0075117D /* egwPScreen.h */,
+				8FE0886712FA9A2E0075117D /* egwPSingleton.h */,
+				8FE0886812FA9A2E0075117D /* egwPTask.h */,
+				8FE0886912FA9A2E0075117D /* egwPSubTask.h */,
+				8FE0886A12FA9A2F0075117D /* egwPAsset.h */,
+				8FE0886B12FA9A2F0075117D /* egwPAssetBase.h */,
+				8FE0886C12FA9A2F0075117D /* egwPCoreObject.h */,
+				8FE0886D12FA9A2F0075117D /* egwPObjNode.h */,
+				8FE0886E12FA9A2F0075117D /* egwPObjBranch.h */,
+				8FE0886F12FA9A2F0075117D /* egwPObjLeaf.h */,
+				8FE0887012FA9A2F0075117D /* egwPInteractable.h */,
+				8FE0887112FA9A2F0075117D /* egwPPlayable.h */,
+				8FE0887212FA9A2F0075117D /* egwPRenderable.h */,
+				8FE0887312FA9A2F0075117D /* egwPActioned.h */,
+				8FE0887412FA9A2F0075117D /* egwPActuator.h */,
+				8FE0887512FA9A2F0075117D /* egwPBounding.h */,
+				8FE0887612FA9A2F0075117D /* egwPCamera.h */,
+				8FE0887712FA9A2F0075117D /* egwPFont.h */,
+				8FE0887812FA9A2F0075117D /* egwPGeometry.h */,
+				8FE0887912FA9A2F0075117D /* egwPInterpolator.h */,
+				8FE0887A12FA9A2F0075117D /* egwPLight.h */,
+				8FE0887B12FA9A2F0075117D /* egwPMaterial.h */,
+				8FE0887C12FA9A2F0075117D /* egwPOrientated.h */,
+				8FE0887D12FA9A2F0075117D /* egwPSound.h */,
+				8FE0887E12FA9A2F0075117D /* egwPStreamed.h */,
+				8FE0887F12FA9A2F0075117D /* egwPStreamer.h */,
+				8FE0888012FA9A2F0075117D /* egwPTexture.h */,
+				8FE0888112FA9A2F0075117D /* egwPTimed.h */,
+				8FE0888212FA9A2F0075117D /* egwPTimer.h */,
+				8FE0888312FA9A2F0075117D /* egwPWarned.h */,
+				8FE0888412FA9A2F0075117D /* egwPWidget.h */,
+			);
+			name = inf;
+			sourceTree = "<group>";
+		};
+		8FE088AA12FA9A2F0075117D /* sys */ = {
+			isa = PBXGroup;
+			children = (
+				8FE088AB12FA9A2F0075117D /* egwSysTypes.h */,
+				8FE088AC12FA9A2F0075117D /* egwSystem.h */,
+				8FE088AD12FA9A2F0075117D /* egwSystem.m */,
+				8FE088AE12FA9A2F0075117D /* egwEngine.h */,
+				8FE088AF12FA9A2F0075117D /* egwEngine.m */,
+				8FE088B012FA9A2F0075117D /* egwAssetManager.h */,
+				8FE088B112FA9A2F0075117D /* egwAssetManager.m */,
+				8FE088B212FA9A2F0075117D /* egwGAMXParser.m */,
+				8FE088B312FA9A2F0075117D /* egwScreenManager.h */,
+				8FE088B412FA9A2F0075117D /* egwScreenManager.m */,
+				8FE088B512FA9A2F0075117D /* egwTaskManager.h */,
+				8FE088B612FA9A2F0075117D /* egwTaskManager.m */,
+				8FE088B712FA9A2F0075117D /* egwGfxContext.h */,
+				8FE088B812FA9A2F0075117D /* egwGfxContext.m */,
+				8FE088B912FA9A2F0075117D /* egwGfxContextAGL.h */,
+				8FE088BA12FA9A2F0075117D /* egwGfxContextAGL.m */,
+				8FE088BB12FA9A2F0075117D /* egwGfxContextNSGL.h */,
+				8FE088BC12FA9A2F0075117D /* egwGfxContextNSGL.m */,
+				8FE088BD12FA9A2F0075117D /* egwGfxContextEAGLES.h */,
+				8FE088BE12FA9A2F0075117D /* egwGfxContextEAGLES.m */,
+				8FE088BF12FA9A2F0075117D /* egwGfxRenderer.h */,
+				8FE088C012FA9A2F0075117D /* egwGfxRenderer.m */,
+				8FE088C112FA9A2F0075117D /* egwPhyContext.h */,
+				8FE088C212FA9A2F0075117D /* egwPhyContext.m */,
+				8FE088C312FA9A2F0075117D /* egwPhyContextSW.h */,
+				8FE088C412FA9A2F0075117D /* egwPhyContextSW.m */,
+				8FE088C512FA9A2F0075117D /* egwPhyActuator.h */,
+				8FE088C612FA9A2F0075117D /* egwPhyActuator.m */,
+				8FE088C712FA9A2F0075117D /* egwSndContext.h */,
+				8FE088C812FA9A2F0075117D /* egwSndContext.m */,
+				8FE088C912FA9A2F0075117D /* egwSndContextAL.h */,
+				8FE088CA12FA9A2F0075117D /* egwSndContextAL.m */,
+				8FE088CB12FA9A2F0075117D /* egwSndMixer.h */,
+				8FE088CC12FA9A2F0075117D /* egwSndMixer.m */,
+			);
+			name = sys;
+			sourceTree = "<group>";
+		};
+		8FE088EF12FA9A2F0075117D /* hwd */ = {
+			isa = PBXGroup;
+			children = (
+				8FE088F012FA9A2F0075117D /* egwHwdTypes.h */,
+				8FE088F112FA9A2F0075117D /* egwWindow.h */,
+				8FE088F212FA9A2F0075117D /* egwWindow.m */,
+				8FE088F312FA9A2F0075117D /* egwUIDeviceExt.h */,
+				8FE088F412FA9A2F0075117D /* egwUIDeviceExt.m */,
+				8FE088F512FA9A2F0075117D /* egwUIViewSurface.h */,
+				8FE088F612FA9A2F0075117D /* egwUIViewSurface.m */,
+				8FE088F712FA9A2F0075117D /* egwNSOpenGLViewSurface.h */,
+				8FE088F812FA9A2F0075117D /* egwNSOpenGLViewSurface.m */,
+				8FE088F912FA9A2F0075117D /* egwTouchDecoder.h */,
+				8FE088FA12FA9A2F0075117D /* egwTouchDecoder.m */,
+				8FE088FB12FA9A2F0075117D /* egwMouseDecoder.h */,
+				8FE088FC12FA9A2F0075117D /* egwMouseDecoder.m */,
+			);
+			name = hwd;
+			sourceTree = "<group>";
+		};
+		8FE0890A12FA9A2F0075117D /* data */ = {
+			isa = PBXGroup;
+			children = (
+				8FE0890B12FA9A2F0075117D /* egwDataTypes.h */,
+				8FE0890C12FA9A2F0075117D /* egwData.h */,
+				8FE0890D12FA9A2F0075117D /* egwData.m */,
+				8FE0890E12FA9A2F0075117D /* egwArray.h */,
+				8FE0890F12FA9A2F0075117D /* egwArray.m */,
+				8FE0891012FA9A2F0075117D /* egwCyclicArray.h */,
+				8FE0891112FA9A2F0075117D /* egwCyclicArray.m */,
+				8FE0891212FA9A2F0075117D /* egwSinglyLinkedList.h */,
+				8FE0891312FA9A2F0075117D /* egwSinglyLinkedList.m */,
+				8FE0891412FA9A2F0075117D /* egwDoublyLinkedList.h */,
+				8FE0891512FA9A2F0075117D /* egwDoublyLinkedList.m */,
+				8FE0891612FA9A2F0075117D /* egwBinaryTree.h */,
+				8FE0891712FA9A2F0075117D /* egwBinaryTree.m */,
+				8FE0891812FA9A2F0075117D /* egwAVLTree.h */,
+				8FE0891912FA9A2F0075117D /* egwAVLTree.m */,
+				8FE0891A12FA9A2F0075117D /* egwRedBlackTree.h */,
+				8FE0891B12FA9A2F0075117D /* egwRedBlackTree.m */,
+			);
+			name = data;
+			sourceTree = "<group>";
+		};
+		8FE0892D12FA9A2F0075117D /* math */ = {
+			isa = PBXGroup;
+			children = (
+				8FE0892E12FA9A2F0075117D /* egwMathTypes.h */,
+				8FE0892F12FA9A2F0075117D /* egwMath.h */,
+				8FE0893012FA9A2F0075117D /* egwMath.m */,
+				8FE0893112FA9A2F0075117D /* egwVector.h */,
+				8FE0893212FA9A2F0075117D /* egwVector.m */,
+				8FE0893312FA9A2F0075117D /* egwMatrix.h */,
+				8FE0893412FA9A2F0075117D /* egwMatrix.m */,
+				8FE0893512FA9A2F0075117D /* egwQuaternion.h */,
+				8FE0893612FA9A2F0075117D /* egwQuaternion.m */,
+			);
+			name = math;
+			sourceTree = "<group>";
+		};
+		8FE0894012FA9A2F0075117D /* ai */ = {
+			isa = PBXGroup;
+			children = (
+				8FE0894112FA9A2F0075117D /* egwAiTypes.h */,
+				8FE0894212FA9A2F0075117D /* egwIntellect.h */,
+				8FE0894312FA9A2F0075117D /* egwIntellect.m */,
+				8FE0894412FA9A2F0075117D /* egwFiniteStateMachine.h */,
+				8FE0894512FA9A2F0075117D /* egwFiniteStateMachine.m */,
+				8FE0894612FA9A2F0075117D /* egwArtificialNeuralNetwork.h */,
+				8FE0894712FA9A2F0075117D /* egwArtificialNeuralNetwork.m */,
+			);
+			name = ai;
+			sourceTree = "<group>";
+		};
+		8FE0894F12FA9A2F0075117D /* gfx */ = {
+			isa = PBXGroup;
+			children = (
+				8FE0895012FA9A2F0075117D /* egwGfxTypes.h */,
+				8FE0895112FA9A2F0075117D /* egwGraphics.h */,
+				8FE0895212FA9A2F0075117D /* egwGraphics.m */,
+				8FE0895312FA9A2F0075117D /* egwBindingStacks.h */,
+				8FE0895412FA9A2F0075117D /* egwBindingStacks.m */,
+				8FE0895512FA9A2F0075117D /* egwBoundings.h */,
+				8FE0895612FA9A2F0075117D /* egwBoundings.m */,
+				8FE0895712FA9A2F0075117D /* egwCameras.h */,
+				8FE0895812FA9A2F0075117D /* egwCameras.m */,
+				8FE0895912FA9A2F0075117D /* egwFonts.h */,
+				8FE0895A12FA9A2F0075117D /* egwFonts.m */,
+				8FE0895B12FA9A2F0075117D /* egwLights.h */,
+				8FE0895C12FA9A2F0075117D /* egwLights.m */,
+				8FE0895D12FA9A2F0075117D /* egwMaterials.h */,
+				8FE0895E12FA9A2F0075117D /* egwMaterials.m */,
+				8FE0895F12FA9A2F0075117D /* egwRenderProxy.h */,
+				8FE0896012FA9A2F0075117D /* egwRenderProxy.m */,
+				8FE0896112FA9A2F0075117D /* egwTexture.h */,
+				8FE0896212FA9A2F0075117D /* egwTexture.m */,
+				8FE0896312FA9A2F0075117D /* egwSpritedTexture.h */,
+				8FE0896412FA9A2F0075117D /* egwSpritedTexture.m */,
+				8FE0896512FA9A2F0075117D /* egwStreamedTexture.h */,
+				8FE0896612FA9A2F0075117D /* egwStreamedTexture.m */,
+			);
+			name = gfx;
+			sourceTree = "<group>";
+		};
+		8FE0897E12FA9A2F0075117D /* geo */ = {
+			isa = PBXGroup;
+			children = (
+				8FE0897F12FA9A2F0075117D /* egwGeoTypes.h */,
+				8FE0898012FA9A2F0075117D /* egwGeometry.h */,
+				8FE0898112FA9A2F0075117D /* egwGeometry.m */,
+				8FE0898212FA9A2F0075117D /* egwBillboard.h */,
+				8FE0898312FA9A2F0075117D /* egwBillboard.m */,
+				8FE0898412FA9A2F0075117D /* egwMesh.h */,
+				8FE0898512FA9A2F0075117D /* egwMesh.m */,
+				8FE0898612FA9A2F0075117D /* egwKeyFramedMesh.h */,
+				8FE0898712FA9A2F0075117D /* egwKeyFramedMesh.m */,
+				8FE0898812FA9A2F0075117D /* egwSkeletalBonedMesh.h */,
+				8FE0898912FA9A2F0075117D /* egwSkeletalBonedMesh.m */,
+				8FE0898A12FA9A2F0075117D /* egwParticleSystem.h */,
+				8FE0898B12FA9A2F0075117D /* egwParticleSystem.m */,
+			);
+			name = geo;
+			sourceTree = "<group>";
+		};
+		8FE0899912FA9A2F0075117D /* gui */ = {
+			isa = PBXGroup;
+			children = (
+				8FE0899A12FA9A2F0075117D /* egwGuiTypes.h */,
+				8FE0899B12FA9A2F0075117D /* egwInterface.h */,
+				8FE0899C12FA9A2F0075117D /* egwInterface.m */,
+				8FE0899D12FA9A2F0075117D /* egwButton.h */,
+				8FE0899E12FA9A2F0075117D /* egwButton.m */,
+				8FE0899F12FA9A2F0075117D /* egwImage.h */,
+				8FE089A012FA9A2F0075117D /* egwImage.m */,
+				8FE089A112FA9A2F0075117D /* egwSpritedImage.h */,
+				8FE089A212FA9A2F0075117D /* egwSpritedImage.m */,
+				8FE089A312FA9A2F0075117D /* egwStreamedImage.h */,
+				8FE089A412FA9A2F0075117D /* egwStreamedImage.m */,
+				8FE089A512FA9A2F0075117D /* egwLabel.h */,
+				8FE089A612FA9A2F0075117D /* egwLabel.m */,
+				8FE089A712FA9A2F0075117D /* egwScrolledLabel.h */,
+				8FE089A812FA9A2F0075117D /* egwScrolledLabel.m */,
+				8FE089A912FA9A2F0075117D /* egwPager.h */,
+				8FE089AA12FA9A2F0075117D /* egwPager.m */,
+				8FE089AB12FA9A2F0075117D /* egwSlider.h */,
+				8FE089AC12FA9A2F0075117D /* egwSlider.m */,
+				8FE089AD12FA9A2F0075117D /* egwToggle.h */,
+				8FE089AE12FA9A2F0075117D /* egwToggle.m */,
+			);
+			name = gui;
+			sourceTree = "<group>";
+		};
+		8FE089C412FA9A2F0075117D /* net */ = {
+			isa = PBXGroup;
+			children = (
+				8FE089C512FA9A2F0075117D /* egwNetTypes.h */,
+				8FE089C612FA9A2F0075117D /* egwNetwork.h */,
+				8FE089C712FA9A2F0075117D /* egwNetwork.m */,
+			);
+			name = net;
+			sourceTree = "<group>";
+		};
+		8FE089CB12FA9A2F0075117D /* obj */ = {
+			isa = PBXGroup;
+			children = (
+				8FE089CC12FA9A2F0075117D /* egwObjTypes.h */,
+				8FE089CD12FA9A2F0075117D /* egwObject.h */,
+				8FE089CE12FA9A2F0075117D /* egwObject.m */,
+				8FE089CF12FA9A2F0075117D /* egwObjectBranch.h */,
+				8FE089D012FA9A2F0075117D /* egwObjectBranch.m */,
+				8FE089D112FA9A2F0075117D /* egwSwitchBranch.h */,
+				8FE089D212FA9A2F0075117D /* egwSwitchBranch.m */,
+				8FE089D312FA9A2F0075117D /* egwTransformBranch.h */,
+				8FE089D412FA9A2F0075117D /* egwTransformBranch.m */,
+				8FE089D512FA9A2F0075117D /* egwDLODBranch.h */,
+				8FE089D612FA9A2F0075117D /* egwDLODBranch.m */,
+			);
+			name = obj;
+			sourceTree = "<group>";
+		};
+		8FE089E212FA9A2F0075117D /* phy */ = {
+			isa = PBXGroup;
+			children = (
+				8FE089E312FA9A2F0075117D /* egwPhyTypes.h */,
+				8FE089E412FA9A2F0075117D /* egwPhysics.h */,
+				8FE089E512FA9A2F0075117D /* egwPhysics.m */,
+				8FE089E612FA9A2F0075117D /* egwInterpolators.h */,
+				8FE089E712FA9A2F0075117D /* egwInterpolators.m */,
+				8FE089E812FA9A2F0075117D /* egwSpring.h */,
+				8FE089E912FA9A2F0075117D /* egwSpring.m */,
+			);
+			name = phy;
+			sourceTree = "<group>";
+		};
+		8FE089F112FA9A2F0075117D /* snd */ = {
+			isa = PBXGroup;
+			children = (
+				8FE089F212FA9A2F0075117D /* egwSndTypes.h */,
+				8FE089F312FA9A2F0075117D /* egwSound.h */,
+				8FE089F412FA9A2F0075117D /* egwSound.m */,
+				8FE089F512FA9A2F0075117D /* egwPointSound.h */,
+				8FE089F612FA9A2F0075117D /* egwPointSound.m */,
+				8FE089F712FA9A2F0075117D /* egwStreamedPointSound.h */,
+				8FE089F812FA9A2F0075117D /* egwStreamedPointSound.m */,
+			);
+			name = snd;
+			sourceTree = "<group>";
+		};
+		8FE08A0012FA9A2F0075117D /* misc */ = {
+			isa = PBXGroup;
+			children = (
+				8FE08A0112FA9A2F0075117D /* egwMiscTypes.h */,
+				8FE08A0212FA9A2F0075117D /* egwMisc.h */,
+				8FE08A0312FA9A2F0075117D /* egwMisc.m */,
+				8FE08A0412FA9A2F0075117D /* egwBoxingTypes.h */,
+				8FE08A0512FA9A2F0075117D /* egwBoxingTypes.m */,
+				8FE08A0612FA9A2F0075117D /* egwTimer.h */,
+				8FE08A0712FA9A2F0075117D /* egwTimer.m */,
+				8FE08A0812FA9A2F0075117D /* egwActionedTimer.h */,
+				8FE08A0912FA9A2F0075117D /* egwActionedTimer.m */,
+				8FE08A0A12FA9A2F0075117D /* egwActionedTimersArray.h */,
+				8FE08A0B12FA9A2F0075117D /* egwActionedTimersArray.m */,
+				8FE08A0C12FA9A2F0075117D /* egwStreamer.h */,
+				8FE08A0D12FA9A2F0075117D /* egwStreamer.m */,
+				8FE08A0E12FA9A2F0075117D /* egwValidater.h */,
+				8FE08A0F12FA9A2F0075117D /* egwValidater.m */,
+			);
+			name = misc;
+			sourceTree = "<group>";
+		};
+		8FE08A1F12FA9A2F0075117D /* test */ = {
+			isa = PBXGroup;
+			children = (
+				8FE08A2012FA9A2F0075117D /* testicon.png */,
+				8FE08A2112FA9A2F0075117D /* egwUnitTest-Info.plist */,
+				8FE08A2212FA9A2F0075117D /* unitTestA.m */,
+			);
+			name = test;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		D2AAC07A0554694100DB518D /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8FE08A2812FA9A2F0075117D /* egwTypes.h in Headers */,
+				8FE08A2912FA9A2F0075117D /* egwPContext.h in Headers */,
+				8FE08A2A12FA9A2F0075117D /* egwPGfxContext.h in Headers */,
+				8FE08A2B12FA9A2F0075117D /* egwPPhyContext.h in Headers */,
+				8FE08A2C12FA9A2F0075117D /* egwPSndContext.h in Headers */,
+				8FE08A2D12FA9A2F0075117D /* egwPHook.h in Headers */,
+				8FE08A2E12FA9A2F0075117D /* egwPScreen.h in Headers */,
+				8FE08A2F12FA9A2F0075117D /* egwPSingleton.h in Headers */,
+				8FE08A3012FA9A2F0075117D /* egwPTask.h in Headers */,
+				8FE08A3112FA9A2F0075117D /* egwPSubTask.h in Headers */,
+				8FE08A3212FA9A2F0075117D /* egwPAsset.h in Headers */,
+				8FE08A3312FA9A2F0075117D /* egwPAssetBase.h in Headers */,
+				8FE08A3412FA9A2F0075117D /* egwPCoreObject.h in Headers */,
+				8FE08A3512FA9A2F0075117D /* egwPObjNode.h in Headers */,
+				8FE08A3612FA9A2F0075117D /* egwPObjBranch.h in Headers */,
+				8FE08A3712FA9A2F0075117D /* egwPObjLeaf.h in Headers */,
+				8FE08A3812FA9A2F0075117D /* egwPInteractable.h in Headers */,
+				8FE08A3912FA9A2F0075117D /* egwPPlayable.h in Headers */,
+				8FE08A3A12FA9A2F0075117D /* egwPRenderable.h in Headers */,
+				8FE08A3B12FA9A2F0075117D /* egwPActioned.h in Headers */,
+				8FE08A3C12FA9A2F0075117D /* egwPActuator.h in Headers */,
+				8FE08A3D12FA9A2F0075117D /* egwPBounding.h in Headers */,
+				8FE08A3E12FA9A2F0075117D /* egwPCamera.h in Headers */,
+				8FE08A3F12FA9A2F0075117D /* egwPFont.h in Headers */,
+				8FE08A4012FA9A2F0075117D /* egwPGeometry.h in Headers */,
+				8FE08A4112FA9A2F0075117D /* egwPInterpolator.h in Headers */,
+				8FE08A4212FA9A2F0075117D /* egwPLight.h in Headers */,
+				8FE08A4312FA9A2F0075117D /* egwPMaterial.h in Headers */,
+				8FE08A4412FA9A2F0075117D /* egwPOrientated.h in Headers */,
+				8FE08A4512FA9A2F0075117D /* egwPSound.h in Headers */,
+				8FE08A4612FA9A2F0075117D /* egwPStreamed.h in Headers */,
+				8FE08A4712FA9A2F0075117D /* egwPStreamer.h in Headers */,
+				8FE08A4812FA9A2F0075117D /* egwPTexture.h in Headers */,
+				8FE08A4912FA9A2F0075117D /* egwPTimed.h in Headers */,
+				8FE08A4A12FA9A2F0075117D /* egwPTimer.h in Headers */,
+				8FE08A4B12FA9A2F0075117D /* egwPWarned.h in Headers */,
+				8FE08A4C12FA9A2F0075117D /* egwPWidget.h in Headers */,
+				8FE08A7212FA9A2F0075117D /* egwSysTypes.h in Headers */,
+				8FE08A7312FA9A2F0075117D /* egwSystem.h in Headers */,
+				8FE08A7512FA9A2F0075117D /* egwEngine.h in Headers */,
+				8FE08A7712FA9A2F0075117D /* egwAssetManager.h in Headers */,
+				8FE08A7A12FA9A2F0075117D /* egwScreenManager.h in Headers */,
+				8FE08A7C12FA9A2F0075117D /* egwTaskManager.h in Headers */,
+				8FE08A7E12FA9A2F0075117D /* egwGfxContext.h in Headers */,
+				8FE08A8012FA9A2F0075117D /* egwGfxContextAGL.h in Headers */,
+				8FE08A8212FA9A2F0075117D /* egwGfxContextNSGL.h in Headers */,
+				8FE08A8412FA9A2F0075117D /* egwGfxContextEAGLES.h in Headers */,
+				8FE08A8612FA9A2F0075117D /* egwGfxRenderer.h in Headers */,
+				8FE08A8812FA9A2F0075117D /* egwPhyContext.h in Headers */,
+				8FE08A8A12FA9A2F0075117D /* egwPhyContextSW.h in Headers */,
+				8FE08A8C12FA9A2F0075117D /* egwPhyActuator.h in Headers */,
+				8FE08A8E12FA9A2F0075117D /* egwSndContext.h in Headers */,
+				8FE08A9012FA9A2F0075117D /* egwSndContextAL.h in Headers */,
+				8FE08A9212FA9A2F0075117D /* egwSndMixer.h in Headers */,
+				8FE08AB612FA9A2F0075117D /* egwHwdTypes.h in Headers */,
+				8FE08AB712FA9A2F0075117D /* egwWindow.h in Headers */,
+				8FE08AB912FA9A2F0075117D /* egwUIDeviceExt.h in Headers */,
+				8FE08ABB12FA9A2F0075117D /* egwUIViewSurface.h in Headers */,
+				8FE08ABD12FA9A2F0075117D /* egwNSOpenGLViewSurface.h in Headers */,
+				8FE08ABF12FA9A2F0075117D /* egwTouchDecoder.h in Headers */,
+				8FE08AC112FA9A2F0075117D /* egwMouseDecoder.h in Headers */,
+				8FE08AD012FA9A2F0075117D /* egwDataTypes.h in Headers */,
+				8FE08AD112FA9A2F0075117D /* egwData.h in Headers */,
+				8FE08AD312FA9A2F0075117D /* egwArray.h in Headers */,
+				8FE08AD512FA9A2F0075117D /* egwCyclicArray.h in Headers */,
+				8FE08AD712FA9A2F0075117D /* egwSinglyLinkedList.h in Headers */,
+				8FE08AD912FA9A2F0075117D /* egwDoublyLinkedList.h in Headers */,
+				8FE08ADB12FA9A2F0075117D /* egwBinaryTree.h in Headers */,
+				8FE08ADD12FA9A2F0075117D /* egwAVLTree.h in Headers */,
+				8FE08ADF12FA9A2F0075117D /* egwRedBlackTree.h in Headers */,
+				8FE08AF212FA9A2F0075117D /* egwMathTypes.h in Headers */,
+				8FE08AF312FA9A2F0075117D /* egwMath.h in Headers */,
+				8FE08AF512FA9A2F0075117D /* egwVector.h in Headers */,
+				8FE08AF712FA9A2F0075117D /* egwMatrix.h in Headers */,
+				8FE08AF912FA9A2F0075117D /* egwQuaternion.h in Headers */,
+				8FE08B0412FA9A2F0075117D /* egwAiTypes.h in Headers */,
+				8FE08B0512FA9A2F0075117D /* egwIntellect.h in Headers */,
+				8FE08B0712FA9A2F0075117D /* egwFiniteStateMachine.h in Headers */,
+				8FE08B0912FA9A2F0075117D /* egwArtificialNeuralNetwork.h in Headers */,
+				8FE08B1212FA9A2F0075117D /* egwGfxTypes.h in Headers */,
+				8FE08B1312FA9A2F0075117D /* egwGraphics.h in Headers */,
+				8FE08B1512FA9A2F0075117D /* egwBindingStacks.h in Headers */,
+				8FE08B1712FA9A2F0075117D /* egwBoundings.h in Headers */,
+				8FE08B1912FA9A2F0075117D /* egwCameras.h in Headers */,
+				8FE08B1B12FA9A2F0075117D /* egwFonts.h in Headers */,
+				8FE08B1D12FA9A2F0075117D /* egwLights.h in Headers */,
+				8FE08B1F12FA9A2F0075117D /* egwMaterials.h in Headers */,
+				8FE08B2112FA9A2F0075117D /* egwRenderProxy.h in Headers */,
+				8FE08B2312FA9A2F0075117D /* egwTexture.h in Headers */,
+				8FE08B2512FA9A2F0075117D /* egwSpritedTexture.h in Headers */,
+				8FE08B2712FA9A2F0075117D /* egwStreamedTexture.h in Headers */,
+				8FE08B4012FA9A2F0075117D /* egwGeoTypes.h in Headers */,
+				8FE08B4112FA9A2F0075117D /* egwGeometry.h in Headers */,
+				8FE08B4312FA9A2F0075117D /* egwBillboard.h in Headers */,
+				8FE08B4512FA9A2F0075117D /* egwMesh.h in Headers */,
+				8FE08B4712FA9A2F0075117D /* egwKeyFramedMesh.h in Headers */,
+				8FE08B4912FA9A2F0075117D /* egwSkeletalBonedMesh.h in Headers */,
+				8FE08B4B12FA9A2F0075117D /* egwParticleSystem.h in Headers */,
+				8FE08B5A12FA9A2F0075117D /* egwGuiTypes.h in Headers */,
+				8FE08B5B12FA9A2F0075117D /* egwInterface.h in Headers */,
+				8FE08B5D12FA9A2F0075117D /* egwButton.h in Headers */,
+				8FE08B5F12FA9A2F0075117D /* egwImage.h in Headers */,
+				8FE08B6112FA9A2F0075117D /* egwSpritedImage.h in Headers */,
+				8FE08B6312FA9A2F0075117D /* egwStreamedImage.h in Headers */,
+				8FE08B6512FA9A2F0075117D /* egwLabel.h in Headers */,
+				8FE08B6712FA9A2F0075117D /* egwScrolledLabel.h in Headers */,
+				8FE08B6912FA9A2F0075117D /* egwPager.h in Headers */,
+				8FE08B6B12FA9A2F0075117D /* egwSlider.h in Headers */,
+				8FE08B6D12FA9A2F0075117D /* egwToggle.h in Headers */,
+				8FE08B8412FA9A2F0075117D /* egwNetTypes.h in Headers */,
+				8FE08B8512FA9A2F0075117D /* egwNetwork.h in Headers */,
+				8FE08B8A12FA9A2F0075117D /* egwObjTypes.h in Headers */,
+				8FE08B8B12FA9A2F0075117D /* egwObject.h in Headers */,
+				8FE08B8D12FA9A2F0075117D /* egwObjectBranch.h in Headers */,
+				8FE08B8F12FA9A2F0075117D /* egwSwitchBranch.h in Headers */,
+				8FE08B9112FA9A2F0075117D /* egwTransformBranch.h in Headers */,
+				8FE08B9312FA9A2F0075117D /* egwDLODBranch.h in Headers */,
+				8FE08BA012FA9A2F0075117D /* egwPhyTypes.h in Headers */,
+				8FE08BA112FA9A2F0075117D /* egwPhysics.h in Headers */,
+				8FE08BA312FA9A2F0075117D /* egwInterpolators.h in Headers */,
+				8FE08BA512FA9A2F0075117D /* egwSpring.h in Headers */,
+				8FE08BAE12FA9A2F0075117D /* egwSndTypes.h in Headers */,
+				8FE08BAF12FA9A2F0075117D /* egwSound.h in Headers */,
+				8FE08BB112FA9A2F0075117D /* egwPointSound.h in Headers */,
+				8FE08BB312FA9A2F0075117D /* egwStreamedPointSound.h in Headers */,
+				8FE08BBC12FA9A2F0075117D /* egwMiscTypes.h in Headers */,
+				8FE08BBD12FA9A2F0075117D /* egwMisc.h in Headers */,
+				8FE08BBF12FA9A2F0075117D /* egwBoxingTypes.h in Headers */,
+				8FE08BC112FA9A2F0075117D /* egwTimer.h in Headers */,
+				8FE08BC312FA9A2F0075117D /* egwActionedTimer.h in Headers */,
+				8FE08BC512FA9A2F0075117D /* egwActionedTimersArray.h in Headers */,
+				8FE08BC712FA9A2F0075117D /* egwStreamer.h in Headers */,
+				8FE08BC912FA9A2F0075117D /* egwValidater.h in Headers */,
+				8FE08C4712FA9B720075117D /* geWizES.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		8FE08BE112FA9ADB0075117D /* egwUnitTestA */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8FE08BE712FA9ADC0075117D /* Build configuration list for PBXNativeTarget "egwUnitTestA" */;
+			buildPhases = (
+				8FE08BDE12FA9ADB0075117D /* Resources */,
+				8FE08BDF12FA9ADB0075117D /* Sources */,
+				8FE08BE012FA9ADB0075117D /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = egwUnitTestA;
+			productName = a;
+			productReference = 8FE08BE212FA9ADB0075117D /* egwUnitTestA.app */;
+			productType = "com.apple.product-type.application";
+		};
+		D2AAC07D0554694100DB518D /* geWizES */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1DEB921E08733DC00010E9CD /* Build configuration list for PBXNativeTarget "geWizES" */;
+			buildPhases = (
+				D2AAC07A0554694100DB518D /* Headers */,
+				D2AAC07B0554694100DB518D /* Sources */,
+				D2AAC07C0554694100DB518D /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = geWizES;
+			productName = geWizES;
+			productReference = D2AAC07E0554694100DB518D /* libegw.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		0867D690FE84028FC02AAC07 /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = 1DEB922208733DC00010E9CD /* Build configuration list for PBXProject "geWizES" */;
+			compatibilityVersion = "Xcode 3.1";
+			developmentRegion = English;
+			hasScannedForEncodings = 1;
+			knownRegions = (
+				English,
+				Japanese,
+				French,
+				German,
+			);
+			mainGroup = 0867D691FE84028FC02AAC07 /* geWizES */;
+			productRefGroup = 034768DFFF38A50411DB9C8B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D2AAC07D0554694100DB518D /* geWizES */,
+				8FE08BE112FA9ADB0075117D /* egwUnitTestA */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		8FE08BDE12FA9ADB0075117D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8FE08BF012FA9B190075117D /* testicon.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8FE08BDF12FA9ADB0075117D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8FE08C4512FA9B370075117D /* unitTestA.m in Sources */,
+				8FE08BF112FA9B220075117D /* egwSystem.m in Sources */,
+				8FE08BF212FA9B220075117D /* egwEngine.m in Sources */,
+				8FE08BF312FA9B220075117D /* egwAssetManager.m in Sources */,
+				8FE08BF412FA9B220075117D /* egwGAMXParser.m in Sources */,
+				8FE08BF512FA9B220075117D /* egwScreenManager.m in Sources */,
+				8FE08BF612FA9B220075117D /* egwTaskManager.m in Sources */,
+				8FE08BF712FA9B220075117D /* egwGfxContext.m in Sources */,
+				8FE08BF812FA9B220075117D /* egwGfxContextAGL.m in Sources */,
+				8FE08BF912FA9B220075117D /* egwGfxContextNSGL.m in Sources */,
+				8FE08BFA12FA9B220075117D /* egwGfxContextEAGLES.m in Sources */,
+				8FE08BFB12FA9B220075117D /* egwGfxRenderer.m in Sources */,
+				8FE08BFC12FA9B220075117D /* egwPhyContext.m in Sources */,
+				8FE08BFD12FA9B220075117D /* egwPhyContextSW.m in Sources */,
+				8FE08BFE12FA9B220075117D /* egwPhyActuator.m in Sources */,
+				8FE08BFF12FA9B220075117D /* egwSndContext.m in Sources */,
+				8FE08C0012FA9B220075117D /* egwSndContextAL.m in Sources */,
+				8FE08C0112FA9B220075117D /* egwSndMixer.m in Sources */,
+				8FE08C0212FA9B220075117D /* egwWindow.m in Sources */,
+				8FE08C0312FA9B220075117D /* egwUIDeviceExt.m in Sources */,
+				8FE08C0412FA9B220075117D /* egwUIViewSurface.m in Sources */,
+				8FE08C0512FA9B220075117D /* egwNSOpenGLViewSurface.m in Sources */,
+				8FE08C0612FA9B220075117D /* egwTouchDecoder.m in Sources */,
+				8FE08C0712FA9B220075117D /* egwMouseDecoder.m in Sources */,
+				8FE08C0812FA9B220075117D /* egwData.m in Sources */,
+				8FE08C0912FA9B220075117D /* egwArray.m in Sources */,
+				8FE08C0A12FA9B220075117D /* egwCyclicArray.m in Sources */,
+				8FE08C0B12FA9B220075117D /* egwSinglyLinkedList.m in Sources */,
+				8FE08C0C12FA9B220075117D /* egwDoublyLinkedList.m in Sources */,
+				8FE08C0D12FA9B220075117D /* egwBinaryTree.m in Sources */,
+				8FE08C0E12FA9B220075117D /* egwAVLTree.m in Sources */,
+				8FE08C0F12FA9B220075117D /* egwRedBlackTree.m in Sources */,
+				8FE08C1012FA9B220075117D /* egwMath.m in Sources */,
+				8FE08C1112FA9B220075117D /* egwVector.m in Sources */,
+				8FE08C1212FA9B220075117D /* egwMatrix.m in Sources */,
+				8FE08C1312FA9B220075117D /* egwQuaternion.m in Sources */,
+				8FE08C1412FA9B220075117D /* egwIntellect.m in Sources */,
+				8FE08C1512FA9B220075117D /* egwFiniteStateMachine.m in Sources */,
+				8FE08C1612FA9B220075117D /* egwArtificialNeuralNetwork.m in Sources */,
+				8FE08C1712FA9B220075117D /* egwGraphics.m in Sources */,
+				8FE08C1812FA9B220075117D /* egwBindingStacks.m in Sources */,
+				8FE08C1912FA9B220075117D /* egwBoundings.m in Sources */,
+				8FE08C1A12FA9B220075117D /* egwCameras.m in Sources */,
+				8FE08C1B12FA9B220075117D /* egwFonts.m in Sources */,
+				8FE08C1C12FA9B220075117D /* egwLights.m in Sources */,
+				8FE08C1D12FA9B220075117D /* egwMaterials.m in Sources */,
+				8FE08C1E12FA9B220075117D /* egwRenderProxy.m in Sources */,
+				8FE08C1F12FA9B220075117D /* egwTexture.m in Sources */,
+				8FE08C2012FA9B220075117D /* egwSpritedTexture.m in Sources */,
+				8FE08C2112FA9B220075117D /* egwStreamedTexture.m in Sources */,
+				8FE08C2212FA9B220075117D /* egwGeometry.m in Sources */,
+				8FE08C2312FA9B220075117D /* egwBillboard.m in Sources */,
+				8FE08C2412FA9B220075117D /* egwMesh.m in Sources */,
+				8FE08C2512FA9B220075117D /* egwKeyFramedMesh.m in Sources */,
+				8FE08C2612FA9B220075117D /* egwSkeletalBonedMesh.m in Sources */,
+				8FE08C2712FA9B220075117D /* egwParticleSystem.m in Sources */,
+				8FE08C2812FA9B220075117D /* egwInterface.m in Sources */,
+				8FE08C2912FA9B220075117D /* egwButton.m in Sources */,
+				8FE08C2A12FA9B220075117D /* egwImage.m in Sources */,
+				8FE08C2B12FA9B220075117D /* egwSpritedImage.m in Sources */,
+				8FE08C2C12FA9B220075117D /* egwStreamedImage.m in Sources */,
+				8FE08C2D12FA9B220075117D /* egwLabel.m in Sources */,
+				8FE08C2E12FA9B220075117D /* egwScrolledLabel.m in Sources */,
+				8FE08C2F12FA9B220075117D /* egwPager.m in Sources */,
+				8FE08C3012FA9B220075117D /* egwSlider.m in Sources */,
+				8FE08C3112FA9B220075117D /* egwToggle.m in Sources */,
+				8FE08C3212FA9B220075117D /* egwNetwork.m in Sources */,
+				8FE08C3312FA9B220075117D /* egwObject.m in Sources */,
+				8FE08C3412FA9B220075117D /* egwObjectBranch.m in Sources */,
+				8FE08C3512FA9B220075117D /* egwSwitchBranch.m in Sources */,
+				8FE08C3612FA9B220075117D /* egwTransformBranch.m in Sources */,
+				8FE08C3712FA9B220075117D /* egwDLODBranch.m in Sources */,
+				8FE08C3812FA9B220075117D /* egwPhysics.m in Sources */,
+				8FE08C3912FA9B220075117D /* egwInterpolators.m in Sources */,
+				8FE08C3A12FA9B220075117D /* egwSpring.m in Sources */,
+				8FE08C3B12FA9B220075117D /* egwSound.m in Sources */,
+				8FE08C3C12FA9B220075117D /* egwPointSound.m in Sources */,
+				8FE08C3D12FA9B220075117D /* egwStreamedPointSound.m in Sources */,
+				8FE08C3E12FA9B220075117D /* egwMisc.m in Sources */,
+				8FE08C3F12FA9B220075117D /* egwBoxingTypes.m in Sources */,
+				8FE08C4012FA9B220075117D /* egwTimer.m in Sources */,
+				8FE08C4112FA9B220075117D /* egwActionedTimer.m in Sources */,
+				8FE08C4212FA9B220075117D /* egwActionedTimersArray.m in Sources */,
+				8FE08C4312FA9B220075117D /* egwStreamer.m in Sources */,
+				8FE08C4412FA9B220075117D /* egwValidater.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D2AAC07B0554694100DB518D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8FE08A7412FA9A2F0075117D /* egwSystem.m in Sources */,
+				8FE08A7612FA9A2F0075117D /* egwEngine.m in Sources */,
+				8FE08A7812FA9A2F0075117D /* egwAssetManager.m in Sources */,
+				8FE08A7912FA9A2F0075117D /* egwGAMXParser.m in Sources */,
+				8FE08A7B12FA9A2F0075117D /* egwScreenManager.m in Sources */,
+				8FE08A7D12FA9A2F0075117D /* egwTaskManager.m in Sources */,
+				8FE08A7F12FA9A2F0075117D /* egwGfxContext.m in Sources */,
+				8FE08A8112FA9A2F0075117D /* egwGfxContextAGL.m in Sources */,
+				8FE08A8312FA9A2F0075117D /* egwGfxContextNSGL.m in Sources */,
+				8FE08A8512FA9A2F0075117D /* egwGfxContextEAGLES.m in Sources */,
+				8FE08A8712FA9A2F0075117D /* egwGfxRenderer.m in Sources */,
+				8FE08A8912FA9A2F0075117D /* egwPhyContext.m in Sources */,
+				8FE08A8B12FA9A2F0075117D /* egwPhyContextSW.m in Sources */,
+				8FE08A8D12FA9A2F0075117D /* egwPhyActuator.m in Sources */,
+				8FE08A8F12FA9A2F0075117D /* egwSndContext.m in Sources */,
+				8FE08A9112FA9A2F0075117D /* egwSndContextAL.m in Sources */,
+				8FE08A9312FA9A2F0075117D /* egwSndMixer.m in Sources */,
+				8FE08AB812FA9A2F0075117D /* egwWindow.m in Sources */,
+				8FE08ABA12FA9A2F0075117D /* egwUIDeviceExt.m in Sources */,
+				8FE08ABC12FA9A2F0075117D /* egwUIViewSurface.m in Sources */,
+				8FE08ABE12FA9A2F0075117D /* egwNSOpenGLViewSurface.m in Sources */,
+				8FE08AC012FA9A2F0075117D /* egwTouchDecoder.m in Sources */,
+				8FE08AC212FA9A2F0075117D /* egwMouseDecoder.m in Sources */,
+				8FE08AD212FA9A2F0075117D /* egwData.m in Sources */,
+				8FE08AD412FA9A2F0075117D /* egwArray.m in Sources */,
+				8FE08AD612FA9A2F0075117D /* egwCyclicArray.m in Sources */,
+				8FE08AD812FA9A2F0075117D /* egwSinglyLinkedList.m in Sources */,
+				8FE08ADA12FA9A2F0075117D /* egwDoublyLinkedList.m in Sources */,
+				8FE08ADC12FA9A2F0075117D /* egwBinaryTree.m in Sources */,
+				8FE08ADE12FA9A2F0075117D /* egwAVLTree.m in Sources */,
+				8FE08AE012FA9A2F0075117D /* egwRedBlackTree.m in Sources */,
+				8FE08AF412FA9A2F0075117D /* egwMath.m in Sources */,
+				8FE08AF612FA9A2F0075117D /* egwVector.m in Sources */,
+				8FE08AF812FA9A2F0075117D /* egwMatrix.m in Sources */,
+				8FE08AFA12FA9A2F0075117D /* egwQuaternion.m in Sources */,
+				8FE08B0612FA9A2F0075117D /* egwIntellect.m in Sources */,
+				8FE08B0812FA9A2F0075117D /* egwFiniteStateMachine.m in Sources */,
+				8FE08B0A12FA9A2F0075117D /* egwArtificialNeuralNetwork.m in Sources */,
+				8FE08B1412FA9A2F0075117D /* egwGraphics.m in Sources */,
+				8FE08B1612FA9A2F0075117D /* egwBindingStacks.m in Sources */,
+				8FE08B1812FA9A2F0075117D /* egwBoundings.m in Sources */,
+				8FE08B1A12FA9A2F0075117D /* egwCameras.m in Sources */,
+				8FE08B1C12FA9A2F0075117D /* egwFonts.m in Sources */,
+				8FE08B1E12FA9A2F0075117D /* egwLights.m in Sources */,
+				8FE08B2012FA9A2F0075117D /* egwMaterials.m in Sources */,
+				8FE08B2212FA9A2F0075117D /* egwRenderProxy.m in Sources */,
+				8FE08B2412FA9A2F0075117D /* egwTexture.m in Sources */,
+				8FE08B2612FA9A2F0075117D /* egwSpritedTexture.m in Sources */,
+				8FE08B2812FA9A2F0075117D /* egwStreamedTexture.m in Sources */,
+				8FE08B4212FA9A2F0075117D /* egwGeometry.m in Sources */,
+				8FE08B4412FA9A2F0075117D /* egwBillboard.m in Sources */,
+				8FE08B4612FA9A2F0075117D /* egwMesh.m in Sources */,
+				8FE08B4812FA9A2F0075117D /* egwKeyFramedMesh.m in Sources */,
+				8FE08B4A12FA9A2F0075117D /* egwSkeletalBonedMesh.m in Sources */,
+				8FE08B4C12FA9A2F0075117D /* egwParticleSystem.m in Sources */,
+				8FE08B5C12FA9A2F0075117D /* egwInterface.m in Sources */,
+				8FE08B5E12FA9A2F0075117D /* egwButton.m in Sources */,
+				8FE08B6012FA9A2F0075117D /* egwImage.m in Sources */,
+				8FE08B6212FA9A2F0075117D /* egwSpritedImage.m in Sources */,
+				8FE08B6412FA9A2F0075117D /* egwStreamedImage.m in Sources */,
+				8FE08B6612FA9A2F0075117D /* egwLabel.m in Sources */,
+				8FE08B6812FA9A2F0075117D /* egwScrolledLabel.m in Sources */,
+				8FE08B6A12FA9A2F0075117D /* egwPager.m in Sources */,
+				8FE08B6C12FA9A2F0075117D /* egwSlider.m in Sources */,
+				8FE08B6E12FA9A2F0075117D /* egwToggle.m in Sources */,
+				8FE08B8612FA9A2F0075117D /* egwNetwork.m in Sources */,
+				8FE08B8C12FA9A2F0075117D /* egwObject.m in Sources */,
+				8FE08B8E12FA9A2F0075117D /* egwObjectBranch.m in Sources */,
+				8FE08B9012FA9A2F0075117D /* egwSwitchBranch.m in Sources */,
+				8FE08B9212FA9A2F0075117D /* egwTransformBranch.m in Sources */,
+				8FE08B9412FA9A2F0075117D /* egwDLODBranch.m in Sources */,
+				8FE08BA212FA9A2F0075117D /* egwPhysics.m in Sources */,
+				8FE08BA412FA9A2F0075117D /* egwInterpolators.m in Sources */,
+				8FE08BA612FA9A2F0075117D /* egwSpring.m in Sources */,
+				8FE08BB012FA9A2F0075117D /* egwSound.m in Sources */,
+				8FE08BB212FA9A2F0075117D /* egwPointSound.m in Sources */,
+				8FE08BB412FA9A2F0075117D /* egwStreamedPointSound.m in Sources */,
+				8FE08BBE12FA9A2F0075117D /* egwMisc.m in Sources */,
+				8FE08BC012FA9A2F0075117D /* egwBoxingTypes.m in Sources */,
+				8FE08BC212FA9A2F0075117D /* egwTimer.m in Sources */,
+				8FE08BC412FA9A2F0075117D /* egwActionedTimer.m in Sources */,
+				8FE08BC612FA9A2F0075117D /* egwActionedTimersArray.m in Sources */,
+				8FE08BC812FA9A2F0075117D /* egwStreamer.m in Sources */,
+				8FE08BCA12FA9A2F0075117D /* egwValidater.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		1DEB921F08733DC00010E9CD /* Simulator Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_VERSION = "0.88 B5";
+				PRODUCT_NAME = egw;
+				PUBLIC_HEADERS_FOLDER_PATH = include/geWizES;
+			};
+			name = "Simulator Debug";
+		};
+		1DEB922008733DC00010E9CD /* Device Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_VERSION = "0.88 B5";
+				PRODUCT_NAME = egw;
+				PUBLIC_HEADERS_FOLDER_PATH = include/geWizES;
+			};
+			name = "Device Debug";
+		};
+		1DEB922308733DC00010E9CD /* Simulator Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				COMPRESS_PNG_FILES = NO;
+				CONFIGURATION_BUILD_DIR = build/iphonesimulator;
+				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = NO;
+				GCC_AUTO_VECTORIZATION = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DEBUGGING_SYMBOLS = full;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_ENABLE_OBJC_GC = unsupported;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_MODEL_TUNING = "";
+				GCC_OBJC_CALL_CXX_CDTORS = YES;
+				GCC_ONE_BYTE_BOOL = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					EGW_BUILDMODE_SIMULATOR,
+					EGW_BUILDMODE_DEBUG,
+					EGW_BUILDMODE_MACOSX,
+					EGW_BUILDMODE_IPHONE,
+					DARWIN_NO_CARBON,
+					FT_BUILD_LIBRARY,
+				);
+				GCC_THUMB_SUPPORT = NO;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				PREBINDING = NO;
+				SDKROOT = iphoneos;
+				SEPARATE_STRIP = YES;
+				SKIP_INSTALL = YES;
+				STRIP_INSTALLED_PRODUCT = NO;
+				STRIP_STYLE = all;
+			};
+			name = "Simulator Debug";
+		};
+		1DEB922408733DC00010E9CD /* Device Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COMPRESS_PNG_FILES = NO;
+				CONFIGURATION_BUILD_DIR = build/iphoneos;
+				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = NO;
+				GCC_AUTO_VECTORIZATION = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DEBUGGING_SYMBOLS = full;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_ENABLE_OBJC_GC = unsupported;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_MODEL_TUNING = "";
+				GCC_ONE_BYTE_BOOL = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					EGW_BUILDMODE_DEVICE,
+					EGW_BUILDMODE_DEBUG,
+					EGW_BUILDMODE_MACOSX,
+					EGW_BUILDMODE_IPHONE,
+					DARWIN_NO_CARBON,
+					FT_BUILD_LIBRARY,
+				);
+				GCC_THUMB_SUPPORT = NO;
+				GCC_UNROLL_LOOPS = NO;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LLVM_LTO = NO;
+				PREBINDING = NO;
+				PROVISIONING_PROFILE = "";
+				SDKROOT = iphoneos;
+				SEPARATE_STRIP = YES;
+				SKIP_INSTALL = YES;
+				STRIP_INSTALLED_PRODUCT = NO;
+				STRIP_STYLE = all;
+			};
+			name = "Device Debug";
+		};
+		8FE08BE512FA9ADB0075117D /* Simulator Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "test/egwUnitTest-Info.plist";
+				OTHER_LDFLAGS = (
+					"-lm",
+					"-lxml2",
+					"-lz",
+					"-lpng",
+					"-lvorbisidec",
+					"-lfreetype",
+				);
+				PRODUCT_NAME = egwUnitTestA;
+			};
+			name = "Simulator Debug";
+		};
+		8FE08BE612FA9ADB0075117D /* Device Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "test/egwUnitTest-Info.plist";
+				OTHER_LDFLAGS = (
+					"-lm",
+					"-lxml2",
+					"-lz",
+					"-lpng",
+					"-lvorbisidec",
+					"-lfreetype",
+				);
+				PRODUCT_NAME = egwUnitTestA;
+			};
+			name = "Device Debug";
+		};
+		8FF5797212FF608100B64F7A /* Simulator Fast */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				COMPRESS_PNG_FILES = NO;
+				CONFIGURATION_BUILD_DIR = build/iphonesimulator;
+				COPY_PHASE_STRIP = YES;
+				DEAD_CODE_STRIPPING = YES;
+				GCC_AUTO_VECTORIZATION = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DEBUGGING_SYMBOLS = default;
+				GCC_ENABLE_CPP_EXCEPTIONS = NO;
+				GCC_ENABLE_CPP_RTTI = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_ENABLE_FLOATING_POINT_LIBRARY_CALLS = YES;
+				GCC_ENABLE_OBJC_EXCEPTIONS = NO;
+				GCC_ENABLE_OBJC_GC = unsupported;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_MODEL_TUNING = G5;
+				GCC_OBJC_CALL_CXX_CDTORS = YES;
+				GCC_ONE_BYTE_BOOL = YES;
+				GCC_OPTIMIZATION_LEVEL = s;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					EGW_BUILDMODE_SIMULATOR,
+					EGW_BUILDMODE_FAST,
+					EGW_BUILDMODE_MACOSX,
+					EGW_BUILDMODE_IPHONE,
+					DARWIN_NO_CARBON,
+					FT_BUILD_LIBRARY,
+				);
+				GCC_THUMB_SUPPORT = NO;
+				GCC_UNROLL_LOOPS = YES;
+				GCC_USE_INDIRECT_FUNCTION_CALLS = YES;
+				GCC_USE_REGISTER_FUNCTION_CALLS = NO;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				PREBINDING = NO;
+				SDKROOT = iphoneos;
+				SEPARATE_STRIP = YES;
+				SKIP_INSTALL = YES;
+				STRIP_INSTALLED_PRODUCT = YES;
+				STRIP_STYLE = all;
+			};
+			name = "Simulator Fast";
+		};
+		8FF5797312FF608100B64F7A /* Simulator Fast */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_VERSION = "0.88 B5";
+				PRODUCT_NAME = egw;
+				PUBLIC_HEADERS_FOLDER_PATH = include/geWizES;
+			};
+			name = "Simulator Fast";
+		};
+		8FF5797412FF608100B64F7A /* Simulator Fast */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "test/egwUnitTest-Info.plist";
+				OTHER_LDFLAGS = (
+					"-lm",
+					"-lxml2",
+					"-lz",
+					"-lpng",
+					"-lvorbisidec",
+					"-lfreetype",
+				);
+				PRODUCT_NAME = egwUnitTestA;
+			};
+			name = "Simulator Fast";
+		};
+		8FF5797512FF608500B64F7A /* Device Fast */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COMPRESS_PNG_FILES = NO;
+				CONFIGURATION_BUILD_DIR = build/iphoneos;
+				COPY_PHASE_STRIP = YES;
+				DEAD_CODE_STRIPPING = YES;
+				GCC_AUTO_VECTORIZATION = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DEBUGGING_SYMBOLS = default;
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_ENABLE_FLOATING_POINT_LIBRARY_CALLS = YES;
+				GCC_ENABLE_OBJC_EXCEPTIONS = NO;
+				GCC_ENABLE_OBJC_GC = unsupported;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_MODEL_TUNING = G5;
+				GCC_ONE_BYTE_BOOL = YES;
+				GCC_OPTIMIZATION_LEVEL = s;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					EGW_BUILDMODE_DEVICE,
+					EGW_BUILDMODE_FAST,
+					EGW_BUILDMODE_MACOSX,
+					EGW_BUILDMODE_IPHONE,
+					DARWIN_NO_CARBON,
+					FT_BUILD_LIBRARY,
+				);
+				GCC_THUMB_SUPPORT = NO;
+				GCC_UNROLL_LOOPS = YES;
+				GCC_USE_INDIRECT_FUNCTION_CALLS = YES;
+				GCC_USE_REGISTER_FUNCTION_CALLS = YES;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LLVM_LTO = YES;
+				PREBINDING = NO;
+				PROVISIONING_PROFILE = "";
+				SDKROOT = iphoneos;
+				SEPARATE_STRIP = YES;
+				SKIP_INSTALL = YES;
+				STRIP_INSTALLED_PRODUCT = YES;
+				STRIP_STYLE = all;
+			};
+			name = "Device Fast";
+		};
+		8FF5797612FF608500B64F7A /* Device Fast */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_VERSION = "0.88 B5";
+				PRODUCT_NAME = egw;
+				PUBLIC_HEADERS_FOLDER_PATH = include/geWizES;
+			};
+			name = "Device Fast";
+		};
+		8FF5797712FF608500B64F7A /* Device Fast */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "test/egwUnitTest-Info.plist";
+				OTHER_LDFLAGS = (
+					"-lm",
+					"-lxml2",
+					"-lz",
+					"-lpng",
+					"-lvorbisidec",
+					"-lfreetype",
+				);
+				PRODUCT_NAME = egwUnitTestA;
+			};
+			name = "Device Fast";
+		};
+		8FF5797812FF608800B64F7A /* Device Fast (armv7 only) */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_UNIVERSAL_IPHONE_OS)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COMPRESS_PNG_FILES = NO;
+				CONFIGURATION_BUILD_DIR = build/iphoneos;
+				COPY_PHASE_STRIP = YES;
+				DEAD_CODE_STRIPPING = YES;
+				GCC_AUTO_VECTORIZATION = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DEBUGGING_SYMBOLS = default;
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_ENABLE_FLOATING_POINT_LIBRARY_CALLS = YES;
+				GCC_ENABLE_OBJC_EXCEPTIONS = NO;
+				GCC_ENABLE_OBJC_GC = unsupported;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_MODEL_TUNING = G5;
+				GCC_ONE_BYTE_BOOL = YES;
+				GCC_OPTIMIZATION_LEVEL = s;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					EGW_BUILDMODE_DEVICE,
+					EGW_BUILDMODE_FAST,
+					EGW_BUILDMODE_MACOSX,
+					EGW_BUILDMODE_IPHONE,
+					DARWIN_NO_CARBON,
+					FT_BUILD_LIBRARY,
+				);
+				GCC_THUMB_SUPPORT = NO;
+				GCC_UNROLL_LOOPS = YES;
+				GCC_USE_INDIRECT_FUNCTION_CALLS = YES;
+				GCC_USE_REGISTER_FUNCTION_CALLS = YES;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LLVM_LTO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PREBINDING = NO;
+				PROVISIONING_PROFILE = "";
+				SDKROOT = iphoneos;
+				SEPARATE_STRIP = YES;
+				SKIP_INSTALL = YES;
+				STRIP_INSTALLED_PRODUCT = YES;
+				STRIP_STYLE = all;
+				VALID_ARCHS = armv7;
+			};
+			name = "Device Fast (armv7 only)";
+		};
+		8FF5797912FF608800B64F7A /* Device Fast (armv7 only) */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_VERSION = "0.88 B5";
+				PRODUCT_NAME = egw;
+				PUBLIC_HEADERS_FOLDER_PATH = include/geWizES;
+			};
+			name = "Device Fast (armv7 only)";
+		};
+		8FF5797A12FF608800B64F7A /* Device Fast (armv7 only) */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "test/egwUnitTest-Info.plist";
+				OTHER_LDFLAGS = (
+					"-lm",
+					"-lxml2",
+					"-lz",
+					"-lpng",
+					"-lvorbisidec",
+					"-lfreetype",
+				);
+				PRODUCT_NAME = egwUnitTestA;
+			};
+			name = "Device Fast (armv7 only)";
+		};
+		8FF5797B12FF608B00B64F7A /* Desktop Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				CONFIGURATION_BUILD_DIR = build/desktop;
+				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = NO;
+				GCC_AUTO_VECTORIZATION = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DEBUGGING_SYMBOLS = full;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_ENABLE_OBJC_GC = unsupported;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_MODEL_TUNING = "";
+				GCC_ONE_BYTE_BOOL = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					EGW_BUILDMODE_DESKTOP,
+					EGW_BUILDMODE_DEBUG,
+					EGW_BUILDMODE_MACOSX,
+					EGW_BUILDMODE_COCOA,
+					DARWIN_NO_CARBON,
+					FT_BUILD_LIBRARY,
+				);
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				PREBINDING = NO;
+				PROVISIONING_PROFILE = "";
+				SDKROOT = macosx;
+				SEPARATE_STRIP = YES;
+				SKIP_INSTALL = YES;
+				STRIP_INSTALLED_PRODUCT = NO;
+				STRIP_STYLE = all;
+			};
+			name = "Desktop Debug";
+		};
+		8FF5797C12FF608B00B64F7A /* Desktop Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_VERSION = "0.88 B5";
+				PRODUCT_NAME = egw;
+				PUBLIC_HEADERS_FOLDER_PATH = include/geWizES;
+			};
+			name = "Desktop Debug";
+		};
+		8FF5797D12FF608B00B64F7A /* Desktop Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "test/egwUnitTest-Info.plist";
+				OTHER_LDFLAGS = (
+					"-lm",
+					"-lxml2",
+					"-lz",
+					"-lpng",
+					"-lvorbisidec",
+					"-lfreetype",
+				);
+				PRODUCT_NAME = egwUnitTestA;
+			};
+			name = "Desktop Debug";
+		};
+		8FF5797E12FF608E00B64F7A /* Desktop Fast */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				CONFIGURATION_BUILD_DIR = build/desktop;
+				COPY_PHASE_STRIP = YES;
+				DEAD_CODE_STRIPPING = NO;
+				GCC_AUTO_VECTORIZATION = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DEBUGGING_SYMBOLS = default;
+				GCC_ENABLE_CPP_EXCEPTIONS = NO;
+				GCC_ENABLE_CPP_RTTI = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_ENABLE_FLOATING_POINT_LIBRARY_CALLS = YES;
+				GCC_ENABLE_OBJC_EXCEPTIONS = NO;
+				GCC_ENABLE_OBJC_GC = unsupported;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_MODEL_TUNING = "";
+				GCC_ONE_BYTE_BOOL = YES;
+				GCC_OPTIMIZATION_LEVEL = s;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					EGW_BUILDMODE_DESKTOP,
+					EGW_BUILDMODE_FAST,
+					EGW_BUILDMODE_MACOSX,
+					EGW_BUILDMODE_COCOA,
+					DARWIN_NO_CARBON,
+					FT_BUILD_LIBRARY,
+				);
+				GCC_USE_INDIRECT_FUNCTION_CALLS = YES;
+				GCC_USE_REGISTER_FUNCTION_CALLS = NO;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				PREBINDING = NO;
+				PROVISIONING_PROFILE = "";
+				SDKROOT = macosx;
+				SEPARATE_STRIP = YES;
+				SKIP_INSTALL = YES;
+				STRIP_INSTALLED_PRODUCT = YES;
+				STRIP_STYLE = all;
+			};
+			name = "Desktop Fast";
+		};
+		8FF5797F12FF608E00B64F7A /* Desktop Fast */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_VERSION = "0.88 B5";
+				PRODUCT_NAME = egw;
+				PUBLIC_HEADERS_FOLDER_PATH = include/geWizES;
+			};
+			name = "Desktop Fast";
+		};
+		8FF5798012FF608E00B64F7A /* Desktop Fast */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "test/egwUnitTest-Info.plist";
+				OTHER_LDFLAGS = (
+					"-lm",
+					"-lxml2",
+					"-lz",
+					"-lpng",
+					"-lvorbisidec",
+					"-lfreetype",
+				);
+				PRODUCT_NAME = egwUnitTestA;
+			};
+			name = "Desktop Fast";
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1DEB921E08733DC00010E9CD /* Build configuration list for PBXNativeTarget "geWizES" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8FF5797C12FF608B00B64F7A /* Desktop Debug */,
+				8FF5797F12FF608E00B64F7A /* Desktop Fast */,
+				1DEB921F08733DC00010E9CD /* Simulator Debug */,
+				8FF5797312FF608100B64F7A /* Simulator Fast */,
+				1DEB922008733DC00010E9CD /* Device Debug */,
+				8FF5797612FF608500B64F7A /* Device Fast */,
+				8FF5797912FF608800B64F7A /* Device Fast (armv7 only) */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = "Device Debug";
+		};
+		1DEB922208733DC00010E9CD /* Build configuration list for PBXProject "geWizES" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8FF5797B12FF608B00B64F7A /* Desktop Debug */,
+				8FF5797E12FF608E00B64F7A /* Desktop Fast */,
+				1DEB922308733DC00010E9CD /* Simulator Debug */,
+				8FF5797212FF608100B64F7A /* Simulator Fast */,
+				1DEB922408733DC00010E9CD /* Device Debug */,
+				8FF5797512FF608500B64F7A /* Device Fast */,
+				8FF5797812FF608800B64F7A /* Device Fast (armv7 only) */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = "Device Debug";
+		};
+		8FE08BE712FA9ADC0075117D /* Build configuration list for PBXNativeTarget "egwUnitTestA" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8FF5797D12FF608B00B64F7A /* Desktop Debug */,
+				8FF5798012FF608E00B64F7A /* Desktop Fast */,
+				8FE08BE512FA9ADB0075117D /* Simulator Debug */,
+				8FF5797412FF608100B64F7A /* Simulator Fast */,
+				8FE08BE612FA9ADB0075117D /* Device Debug */,
+				8FF5797712FF608500B64F7A /* Device Fast */,
+				8FF5797A12FF608800B64F7A /* Device Fast (armv7 only) */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = "Device Debug";
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 0867D690FE84028FC02AAC07 /* Project object */;
+}

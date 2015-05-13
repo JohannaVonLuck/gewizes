@@ -1,0 +1,7 @@
+.svn
+ignore.txt
+*.mode1v3
+*.pbxuser
+build
+.DS_Store
+

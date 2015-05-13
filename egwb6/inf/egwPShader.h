@@ -1,0 +1,107 @@
+// Copyright (C) 2008-2011 JWmicro. All rights reserved.
+// Redistribution and use in source and binary forms, with or without
+// modification, are permitted provided that the following conditions are met:
+//  * Redistributions of source code must retain the above copyright
+//    notice, this list of conditions and the following disclaimer.
+//  * Redistributions in binary form must reproduce the above copyright
+//    notice, this list of conditions and the following disclaimer in the
+//    documentation and/or other materials provided with the distribution.
+//  * Neither the name of the JWmicro nor the names of its contributors may
+//    be used to endorse or promote products derived from this software
+//    without specific prior written permission.
+// THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+// AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+// IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+// ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER BE LIABLE FOR ANY
+// DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+// (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+// LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
+// ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+// (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+// SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+/// @defgroup geWizES_inf_pshader egwPShader
+/// @ingroup geWizES_inf
+/// Shader Protocol.
+/// @{
+
+/// @file egwPShader.h
+/// Shader Protocol.
+
+#import "egwTypes.h"
+#import "../inf/egwPCoreObject.h"
+#import "../math/egwMathTypes.h"
+#import "../misc/egwMiscTypes.h"
+
+
+/// Shader Jump Table.
+/// Contains function pointers to class methods for faster invocation in low tier sections.
+typedef struct {
+    id (*fpRetain)(id, SEL);                    ///< FP to retain.
+    void (*fpRelease)(id, SEL);                 ///< FP to release.
+    BOOL (*fpSBind)(id, SEL, EGWuint, EGWuint); ///< FP to bindForShadingStage:withFlags:.
+    BOOL (*fpSUnbind)(id, SEL, EGWuint);        ///< FP to unbindShadingWithFlags:.
+    id<NSObject> (*fpSBase)(id, SEL);           ///< FP to shaderBase.
+    const EGWuint* (*fpSID)(id, SEL);           ///< FP to shaderID.
+    egwValidater* (*fpSSync)(id, SEL);          ///< FP to shadingSync.
+    EGWuint (*fpSLBStage)(id, SEL);             ///< FP to lastShadingBindingStage.
+    BOOL (*fpOpaque)(id, SEL);                  ///< FP to isOpaque.
+} egwShaderJumpTable;
+
+
+/// Shader Protocol.
+/// Defines interactions for shaders.
+@protocol egwPShader <egwPCoreObject>
+
+/// Bind Shading Method.
+/// Binds shader for provided shading stage with provided @a flags.
+/// @note Do not call this method directly - this method is called automatically by the system.
+/// @param [in] shdrStage Shading stage number.
+/// @param [in] flags Binding flags.
+/// @return YES if bind was successful, otherwise NO.
+- (BOOL)bindForShadingStage:(EGWuint)shdrStage withFlags:(EGWuint)flags;
+
+/// Unbind Shading Method.
+/// Unbinds shader from its last bound stage with provided @a flags.
+/// @note Do not call this method directly - this method is called automatically by the system.
+/// @param [in] flags Binding flags.
+/// @return YES if unbind was successful, otherwise NO.
+- (BOOL)unbindShadingWithFlags:(EGWuint)flags;
+
+
+/// Shader Jump Table.
+/// Returns the shader's jump table for subsequent low tier calls.
+/// @return Shader jump table.
+- (const egwShaderJumpTable*)shaderJumpTable;
+
+/// Shading Base Object Accessor.
+/// Returns the corresponding base instance object.
+/// @note This is used for determination of EGW_BNDOBJ_BINDFLG_SAMELASTBASE reply flag.
+/// @return Base instance object, otherwise self (if unused).
+- (id<NSObject>)shaderBase;
+
+/// Shader ID Accessor.
+/// Returns the base context referenced shader identifier.
+/// @note Ownership transfer is not allowed.
+/// @return Shader identifier.
+- (const EGWuint*)shaderID;
+
+/// Shading Syncronization Validater Accessor.
+/// Returns the validater that manages component synchronization with an API interface.
+/// @return Shading validater, otherwise nil (if unused).
+- (egwValidater*)shadingSync;
+
+
+/// IsBoundForShading Poller.
+/// Polls the object to determine status.
+/// @return YES if shader is currently bound, otherwise NO.
+- (BOOL)isBoundForShading;
+
+/// IsOpaque Poller.
+/// Polls the object to determine status.
+/// @return YES if shader is considered opaque, otherwise NO.
+- (BOOL)isOpaque;
+
+@end
+
+/// @}

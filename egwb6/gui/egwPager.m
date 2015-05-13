@@ -1,0 +1,989 @@
+// Copyright (C) 2008-2011 JWmicro. All rights reserved.
+// Redistribution and use in source and binary forms, with or without
+// modification, are permitted provided that the following conditions are met:
+//  * Redistributions of source code must retain the above copyright
+//    notice, this list of conditions and the following disclaimer.
+//  * Redistributions in binary form must reproduce the above copyright
+//    notice, this list of conditions and the following disclaimer in the
+//    documentation and/or other materials provided with the distribution.
+//  * Neither the name of the JWmicro nor the names of its contributors may
+//    be used to endorse or promote products derived from this software
+//    without specific prior written permission.
+// THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+// AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+// IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+// ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER BE LIABLE FOR ANY
+// DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+// (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+// LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
+// ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+// (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+// SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+/// @file egwPager.m
+/// @ingroup geWizES_gui_pager
+/// Pager Widget Implementation.
+
+#import "egwPager.h"
+#import "../sys/egwSysTypes.h"
+#import "../sys/egwAssetManager.h"
+#import "../sys/egwGfxContext.h"
+#import "../sys/egwGfxContextNSGL.h"  // NOTE: Below code has a dependence on GL.
+#import "../sys/egwGfxContextEAGLES.h"
+#import "../sys/egwGfxRenderer.h"
+#import "../math/egwMath.h"
+#import "../math/egwVector.h"
+#import "../math/egwMatrix.h"
+#import "../gfx/egwBoundings.h"
+#import "../gfx/egwBindingStacks.h"
+#import "../gfx/egwGraphics.h"
+#import "../geo/egwGeometry.h"
+#import "../gui/egwInterface.h"
+#import "../gui/egwSpritedImage.h"
+#import "../obj/egwObjectBranch.h"
+#import "../phy/egwInterpolators.h"
+#import "../misc/egwValidater.h"
+
+
+// !!!: ***** egwPager *****
+
+@implementation egwPager
+
+static egwTextureJumpTable _egwTJT = { NULL };
+static egwRenderableJumpTable _egwRJT = { NULL };
+
++ (id)allocWithZone:(NSZone*)zone {
+    NSObject* inst = (NSObject*)[super allocWithZone:zone];
+    
+    if(!_egwTJT.fpRetain && [inst isMemberOfClass:[egwPager class]]) {
+        _egwTJT.fpRetain = (id(*)(id, SEL))[inst methodForSelector:@selector(retain)];
+        _egwTJT.fpRelease = (void(*)(id, SEL))[inst methodForSelector:@selector(release)];
+        _egwTJT.fpTBind = (BOOL(*)(id, SEL, EGWuint, EGWuint))[inst methodForSelector:@selector(bindForTexturingStage:withFlags:)];
+        _egwTJT.fpTUnbind = (BOOL(*)(id, SEL, EGWuint))[inst methodForSelector:@selector(unbindTexturingWithFlags:)];
+        _egwTJT.fpTBase = (id<NSObject>(*)(id, SEL))[inst methodForSelector:@selector(textureBase)];
+        _egwTJT.fpTID = (const EGWuint*(*)(id, SEL))[inst methodForSelector:@selector(textureID)];
+        _egwTJT.fpTSync = (egwValidater*(*)(id, SEL))[inst methodForSelector:@selector(texturingSync)];
+        _egwTJT.fpTLBStage = (EGWuint(*)(id, SEL))[inst methodForSelector:@selector(lastTexturingBindingStage)];
+        _egwTJT.fpOpaque = (BOOL(*)(id, SEL))[inst methodForSelector:@selector(isOpaque)];
+        _egwRJT.fpRetain = (id(*)(id, SEL))[inst methodForSelector:@selector(retain)];
+        _egwRJT.fpRelease = (void(*)(id, SEL))[inst methodForSelector:@selector(release)];
+        _egwRJT.fpRender = (void(*)(id, SEL, EGWuint))[inst methodForSelector:@selector(renderWithFlags:)];
+        _egwRJT.fpRBase = (id<NSObject>(*)(id, SEL))[inst methodForSelector:@selector(renderingBase)];
+        _egwRJT.fpRFlags = (EGWuint32(*)(id, SEL))[inst methodForSelector:@selector(renderingFlags)];
+        _egwRJT.fpRFrame = (EGWuint16(*)(id, SEL))[inst methodForSelector:@selector(renderingFrame)];
+        _egwRJT.fpRSource = (const egwVector4f*(*)(id, SEL))[inst methodForSelector:@selector(renderingSource)];
+        _egwRJT.fpRSync = (egwValidater*(*)(id, SEL))[inst methodForSelector:@selector(renderingSync)];
+        _egwRJT.fpLStack = (egwLightStack*(*)(id, SEL))[inst methodForSelector:@selector(lightStack)];
+        _egwRJT.fpMStack = (egwMaterialStack*(*)(id, SEL))[inst methodForSelector:@selector(materialStack)];
+        _egwRJT.fpSStack = (egwShaderStack*(*)(id, SEL))[inst methodForSelector:@selector(shaderStack)];
+        _egwRJT.fpTStack = (egwTextureStack*(*)(id, SEL))[inst methodForSelector:@selector(textureStack)];
+        _egwRJT.fpSetRFrame = (void(*)(id, SEL, EGWuint16))[inst methodForSelector:@selector(setRenderingFrame:)];
+        _egwRJT.fpOpaque = (BOOL(*)(id, SEL))[inst methodForSelector:@selector(isOpaque)];
+        _egwRJT.fpRendering = (BOOL(*)(id, SEL))[inst methodForSelector:@selector(isRendering)];
+    }
+    
+    return (id)inst;
+}
+
+- (id)init {
+    if([self isMemberOfClass:[egwPager class]]) { [self release]; return (self = nil); }
+    return (self = [super init]);
+}
+
+- (id)initWithIdentity:(NSString*)assetIdent pagerSurface:(egwSurface*)surface pagerWidth:(EGWuint16)width pagerHeight:(EGWuint16)height totalPages:(EGWuint)pages instanceGeometryStorage:(EGWuint)instStorage baseGeometryStorage:(EGWuint)baseStorage textureEnvironment:(EGWuint)environment texturingTransforms:(EGWuint)transforms texturingFilter:(EGWuint)filter lightStack:(egwLightStack*)lghtStack materialStack:(egwMaterialStack*)mtrlStack shaderStack:(egwShaderStack*)shdrStack {
+    if(!(surface && [super init])) { [self release]; return (self = nil); }
+    
+    // Assign appropriate width and height (or auto-assign)
+    // NOTE: This auto-assignment won't be accurate in the case of pre-upscaled-to-pow2 images. No fix possible. -jw
+    {   register EGWuint16 autoWidth = surface->size.span.width >> 1;
+        register EGWuint16 autoHeight = surface->size.span.height;
+        
+        if(!width || width > autoWidth) width = autoWidth;
+        if(!height || height > autoHeight) height = autoHeight;
+    }
+    
+    // Build framing
+    {   egwSurfaceFraming sFrame;
+        
+        sFrame.fCount = 2;
+        sFrame.fOffset = 0;
+        sFrame.hFrames = 2;
+        sFrame.vFrames = 1;
+        // These two are auto readjusted if resize occurs during load up
+        sFrame.htSizer = (EGWdouble)((EGWuint)width * (EGWuint)sFrame.hFrames) / (EGWdouble)surface->size.span.width / (EGWdouble)sFrame.hFrames;
+        sFrame.vtSizer = (EGWdouble)((EGWuint)height * (EGWuint)sFrame.vFrames) / (EGWdouble)surface->size.span.height / (EGWdouble)sFrame.vFrames;
+        
+        if(!(_base = [[egwSpritedImageBase alloc] initWithIdentity:assetIdent spriteSurfaces:surface surfaceFramings:&sFrame surfaceCount:1 spriteWidth:width spriteHeight:height geometryStorage:baseStorage texturingTransforms:transforms texturingFilter:filter])) { [self release]; return (self = nil); }
+    }
+    if(!(_ident = [[NSString alloc] initWithFormat:@"%@_default", assetIdent])) { [self release]; return (self = nil); }
+    
+    _rFlags = EGW_GFXOBJ_RNDRFLG_DFLT;
+    _rFrame = EGW_FRAME_ALWAYSPASS;
+    if(!(_rSync = [[egwValidater alloc] initWithOwner:self coreObjectTypes:[self coreObjectTypes]])) { [self release]; return (self = nil); }
+    if(!(_lStack = (lghtStack ? [lghtStack retain] : [[egwLightStack alloc] init]))) { [self release]; return (self = nil); }
+    if(!(_mStack = (mtrlStack ? [mtrlStack retain] : [[egwSIEngine defaultMaterialStack] retain]))) { [self release]; return (self = nil); }
+    _sStack = (shdrStack ? [shdrStack retain] : nil);
+    
+    _isEnabled = _isVisible = YES;
+    _actvPage = 0;
+    _totalPages = (EGWuint)egwMax2i(1, (EGWint)pages);
+    memcpy((void*)&_pSize, (const void*)[_base widgetSize], sizeof(egwSize2i));
+    
+    _geoStrg = instStorage;
+    if(!(_gbSync = [[egwValidater alloc] initWithOwner:self validation:(_geoStrg & EGW_GEOMETRY_STRG_EXVBO ? NO : YES) coreObjectTypes:EGW_COREOBJ_TYPE_INTERNAL])) { [self release]; return (self = nil); }
+    
+    _lastTBind = NSNotFound;
+    _texEnv = environment;
+    if(!(_tSync = [[egwValidater alloc] initWithOwner:self coreObjectTypes:[self coreObjectTypes]])) { [self release]; return (self = nil); }
+    
+    egwMatCopy44f(&egwSIMatIdentity44f, &_lcsTrans);
+    egwMatCopy44f(&egwSIMatIdentity44f, &_wcsTrans);
+    if(!(_wcsRBVol = [(NSObject*)[_base renderingBounding] copy])) { [self release]; return (self = nil); }
+    {   egwMatrix44f twcsTrans;
+        
+        // Do scaling to account for totalPages size
+        _pSize.span.width = [_base widgetSize]->span.width * (EGWsingle)_totalPages;
+        egwMatScale44fs(NULL, (EGWsingle)_totalPages, 1.0f, 1.0f, &twcsTrans);
+        egwMatMultiply44f(&_lcsTrans, &twcsTrans, &twcsTrans);
+        egwMatMultiply44f(&_wcsTrans, &twcsTrans, &twcsTrans);
+        
+        [_wcsRBVol orientateByTransform:&twcsTrans fromVolume:[_base renderingBounding]];
+    }
+    
+    _sFrames = [_base widgetFramings];
+    _texIDs = [_base textureIDs];
+    _mcsTrans = [_base mcsTransform];
+    _pMesh = [_base widgetMesh];
+    _baseGeoAID = [_base geometryArraysID];
+    
+    egwWdgtSFrmtTexOffset(&_sFrames[0], 1, &_isMesh.aptCoords[0]);
+    egwWdgtSFrmtTexOffset(&_sFrames[0], 0, &_isMesh.iptCoords[0]);
+    
+    if((_geoStrg & EGW_GEOMETRY_STRG_EXVBO) && !([egwAIGfxCntxAGL isActive] && [self performSubTaskForComponent:egwAIGfxCntxAGL forSync:_gbSync])) // Attempt to load, if context active on this thread
+        [egwAIGfxCntx addSubTask:self forSync:_gbSync]; // Delayed load for context sub task to handle
+    
+    return self;
+}
+
+- (id)initBlankWithIdentity:(NSString*)assetIdent surfaceFormat:(EGWuint32)format pagerWidth:(EGWuint16)width pagerHeight:(EGWuint16)height totalPages:(EGWuint)pages instanceGeometryStorage:(EGWuint)instStorage baseGeometryStorage:(EGWuint)baseStorage textureEnvironment:(EGWuint)environment texturingTransforms:(EGWuint)transforms texturingFilter:(EGWuint)filter lightStack:(egwLightStack*)lghtStack materialStack:(egwMaterialStack*)mtrlStack shaderStack:(egwShaderStack*)shdrStack {
+    if(!(width && height && (self = [super init]))) { [self release]; return (self = nil); }
+    
+    if(!(_base = [[egwSpritedImageBase alloc] initBlankWithIdentity:assetIdent surfaceFormat:format spriteWidth:width spriteHeight:height frameCount:2 geometryStorage:baseStorage texturingTransforms:transforms texturingFilter:filter])) { [self release]; return (self = nil); }
+    if([_base surfaceCount] != 1) { [self release]; return (self = nil); } // Enforce singular surface for internal logic controlif(!(_ident = [[NSString alloc] initWithFormat:@"%@_default", assetIdent])) { [self release]; return (self = nil); }
+    
+    _rFlags = EGW_GFXOBJ_RNDRFLG_DFLT;
+    _rFrame = EGW_FRAME_ALWAYSPASS;
+    if(!(_rSync = [[egwValidater alloc] initWithOwner:self coreObjectTypes:[self coreObjectTypes]])) { [self release]; return (self = nil); }
+    if(!(_lStack = (lghtStack ? [lghtStack retain] : [[egwLightStack alloc] init]))) { [self release]; return (self = nil); }
+    if(!(_mStack = (mtrlStack ? [mtrlStack retain] : [[egwSIEngine defaultMaterialStack] retain]))) { [self release]; return (self = nil); }
+    _sStack = (shdrStack ? [shdrStack retain] : nil);
+    
+    _isEnabled = _isVisible = YES;
+    _actvPage = 0;
+    _totalPages = egwMax2i(1, (EGWint)pages);
+    memcpy((void*)&_pSize, (const void*)[_base widgetSize], sizeof(egwSize2i));
+    
+    _geoStrg = instStorage;
+    if(!(_gbSync = [[egwValidater alloc] initWithOwner:self validation:(_geoStrg & EGW_GEOMETRY_STRG_EXVBO ? NO : YES) coreObjectTypes:EGW_COREOBJ_TYPE_INTERNAL])) { [self release]; return (self = nil); }
+    
+    _lastTBind = NSNotFound;
+    _texEnv = environment;
+    if(!(_tSync = [[egwValidater alloc] initWithOwner:self coreObjectTypes:[self coreObjectTypes]])) { [self release]; return (self = nil); }
+    
+    egwMatCopy44f(&egwSIMatIdentity44f, &_lcsTrans);
+    egwMatCopy44f(&egwSIMatIdentity44f, &_wcsTrans);
+    if(!(_wcsRBVol = [(NSObject*)[_base renderingBounding] copy])) { [self release]; return (self = nil); }
+    {   egwMatrix44f twcsTrans;
+        
+        // Do scaling to account for totalPages size
+        _pSize.span.width = [_base widgetSize]->span.width * (EGWsingle)_totalPages;
+        egwMatScale44fs(NULL, (EGWsingle)_totalPages, 1.0f, 1.0f, &twcsTrans);
+        egwMatMultiply44f(&_lcsTrans, &twcsTrans, &twcsTrans);
+        egwMatMultiply44f(&_wcsTrans, &twcsTrans, &twcsTrans);
+        
+        [_wcsRBVol orientateByTransform:&twcsTrans fromVolume:[_base renderingBounding]];
+    }
+    
+    _sFrames = [_base widgetFramings];
+    _texIDs = [_base textureIDs];
+    _mcsTrans = [_base mcsTransform];
+    _pMesh = [_base widgetMesh];
+    _baseGeoAID = [_base geometryArraysID];
+    
+    egwWdgtSFrmtTexOffset(&_sFrames[0], 1, &_isMesh.aptCoords[0]);
+    egwWdgtSFrmtTexOffset(&_sFrames[0], 0, &_isMesh.iptCoords[0]);
+    
+    if((_geoStrg & EGW_GEOMETRY_STRG_EXVBO) && !([egwAIGfxCntxAGL isActive] && [self performSubTaskForComponent:egwAIGfxCntxAGL forSync:_gbSync])) // Attempt to load, if context active on this thread
+        [egwAIGfxCntx addSubTask:self forSync:_gbSync]; // Delayed load for context sub task to handle
+    
+    // NOTE: Delayed load will occur on buffer sync invalidation. -jw
+    
+    return self;
+}
+
+- (id)initLoadedFromResourceFile:(NSString*)resourceFile withIdentity:(NSString*)assetIdent pagerWidth:(EGWuint16)width pagerHeight:(EGWuint16)height totalPages:(EGWuint)pages instanceGeometryStorage:(EGWuint)instStorage baseGeometryStorage:(EGWuint)baseStorage textureEnvironment:(EGWuint)environment texturingTransforms:(EGWuint)transforms texturingFilter:(EGWuint)filter lightStack:(egwLightStack*)lghtStack materialStack:(egwMaterialStack*)mtrlStack shaderStack:(egwShaderStack*)shdrStack {
+    egwSurface surface; memset((void*)&surface, 0, sizeof(egwSurface));
+    
+    if(!([egwSIAsstMngr loadSurface:&surface fromFile:resourceFile withTransforms:(transforms & ~EGW_SURFACE_TRFM_ENSRPOW2)])) {
+        if(surface.data) egwSrfcFree(&surface);
+        [self release]; return (self = nil);
+    }
+    
+    if(!(self = [self initWithIdentity:assetIdent pagerSurface:&surface pagerWidth:width pagerHeight:height totalPages:pages instanceGeometryStorage:instStorage baseGeometryStorage:baseStorage textureEnvironment:environment texturingTransforms:(transforms | EGW_SURFACE_TRFM_ENSRPOW2) texturingFilter:filter lightStack:lghtStack materialStack:mtrlStack shaderStack:shdrStack])) {
+        if(surface.data) egwSrfcFree(&surface);
+        return nil;
+    }
+    
+    return self;
+}
+
+- (id)initCopyOf:(id<egwPWidget>)widget withIdentity:(NSString*)assetIdent {
+    if(!([widget isKindOfClass:[self class]]) || !(self = [super init])) { [self release]; return (self = nil); }
+    
+    if(!(_base = (egwSpritedImageBase*)[[(egwPager*)widget assetBase] retain])) { [self release]; return (self = nil); }
+    if(!(_ident = [assetIdent retain])) { [self release]; return (self = nil); }
+    
+    _rFlags = [(egwPager*)widget renderingFlags];
+    _rFrame = EGW_FRAME_ALWAYSPASS;
+    if(!(_rSync = [[egwValidater alloc] initWithOwner:self coreObjectTypes:[self coreObjectTypes]])) { [self release]; return (self = nil); }
+    if(!(_lStack = [[widget lightStack] retain])) { [self release]; return (self = nil); }
+    if(!(_mStack = [[widget materialStack] retain])) { [self release]; return (self = nil); }
+    _sStack = [[widget shaderStack] retain];
+    
+    _isEnabled = [widget isEnabled];
+    _isVisible = [widget isVisible];
+    _actvPage = [(egwPager*)widget activePage];
+    _totalPages = [(egwPager*)widget totalPages];
+    memcpy((void*)&_pSize, (const void*)[_base widgetSize], sizeof(egwSize2i));
+    
+    _geoStrg = [(egwPager*)widget geometryStorage];
+    if(!(_gbSync = [[egwValidater alloc] initWithOwner:self validation:(_geoStrg & EGW_GEOMETRY_STRG_EXVBO ? NO : YES) coreObjectTypes:EGW_COREOBJ_TYPE_INTERNAL])) { [self release]; return (self = nil); }
+    
+    _lastTBind = NSNotFound;
+    _texEnv = [widget textureEnvironment];
+    if(!(_tSync = [[egwValidater alloc] initWithOwner:self coreObjectTypes:[self coreObjectTypes]])) { [self release]; return (self = nil); }
+    
+    egwMatCopy44f([(egwPager*)widget wcsTransform], &_wcsTrans);
+    egwMatCopy44f([(egwPager*)widget lcsTransform], &_lcsTrans);
+    if(!(_wcsRBVol = [(NSObject*)[(egwPager*)widget renderingBounding] copy])) { [self release]; return (self = nil); }
+    {   egwMatrix44f twcsTrans;
+        
+        // Do scaling to account for totalPages size
+        _pSize.span.width = [_base widgetSize]->span.width * (EGWsingle)_totalPages;
+        egwMatScale44fs(NULL, (EGWsingle)_totalPages, 1.0f, 1.0f, &twcsTrans);
+        egwMatMultiply44f(&_lcsTrans, &twcsTrans, &twcsTrans);
+        egwMatMultiply44f(&_wcsTrans, &twcsTrans, &twcsTrans);
+        
+        [_wcsRBVol orientateByTransform:&twcsTrans fromVolume:[_base renderingBounding]];
+    }
+    if([(id<egwPOrientated>)widget offsetDriver] && ![self trySetOffsetDriver:[(id<egwPOrientated>)widget offsetDriver]]) { [self release]; return (self = nil); }
+    if([(id<egwPOrientated>)widget orientateDriver] && ![self trySetOrientateDriver:[(id<egwPOrientated>)widget orientateDriver]]) { [self release]; return (self = nil); }
+    
+    _sFrames = [_base widgetFramings];
+    _texIDs = [_base textureIDs];
+    _mcsTrans = [_base mcsTransform];
+    _pMesh = [_base widgetMesh];
+    _baseGeoAID = [_base geometryArraysID];
+    
+    egwWdgtSFrmtTexOffset(&_sFrames[0], 1, &_isMesh.aptCoords[0]);
+    egwWdgtSFrmtTexOffset(&_sFrames[0], 0, &_isMesh.iptCoords[0]);
+    
+    if((_geoStrg & EGW_GEOMETRY_STRG_EXVBO) && !([egwAIGfxCntxAGL isActive] && [self performSubTaskForComponent:egwAIGfxCntxAGL forSync:_gbSync])) // Attempt to load, if context active on this thread
+        [egwAIGfxCntx addSubTask:self forSync:_gbSync]; // Delayed load for context sub task to handle
+    
+    return self;
+}
+
+- (id)copyWithZone:(NSZone*)zone {
+    egwPager* copy = nil;
+    NSString* copyIdent = nil;
+    
+    if([_ident hasSuffix:@"_default"])
+        copyIdent = [[NSString alloc] initWithFormat:@"%@_%d", [_base identity], [_base nextInstanceIndex]];
+    else copyIdent = [[NSString alloc] initWithFormat:@"copy_%@", _ident];
+    
+    if(!(copy = [[egwPager allocWithZone:zone] initCopyOf:self
+                                             withIdentity:copyIdent])) {
+        NSLog(@"egwPager: copyWithZone: Failure initializing new pager from instance asset '%@' (%p). Failure creating copy.", _ident, self);
+        [copyIdent release]; copyIdent = nil;
+        return nil;
+    } else { [copyIdent release]; copyIdent = nil; }
+    
+    return copy;
+}
+
+- (void)dealloc {
+    if(_isTBound) [self unbindTexturingWithFlags:EGW_BNDOBJ_BINDFLG_DFLT];
+    if(_geoAID)
+        _geoAID = [egwAIGfxCntxAGL returnUsedBufferID:_geoAID];
+    
+    [_lStack release]; _lStack = nil;
+    [_mStack release]; _mStack = nil;
+    [_sStack release]; _sStack = nil;
+    [_rSync release]; _rSync = nil;
+    
+    [_wcsRBVol release]; _wcsRBVol = nil;
+    
+    if(_lcsIpo) { [_lcsIpo removeTargetWithObject:self]; [_lcsIpo release]; _lcsIpo = nil; }
+    if(_wcsIpo) { [_wcsIpo removeTargetWithObject:self]; [_wcsIpo release]; _wcsIpo = nil; }
+    
+    _sFrames = NULL;
+    _texIDs = NULL;
+    _mcsTrans = NULL;
+    _pMesh = NULL;
+    _baseGeoAID = NULL;
+    
+    [_tSync release]; _tSync = nil;
+    
+    [_gbSync release]; _gbSync = nil;
+    
+    [_delegate release]; _delegate = nil;
+    if(_parent) [self setParent:nil];
+    [_ident release]; _ident = nil;
+    [_base release]; _base = nil;
+    
+    [super dealloc];
+}
+
+- (void)applyOrientation {
+    if(_ortPending && !_invkParent) {
+        _invkParent = YES;
+        
+        [(id<egwPOrientated>)_parent applyOrientation]; // NOTE: Because the parent contains self, it will always be an orientated branch line, also parents never call a child's applyOrientation method -jw
+        
+        egwMatrix44f twcsTrans;
+        // Do scaling to account for totalPages size
+        egwMatScale44fs(NULL, (EGWsingle)_totalPages, 1.0f, 1.0f, &twcsTrans);
+        if(!(_rFlags & EGW_OBJEXTEND_FLG_ALWAYSOTGHMG)) {
+            egwMatMultiply44f(&_lcsTrans, &twcsTrans, &twcsTrans);
+            egwMatMultiply44f(&_wcsTrans, &twcsTrans, &twcsTrans);
+        } else {
+            egwMatMultiplyHmg44f(&_lcsTrans, &twcsTrans, &twcsTrans);
+            egwMatMultiplyHmg44f(&_wcsTrans, &twcsTrans, &twcsTrans);
+        }
+        
+        [_wcsRBVol orientateByTransform:&twcsTrans fromVolume:[_base renderingBounding]];
+        
+        _ortPending = NO;
+        
+        if((EGW_NODECMPMRG_GRAPHIC & (EGW_CORECMP_TYPE_BVOLS | EGW_CORECMP_TYPE_SOURCES | EGW_CORECMP_TYPE_SYNCS)) &&
+           _parent && ![_parent isInvokingChild]) {
+            EGWuint cmpntTypes = (((_rFlags & EGW_OBJTREE_FLG_NOUMRGBVOLS) || [_wcsRBVol class] == [egwZeroBounding class]) ? 0 : EGW_CORECMP_TYPE_BVOLS & EGW_NODECMPMRG_GRAPHIC) |
+                                   (_rFlags & EGW_OBJTREE_FLG_NOUMRGSYNCS ? 0 : EGW_CORECMP_TYPE_SOURCES & EGW_NODECMPMRG_GRAPHIC) |
+                                   (_rFlags & EGW_OBJTREE_FLG_NOUMRGSOURCES ? 0 : EGW_CORECMP_TYPE_SYNCS & EGW_NODECMPMRG_GRAPHIC);
+            if(cmpntTypes)
+                [_parent performSelector:@selector(mergeCoreComponentTypes:forCoreObjectTypes:) withObject:(id)cmpntTypes withObject:(id)[self coreObjectTypes] inDirection:EGW_NODEMSG_DIR_BREADTHUPWARDS];
+        }
+        
+        _invkParent = NO;
+    }
+}
+
+- (BOOL)bindForTexturingStage:(EGWuint)txtrStage withFlags:(EGWuint)flags {
+    // NOTE: The code below is non-abstracted OpenGLES dependent. Staying this way till ES2. -jw
+    if(!_isTBound || (flags & EGW_BNDOBJ_BINDFLG_APISYNCINVLD) || egwSFPVldtrIsInvalidated(_tSync, @selector(isInvalidated))) {
+        GLenum texture = GL_TEXTURE0 + (_lastTBind = txtrStage);
+        
+        //glActiveTexture(texture);
+        egw_glClientActiveTexture(texture);
+        
+        if(!(flags & EGW_BNDOBJ_BINDFLG_SAMELASTBASE)) {
+            if(_texIDs && *_texIDs && (*_texIDs)[0]) {
+                egw_glBindTexture(texture, GL_TEXTURE_2D, (GLuint)(*_texIDs)[0]);
+                //glFinish();
+            } else return NO;
+        }
+        
+        //if(!_isTBound || (flags & EGW_BNDOBJ_BINDFLG_APISYNCINVLD) || egwSFPVldtrIsInvalidated(_tSync, @selector(isInvalidated)))
+            egw_glBindEnvironment(_texEnv);
+        
+        _isTBound = YES;
+        egwSFPVldtrValidate(_tSync, @selector(validate));
+        return YES;
+    }
+    
+    return NO;
+}
+
+- (BOOL)unbindTexturingWithFlags:(EGWuint)flags {
+    // NOTE: The code below is non-abstracted OpenGLES dependent. Staying this way till ES2. -jw
+    if(_isTBound) {
+        if(flags & EGW_BNDOBJ_BINDFLG_TOGGLE) {
+            GLenum texture = GL_TEXTURE0 + _lastTBind;
+            //glActiveTexture(texture);
+            egw_glClientActiveTexture(texture);
+            egw_glBindTexture(texture, GL_TEXTURE_2D, 0);
+            //glFinish();
+        }
+        
+        _isTBound = NO;
+        return YES;
+    }
+    
+    return NO;
+}
+
+- (void)illuminateWithLight:(id<egwPLight>)light {
+    [_lStack addLight:light sortByPosition:(egwVector3f*)[_wcsRBVol boundingOrigin]];
+}
+
+- (void)offsetByTransform:(const egwMatrix44f*)lcsTransform {
+    egwMatCopy44f(lcsTransform, &_lcsTrans);
+    
+    _ortPending = YES;
+    
+    egwSFPVldtrInvalidate(_rSync, @selector(invalidate));
+}
+
+- (void)orientateByTransform:(const egwMatrix44f*)wcsTransform {
+    egwMatCopy44f(wcsTransform, &_wcsTrans);
+    
+    _ortPending = YES;
+    
+    egwSFPVldtrInvalidate(_rSync, @selector(invalidate));
+}
+
+- (void)orientateByImpending {
+    _ortPending = YES;
+    
+    egwSFPVldtrInvalidate(_rSync, @selector(invalidate));
+}
+
+- (BOOL)performSubTaskForComponent:(id<NSObject>)component forSync:(egwValidater*)sync {
+    if((id)component == (id)egwAIGfxCntxAGL) {
+        if(_gbSync == sync && (_geoStrg & EGW_GEOMETRY_STRG_EXVBO)) {
+            if([egwAIGfxCntxAGL loadBufferArraysID:&_geoAID withRawData:(const EGWbyte*)&_isMesh dataSize:(EGWuint)sizeof(_isMesh) geometryStorage:_geoStrg]) {
+                egwSFPVldtrValidate(_gbSync, @selector(validate)); // Event delegate will dealloc if not persistent
+                
+                return YES; // Done with this item, no other work left
+            } else
+                NSLog(@"egwPager: performSubTaskForComponent:forSync: Failure buffering instance geometry mesh for asset '%@' (%p).", _ident, self);
+            
+            return NO; // Failure to load, try again next time
+        }
+    }
+    
+    return YES; // Nothing to do
+}
+
+- (void)startRendering {
+    [egwSIGfxRdr renderObject:self]; // TODO: Replace with call to world scene.
+}
+
+- (void)stopRendering {
+    [egwSIGfxRdr removeObject:self]; // TODO: Replace with call to world scene.
+}
+
+- (void)renderWithFlags:(EGWuint32)flags {
+    // NOTE: The code below is non-abstracted OpenGLES dependent. Staying this way till ES2. -jw
+    if(flags & EGW_GFXOBJ_RPLYFLY_DORENDERPASS) {
+        if(_isVisible) {
+            if(_lStack) egwSFPLghtStckPushAndBindLights(_lStack, @selector(pushAndBindLights));
+            else egwAFPGfxCntxBindLights(egwAIGfxCntx, @selector(bindLights));
+            if(_mStack) egwSFPMtrlStckPushAndBindMaterials(_mStack, @selector(pushAndBindMaterials));
+            else egwAFPGfxCntxBindMaterials(egwAIGfxCntx, @selector(bindMaterials));
+            if(_sStack) egwSFPShdrStckPushAndBindShaders(_sStack, @selector(pushAndBindShaders));
+            else egwAFPGfxCntxBindShaders(egwAIGfxCntx, @selector(bindShaders));
+            egwAFPGfxCntxPushTexture(egwAIGfxCntx, @selector(pushTexture:withTextureJumpTable:), self, &_egwTJT);
+            egwAFPGfxCntxBindTextures(egwAIGfxCntx, @selector(bindTextures));
+            
+            if(_isTBound) {
+                glPushMatrix();
+                
+                glMultMatrixf((const GLfloat*)&_wcsTrans);
+                glMultMatrixf((const GLfloat*)&_lcsTrans);
+                glMultMatrixf((const GLfloat*)_mcsTrans);
+                
+                // start at -halfWidth*.5 + halfFactor, proceed by 2*halfFactor
+                glTranslatef(((_pMesh->vCoords[3].axis.x + _pMesh->vCoords[3].axis.x) * (EGWsingle)_totalPages * 0.5f) - _pMesh->vCoords[2].axis.x, 0.0f, 0.0f);
+                
+                if(*_baseGeoAID) {
+                    if(egw_glBindBuffer(GL_ARRAY_BUFFER, *_baseGeoAID) || !(flags & EGW_GFXOBJ_RPLYFLG_SAMELASTBASE)) {
+                        glVertexPointer((GLint)3, GL_FLOAT, (GLsizei)0, (const GLvoid*)(EGWuintptr)0);
+                        glNormalPointer(GL_FLOAT, (GLsizei)0, (const GLvoid*)(EGWuintptr)((EGWuint)sizeof(egwVector3f) * 4));
+                    }
+                } else {
+                    if(egw_glBindBuffer(GL_ARRAY_BUFFER, 0) || !(flags & EGW_GFXOBJ_RPLYFLG_SAMELASTBASE)) {
+                        glVertexPointer((GLint)3, GL_FLOAT, (GLsizei)0, (const GLvoid*)&_pMesh->vCoords[0]);
+                        glNormalPointer(GL_FLOAT, (GLsizei)0, (const GLvoid*)&_pMesh->nCoords[0]);
+                    }
+                }
+                
+                if(_geoAID) {
+                    egw_glBindBuffer(GL_ARRAY_BUFFER, _geoAID);
+                    
+                    for(EGWuint pageIndex = 0; pageIndex < _totalPages; ++pageIndex) {
+                        glTranslatef(_pMesh->vCoords[2].axis.x + _pMesh->vCoords[2].axis.x, 0.0f, 0.0f);
+                        
+                        if(!pageIndex || (pageIndex+1 == _actvPage || pageIndex == _actvPage)) { // Doesn't let coords resubmit until it hits the active page (and 1 after)
+                            if(!_actvPage || (pageIndex+1 != _actvPage))
+                                glTexCoordPointer((GLint)2, GL_FLOAT, (GLsizei)0, (const GLvoid*)(EGWuintptr)0);
+                            else
+                                glTexCoordPointer((GLint)2, GL_FLOAT, (GLsizei)0, (const GLvoid*)(EGWuintptr)(sizeof(egwVector2f) * 4));
+                        }
+                        
+                        glDrawArrays(GL_TRIANGLE_FAN, 0, (GLsizei)4);
+                    }
+                } else {
+                    egw_glBindBuffer(GL_ARRAY_BUFFER, 0);
+                    
+                    for(EGWuint pageIndex = 0; pageIndex < _totalPages; ++pageIndex) {
+                        glTranslatef(_pMesh->vCoords[2].axis.x + _pMesh->vCoords[2].axis.x, 0.0f, 0.0f);
+                        
+                        if(!pageIndex || (pageIndex+1 == _actvPage || pageIndex == _actvPage)) {
+                            if(!_actvPage || (pageIndex+1 != _actvPage))
+                                glTexCoordPointer((GLint)2, GL_FLOAT, (GLsizei)0, (const GLvoid*)&_isMesh.iptCoords[0]);
+                            else
+                                glTexCoordPointer((GLint)2, GL_FLOAT, (GLsizei)0, (const GLvoid*)&_isMesh.aptCoords[0]);
+                        }
+                        
+                        glDrawArrays(GL_TRIANGLE_FAN, 0, (GLsizei)4);
+                    }
+                }
+                
+                glPopMatrix();
+            }
+            
+            egwAFPGfxCntxPopTextures(egwAIGfxCntx, @selector(popTextures:), 1);
+            if(_sStack) egwSFPShdrStckPopShaders(_sStack, @selector(popShaders));
+            if(_mStack) egwSFPMtrlStckPopMaterials(_mStack, @selector(popMaterials));
+            if(_lStack) egwSFPLghtStckPopLights(_lStack, @selector(popLights));
+        }
+    } else if(flags & EGW_GFXOBJ_RPLYFLG_DORENDERSTART) {
+        _isRendering = YES;
+        
+        if(_delegate)
+            [_delegate widget:self did:EGW_ACTION_START];
+    } else if(flags & EGW_GFXOBJ_RPLYFLG_DORENDERSTOP) {
+        _isRendering = NO;
+        
+        egwSFPVldtrInvalidate(_rSync, @selector(invalidate));
+        
+        if(_delegate)
+            [_delegate widget:self did:EGW_ACTION_STOP];
+    }
+}
+
+- (EGWuint)activePage {
+    return _actvPage;
+}
+
+- (EGWuint)totalPages {
+    return _totalPages;
+}
+
+- (id<egwPAssetBase>)assetBase {
+    return (id<egwPAssetBase>)_base;
+}
+
+- (EGWuint)coreObjectTypes {
+    return (EGW_COREOBJ_TYPE_GRAPHIC | EGW_COREOBJ_TYPE_HOOKABLE | EGW_COREOBJ_TYPE_ORIENTABLE | EGW_COREOBJ_TYPE_TEXTURE | EGW_COREOBJ_TYPE_WIDGET);
+}
+
+- (egwValidater*)geometryBufferSync {
+    return _gbSync;
+}
+
+- (EGWuint)geometryStorage {
+    return _geoStrg;
+}
+
+- (NSString*)identity {
+    return _ident;
+}
+
+- (EGWuint)lastTexturingBindingStage {
+    return _lastTBind;
+}
+
+- (const egwRenderableJumpTable*)renderableJumpTable {
+    return &_egwRJT;
+}
+
+- (egwLightStack*)lightStack {
+    return _lStack;
+}
+
+- (egwMaterialStack*)materialStack {
+    return _mStack;
+}
+
+- (egwShaderStack*)shaderStack {
+    return _sStack;
+}
+
+- (const EGWuint*)textureID {
+    return _texIDs[0];
+}
+
+- (egwTextureStack*)textureStack {
+    return nil;
+}
+
+- (id<egwPInterpolator>)offsetDriver {
+    return _lcsIpo;
+}
+
+- (id<egwPInterpolator>)orientateDriver {
+    return _wcsIpo;
+}
+
+- (id<NSObject>)renderingBase {
+    return (id<NSObject>)_base;
+}
+
+- (id<egwPBounding>)renderingBounding {
+    return _wcsRBVol;
+}
+
+- (EGWuint32)renderingFlags {
+    return _rFlags;
+}
+
+- (EGWuint16)renderingFrame {
+    return _rFrame;
+}
+
+- (const egwVector4f*)renderingSource {
+    return [_wcsRBVol boundingOrigin];
+}
+
+- (egwValidater*)renderingSync {
+    return _rSync;
+}
+
+- (egwValidater*)textureBufferSync {
+    return [_base textureBufferSync];
+}
+
+- (const egwTextureJumpTable*)textureJumpTable {
+    return &_egwTJT;
+}
+
+- (id<NSObject>)textureBase {
+    return (id<NSObject>)_base;
+}
+
+- (EGWuint)textureEnvironment {
+    return _texEnv;
+}
+
+- (EGWuint)texturingFilter {
+    return [_base texturingFilter];
+}
+
+- (egwValidater*)texturingSync {
+    return _tSync;
+}
+
+- (EGWuint)texturingTransforms {
+    return [_base texturingTransforms];
+}
+
+- (EGWuint16)texturingSWrap {
+    return [_base texturingSWrap];
+}
+
+- (EGWuint16)texturingTWrap {
+    return [_base texturingTWrap];
+}
+
+- (const egwMatrix44f*)lcsTransform {
+    return &_lcsTrans;
+}
+
+- (const egwMatrix44f*)wcsTransform {
+    return &_wcsTrans;
+}
+
+- (const egwSize2i*)widgetSize {
+    return &_pSize;
+}
+
+- (id<egwPObjectBranch>)parent {
+    return _parent;
+}
+
+- (id<egwPObjectBranch>)root {
+    return (_parent ? [_parent root] : nil);
+}
+
+- (void)setActivePage:(EGWuint)actvPage {
+    if(_isEnabled && _actvPage != actvPage) {
+        _actvPage = (EGWuint)egwMin2i((EGWint)actvPage, (EGWint)_totalPages);
+        [_delegate pagerDidChange:self toPage:_actvPage];
+    }
+}
+
+- (void)setTotalPages:(EGWuint)pages {
+    if(_isEnabled) {
+        _totalPages = (EGWuint)egwMax2i(1, (EGWint)pages);
+    
+        // Bounding volume is now off since it's dependent on total pages
+        _ortPending = YES;
+    }
+}
+
+- (void)setDelegate:(id<egwDPagerEvent>)delegate {
+    [delegate retain];
+    [_delegate release];
+    _delegate = delegate;
+}
+
+- (void)setParent:(id<egwPObjectBranch>)parent {
+	if(_parent != parent && (id)_parent != (id)self && !_invkParent) {
+		[self retain];
+		
+		if(_parent && ![_parent isInvokingChild]) {
+			_invkParent = YES;
+			[_parent removeChild:self];
+			[_parent performSelector:@selector(decrementCoreObjectTypes:countBy:) withObject:(id)[self coreObjectTypes] withObject:(id)1 inDirection:EGW_NODEMSG_DIR_BREADTHUPWARDS];
+			[_parent performSelector:@selector(mergeCoreComponentTypes:forCoreObjectTypes:) withObject:(id)EGW_CORECMP_TYPE_ALL withObject:(id)[self coreObjectTypes] inDirection:EGW_NODEMSG_DIR_BREADTHUPWARDS];
+			_invkParent = NO;
+		}
+        
+        if(parent && _wcsIpo) {
+            NSLog(@"egwPager: setParent: Warning: Object system is overriding WCS interpolator driver for instance asset '%@' (%p).", _ident, self);
+            [self trySetOrientateDriver:nil];
+        }
+		
+		_parent = parent; // NOTE: Weak reference, do not retain! -jw
+		
+		if(_parent && ![_parent isInvokingChild]) {
+			_invkParent = YES;
+			[_parent addChild:self];
+			[_parent performSelector:@selector(incrementCoreObjectTypes:countBy:) withObject:(id)[self coreObjectTypes] withObject:(id)1 inDirection:EGW_NODEMSG_DIR_BREADTHUPWARDS];
+			[_parent performSelector:@selector(mergeCoreComponentTypes:forCoreObjectTypes:) withObject:(id)EGW_CORECMP_TYPE_ALL withObject:(id)[self coreObjectTypes] inDirection:EGW_NODEMSG_DIR_BREADTHUPWARDS];
+			_invkParent = NO;
+		}
+		
+		[self release];
+	}
+}
+
+- (void)setEnabled:(BOOL)enable {
+    _isEnabled = enable;
+}
+
+- (void)setLightStack:(egwLightStack*)lghtStack {
+    if(lghtStack && _lStack != lghtStack) {
+        [lghtStack retain];
+        [_lStack release];
+        _lStack = lghtStack;
+        
+        egwSFPVldtrInvalidate(_rSync, @selector(invalidate));
+    }
+}
+
+- (void)setMaterialStack:(egwMaterialStack*)mtrlStack {
+    if(mtrlStack && _mStack != mtrlStack) {
+        [mtrlStack retain];
+        [_mStack release];
+        _mStack = mtrlStack;
+        
+        egwSFPVldtrInvalidate(_rSync, @selector(invalidate));
+    }
+}
+
+- (void)setShaderStack:(egwShaderStack*)shdrStack {
+    [shdrStack retain];
+    [_sStack release];
+    _sStack = shdrStack;
+    
+    egwSFPVldtrInvalidate(_rSync, @selector(invalidate));
+}
+
+- (void)setTextureStack:(egwTextureStack*)txtrStack {
+    return;
+}
+
+- (void)setRenderingFlags:(EGWuint)flags {
+	_rFlags = flags;
+	
+	if((EGW_NODECMPMRG_GRAPHIC & EGW_CORECMP_TYPE_FLAGS) &&
+	   _parent && !_invkParent && ![_parent isInvokingChild]) {
+		_invkParent = YES;
+		EGWuint cmpntTypes = (_rFlags & EGW_OBJTREE_FLG_NOUMRGFLAGS ? 0 : EGW_CORECMP_TYPE_FLAGS & EGW_NODECMPMRG_GRAPHIC);
+		if(cmpntTypes)
+			[_parent performSelector:@selector(mergeCoreComponentTypes:forCoreObjectTypes:) withObject:(id)cmpntTypes withObject:(id)[self coreObjectTypes] inDirection:EGW_NODEMSG_DIR_BREADTHUPWARDS];
+		_invkParent = NO;
+	}
+}
+
+- (void)setRenderingFrame:(EGWint)frmNumber {
+	_rFrame = frmNumber;
+	
+	if((EGW_NODECMPMRG_GRAPHIC & EGW_CORECMP_TYPE_FRAMES) &&
+	   _parent && !_invkParent && ![_parent isInvokingChild]) {
+		_invkParent = YES;
+		EGWuint cmpntTypes = (_rFlags & EGW_OBJTREE_FLG_NOUMRGFRAMES ? 0 : EGW_CORECMP_TYPE_FRAMES & EGW_NODECMPMRG_GRAPHIC);
+		if(cmpntTypes)
+			[_parent performSelector:@selector(mergeCoreComponentTypes:forCoreObjectTypes:) withObject:(id)cmpntTypes withObject:(id)[self coreObjectTypes] inDirection:EGW_NODEMSG_DIR_BREADTHUPWARDS];
+		_invkParent = NO;
+	}
+}
+
+- (void)setVisible:(BOOL)visible {
+    _isVisible = visible;
+    
+    egwSFPVldtrInvalidate(_rSync, @selector(invalidate));
+}
+
+- (BOOL)trySetGeometryDataPersistence:(BOOL)persist {
+    // Not supported
+    return NO;
+}
+
+- (BOOL)trySetGeometryStorage:(EGWuint)storage {
+    _geoStrg = storage;
+    
+    egwSFPVldtrInvalidate(_gbSync, @selector(invalidate));
+    
+    return YES;
+}
+
+- (BOOL)trySetOffsetDriver:(id<egwPInterpolator>)lcsIpo {
+    if(lcsIpo) {
+        if(([lcsIpo isKindOfClass:[egwOrientationInterpolator class]]) ||
+           ([lcsIpo isKindOfClass:[egwValueInterpolator class]] && [(egwValueInterpolator*)lcsIpo channelCount] == 16 && [(egwValueInterpolator*)lcsIpo channelFormat] == EGW_KEYCHANNEL_FRMT_SINGLE)) {
+            [_lcsIpo removeTargetWithObject:self];
+            [lcsIpo retain];
+            [_lcsIpo release];
+            _lcsIpo = lcsIpo;
+            [_lcsIpo addTargetWithObject:self method:@selector(offsetByTransform:)];
+            
+            return YES;
+        }
+    } else {
+        [_lcsIpo removeTargetWithObject:self];
+        [_lcsIpo release]; _lcsIpo = nil;
+        
+        return YES;
+    }
+    
+    return NO;
+}
+
+- (BOOL)trySetOrientateDriver:(id<egwPInterpolator>)wcsIpo {
+    if(wcsIpo) {
+        if(!_parent &&
+           (([wcsIpo isKindOfClass:[egwOrientationInterpolator class]]) ||
+            ([wcsIpo isKindOfClass:[egwValueInterpolator class]] && [(egwValueInterpolator*)wcsIpo channelCount] == 16 && [(egwValueInterpolator*)wcsIpo channelFormat] == EGW_KEYCHANNEL_FRMT_SINGLE))) {
+            [_wcsIpo removeTargetWithObject:self];
+            [wcsIpo retain];
+            [_wcsIpo release];
+            _wcsIpo = wcsIpo;
+            [_wcsIpo addTargetWithObject:self method:@selector(orientateByTransform:)];
+            
+            return YES;
+        }
+    } else {
+        [_wcsIpo removeTargetWithObject:self];
+        [_wcsIpo release]; _wcsIpo = nil;
+        
+        return YES;
+    }
+    
+    return NO;
+}
+
+- (BOOL)trySetTextureDataPersistence:(BOOL)persist {
+    return [_base trySetTextureDataPersistence:persist];
+}
+
+- (BOOL)trySetTextureEnvironment:(EGWuint)environment {
+    _texEnv = environment;
+    
+    egwSFPVldtrInvalidate(_tSync, @selector(invalidate));
+    
+    return YES;
+}
+
+- (BOOL)trySetTexturingFilter:(EGWuint)filter {
+    return [_base trySetTexturingFilter:filter];
+}
+
+- (BOOL)trySetTexturingWrapS:(EGWuint16)sWrap {
+    return [_base trySetTexturingWrapS:sWrap];
+}
+
+- (BOOL)trySetTexturingWrapT:(EGWuint16)tWrap {
+    return [_base trySetTexturingWrapT:tWrap];
+}
+
+- (BOOL)isChildOf:(id<egwPObjectBranch>)parent {
+    return (_parent == parent ? YES : NO);
+}
+
+- (BOOL)isGeometryDataPersistent {
+    return YES;
+}
+
+- (BOOL)isInvokingParent {
+    return _invkParent;
+}
+
+- (BOOL)isLeaf {
+    return YES;
+}
+
+- (BOOL)isOrientationPending {
+    return _ortPending;
+}
+
+- (BOOL)isRendering {
+    return _isRendering;
+}
+
+- (BOOL)isBoundForTexturing {
+    return _isTBound;
+}
+
+- (BOOL)isEnabled {
+    return _isEnabled;
+}
+
+- (BOOL)isOpaque {
+    return !(_rFlags & EGW_GFXOBJ_RNDRFLG_ISTRANSPARENT) && ((_rFlags & EGW_GFXOBJ_RNDRFLG_ISOPAQUE) || ((([_base widgetSurfaces]->format & EGW_SURFACE_FRMT_EXAC) ? NO : ((!_mStack || egwSFPMtrlStckOpaque(_mStack, @selector(isOpaque))) && (!_sStack || egwSFPShdrStckOpaque(_sStack, @selector(isOpaque)))))));
+}
+
+- (BOOL)isTextureDataPersistent {
+    return [_base isTextureDataPersistent];
+}
+
+- (BOOL)isVisible {
+    return _isVisible;
+}
+
+- (void)validaterDidValidate:(egwValidater*)validater {
+    if(_ortPending) [self applyOrientation];
+    
+    if(_rSync == validater &&
+       (EGW_NODECMPMRG_GRAPHIC & EGW_CORECMP_TYPE_SYNCS) &&
+       _parent && !_invkParent && ![_parent isInvokingChild]) {
+        _invkParent = YES;
+        EGWuint cmpntTypes = (_rFlags & EGW_OBJTREE_FLG_NOUMRGSYNCS ? 0 : EGW_OBJTREE_FLG_NOUMRGSYNCS & EGW_NODECMPMRG_GRAPHIC);
+        if(cmpntTypes)
+            [_parent performSelector:@selector(mergeCoreComponentTypes:forCoreObjectTypes:) withObject:(id)cmpntTypes withObject:(id)[validater coreObjects] inDirection:EGW_NODEMSG_DIR_BREADTHUPWARDS];
+        _invkParent = NO;
+    }
+}
+
+- (void)validaterDidInvalidate:(egwValidater*)validater {
+    if(_rSync == validater &&
+       (EGW_NODECMPMRG_GRAPHIC & EGW_CORECMP_TYPE_SYNCS) &&
+       _parent && !_invkParent && ![_parent isInvokingChild]) {
+        _invkParent = YES;
+        EGWuint cmpntTypes = (_rFlags & EGW_OBJTREE_FLG_NOUMRGSYNCS ? 0 : EGW_OBJTREE_FLG_NOUMRGSYNCS & EGW_NODECMPMRG_GRAPHIC);
+        if(cmpntTypes)
+            [_parent performSelector:@selector(mergeCoreComponentTypes:forCoreObjectTypes:) withObject:(id)cmpntTypes withObject:(id)[validater coreObjects] inDirection:EGW_NODEMSG_DIR_BREADTHUPWARDS];
+        _invkParent = NO;
+    } else if(_gbSync == validater) {
+        if(_geoStrg & EGW_GEOMETRY_STRG_EXVBO) // Buffer mesh data up through context
+            [egwAIGfxCntx addSubTask:self forSync:_gbSync];
+        else
+            egwSFPVldtrValidate(_gbSync, @selector(validate));
+    }
+}
+
+@end
